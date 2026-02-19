@@ -2,6 +2,8 @@
 
 This is the shortest path to use Grabber effectively across browser chats, CLI chats, and IDE chats.
 
+For full step-by-step validation by platform, see `TESTING.md`.
+
 ## 1) One-Time Setup
 
 ```bash

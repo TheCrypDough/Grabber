@@ -9,6 +9,8 @@
     ·
     <a href="CHEATSHEET.md">Cheatsheet</a>
     ·
+    <a href="TESTING.md">Testing Guide</a>
+    ·
     <a href="AGENTS.md">Agent Guide</a>
     ·
     <a href="#how-it-works">How It Works</a>
@@ -91,6 +93,20 @@ grabber build
 ```
 
 If `grabber` is not found, add `~/.local/bin` to your `PATH`.
+
+### Quick Validation
+
+Run a local smoke test:
+
+```bash
+./scripts/grabber-self-test.sh
+```
+
+Full smoke + extension build:
+
+```bash
+./scripts/grabber-self-test.sh --with-extension-build
+```
 
 ### 2. Load In Chrome
 
