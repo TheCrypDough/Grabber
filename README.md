@@ -1,254 +1,296 @@
 <div align="center">
-
-<img src="apps/web/public/icon.svg" alt="CtxPort Logo" width="128" />
-
-# CtxPort
-
-### **One click. Structured Markdown. Any AI conversation.**
-
-Your AI conversations deserve a better clipboard.
-
-[![GitHub Stars](https://img.shields.io/github/stars/nicepkg/ctxport?style=social)](https://github.com/nicepkg/ctxport)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/nicepkg/ctxport/pulls)
-[![Manifest V3](https://img.shields.io/badge/Manifest-V3-4285F4?logo=googlechrome)](https://developer.chrome.com/docs/extensions/mv3/)
-
-[简体中文](./README_cn.md) | English
-
-**Supported Platforms**
-
-[![ChatGPT](https://img.shields.io/badge/ChatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white)](https://chatgpt.com)
-[![Claude](https://img.shields.io/badge/Claude-d4a27f?style=for-the-badge&logo=anthropic&logoColor=white)](https://claude.ai)
-[![Gemini](https://img.shields.io/badge/Gemini-8E75B2?style=for-the-badge&logo=google&logoColor=white)](https://gemini.google.com)
-[![DeepSeek](https://img.shields.io/badge/DeepSeek-0066FF?style=for-the-badge&logo=deepseek&logoColor=white)](https://chat.deepseek.com)
-[![Grok](https://img.shields.io/badge/Grok-000000?style=for-the-badge&logo=x&logoColor=white)](https://grok.com)
-[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com)
-
-<br />
-
-[Get Started](#-quick-start) · [Features](#-features) · [Documentation](https://ctxport.xiaominglab.com)
-
+  <img src="apps/web/public/icon.svg" alt="Grabber Logo" width="120" />
+  <h1>Grabber</h1>
+  <p><strong>End copy paste time waste.</strong><br/>Use it anywhere you talk with AI.</p>
+  <p>
+    <a href="https://github.com/TheCrypDough/Grabber">GitHub</a>
+    ·
+    <a href="#quick-start">Quick Start</a>
+    ·
+    <a href="#how-it-works">How It Works</a>
+    ·
+    <a href="#platform-coverage-feb-19-2026">Coverage</a>
+  </p>
 </div>
 
 ---
 
-## The Problem
+## What Grabber Is
 
-You just spent 45 minutes in a deep conversation with ChatGPT. You found the perfect architecture for your project. Now you need to share it with Claude for implementation.
+Grabber is an open-source tool for exporting AI conversations into clean, structured Markdown.
 
-What do you do?
+It combines two layers:
 
-**Ctrl+A, Ctrl+C?** You get a mess of HTML artifacts, broken formatting, and missing code blocks.
+1. Browser extension layer
+- One-click copy or save from supported AI chat pages.
+- Structured output with frontmatter metadata for ingestion pipelines and agent context transfer.
 
-**Copy each message manually?** Life is too short.
+2. Companion automation layer
+- `grabber save` and `grabber autosave` commands for local archive workflows.
+- Useful for agentic pipelines and clipboard-driven automation.
 
-**Screenshot it?** Text in images is where knowledge goes to die.
+The goal is simple: preserve full conversations quickly, consistently, and in a format humans and agents can both use.
 
-AI conversations are the new unit of knowledge work. But moving them between tools feels like faxing a PDF in 2026.
+## Why This Exists
 
-**CtxPort fixes this.** One click, and your entire conversation becomes a clean, structured Markdown document -- ready to paste into any AI tool, editor, or knowledge base.
+Manual conversation transfer is slow and fragile:
 
-### The Difference
+- raw copy often includes formatting junk
+- code blocks can break
+- context can be truncated or lost
+- metadata (source/date/url) is usually missing
 
-|                              | Without CtxPort                                    | With CtxPort                         |
-| :--------------------------- | :------------------------------------------------- | :----------------------------------- |
-| **Copy a conversation**      | Select all, copy, paste, fix formatting for 10 min | One click. Done.                     |
-| **Move context between AIs** | Re-type your whole conversation history            | Paste the Context Bundle, keep going |
-| **Save a conversation**      | Bookmark it and pray the URL survives              | Structured Markdown you own forever  |
-| **Share with your team**     | "Let me screenshot this..."                        | Share a clean `.md` file             |
-| **Extract just the code**    | Scroll through 50 messages hunting for snippets    | Code Only mode, one click            |
+Grabber solves that by producing machine- and human-friendly Markdown bundles in one step.
 
-### Key Benefits
+## Core Features
 
-```
-  No account required           Works offline
-  Zero data uploaded            100% local processing
-  Minimal permissions           Open source (MIT)
-```
-
----
+- One-click copy full conversation
+- One-click save full conversation to `.md`
+- Right-click format menu (`full`, `user-only`, `code-only`, `compact`)
+- Keyboard shortcuts for copy/save
+- Sidebar list copy on supported platforms
+- Setup UI for save behavior (prompt each save vs fast save)
+- Metadata-rich filenames for archives
+- Agent-friendly clipboard and autosave workflows
 
 ## How It Works
 
-```mermaid
-graph LR
-    A["AI Conversation<br/>(ChatGPT, Claude, etc.)"] --> B["CtxPort<br/>Browser Extension"]
-    B --> C["Context Bundle<br/>Structured Markdown"]
-    C --> D["Another AI Tool"]
-    C --> E["Your Notes / Docs"]
-    C --> F["Team Chat / PR"]
-```
+1. Grabber detects supported conversation pages via platform adapters.
+2. It extracts message content into a universal `ContentBundle`.
+3. It serializes the bundle into Markdown with metadata frontmatter.
+4. You either:
+- copy to clipboard, or
+- save to disk as `.md`
 
-1. **Browse** any supported platform
-2. **Click** the CtxPort copy button (or press `Alt+Shift+C`)
-3. **Paste** your structured Context Bundle anywhere
+Output frontmatter example:
 
-That's it. No configuration. No sign-up. No cloud.
-
----
-
-## Features
-
-### Copy From Anywhere
-
-| Feature                 | Description                                                                        |
-| :---------------------- | :--------------------------------------------------------------------------------- |
-| **In-Chat Copy Button** | A copy button appears right in the conversation -- click to copy the entire thread |
-| **Sidebar List Copy**   | Hover over any conversation in the sidebar and copy without even opening it        |
-| **Keyboard Shortcut**   | `Alt+Shift+C` copies the current conversation instantly                            |
-| **Multiple Formats**    | Full, User Only, Code Only, Compact -- pick what you need                          |
-
-### Sidebar List Copy -- The Feature Nobody Else Has
-
-Most copy tools make you open a conversation first. CtxPort lets you hover over conversations in the sidebar and copy them directly. Need to grab 5 conversations for a project brief? Hover, click, hover, click. No page loads. No waiting.
-
-### Context Bundle Format
-
-Every copy produces a structured Markdown document with frontmatter metadata:
-
-```markdown
+```yaml
 ---
 ctxport: v2
 source: chatgpt
 url: https://chatgpt.com/c/abc123
-title: "Discuss REST API Authentication"
-date: 2026-02-07T14:30:00Z
+title: "Lambda agent routing strategy"
+date: 2026-02-19T13:20:00Z
 nodes: 24
 format: full
 ---
-
-## User
-
-I'm building a SaaS product and need to choose between
-API key auth and OAuth2. What do you recommend?
-
-## Assistant
-
-Based on your scenario, I'd recommend a layered approach...
 ```
-
-The frontmatter tells any receiving tool exactly where this conversation came from, when it happened, and how many messages it contains. Structured context, not just raw text.
-
-### Copy Formats
-
-| Format        | What You Get                             | Best For                               |
-| :------------ | :--------------------------------------- | :------------------------------------- |
-| **Full**      | Complete conversation with all messages  | Context transfer between AI tools      |
-| **User Only** | Only your messages (prompts)             | Reusing your prompts in a different AI |
-| **Code Only** | Extracted code blocks with language tags | Grabbing implementation snippets       |
-| **Compact**   | Condensed single-paragraph messages      | Quick sharing in chat or email         |
-
----
 
 ## Quick Start
 
-### Install from Chrome Web Store
-
-> Coming soon -- currently in development. Star the repo to get notified!
-
-### Build from Source
+### 1. Build
 
 ```bash
-# Clone the repo
-git clone https://github.com/nicepkg/ctxport.git
-cd ctxport
-
-# Install dependencies
-pnpm install
-
-# Build all packages
-pnpm build
-
-# Start the extension in dev mode
-pnpm dev:ext
+grabber build
 ```
 
-Then load the unpacked extension from `apps/browser-extension/dist/chrome-mv3-dev` in `chrome://extensions`.
+### 2. Load In Chrome
 
-### Usage
+1. Open `chrome://extensions`
+2. Enable `Developer mode`
+3. Click `Load unpacked`
+4. Select:
+`/home/thecrypdough/Github Repositories/Grabber/apps/browser-extension/dist/chrome-mv3`
 
-1. Navigate to any supported platform (ChatGPT, Claude, Gemini, DeepSeek, Grok, GitHub)
-2. Start or open a conversation
-3. Click the **CtxPort copy button** that appears in the chat, or press `Alt+Shift+C`
-4. Paste your Context Bundle wherever you need it
+### 3. First-Time Save Setup
 
-For sidebar list copy: hover over any conversation in the left sidebar to reveal the copy icon.
+After install, Grabber opens the setup page where users choose:
 
----
+- Save mode:
+  - `Save directly (fast, no prompt)`
+  - `Ask where to save every time`
+- Download subfolder (relative to browser Downloads), for example:
+  - `convos`
+  - `convos/ai`
 
-## Roadmap
+### 4. Use It
 
-- [x] ChatGPT support
-- [x] Claude support
-- [x] Gemini support
-- [x] DeepSeek support
-- [x] Grok support
-- [x] GitHub Issues & PRs support
-- [x] Sidebar list copy
-- [x] Multiple copy formats
-- [x] Keyboard shortcuts
-- [ ] Chrome Web Store release
-- [ ] Firefox support
-- [ ] Context Bundle import (paste a bundle to restore conversation context)
-- [ ] Batch export (select multiple conversations, export as a bundle)
-- [ ] Custom format templates
+On any supported conversation page:
 
----
+- click clipboard icon to copy full convo
+- click download icon to save full convo
+- right-click either icon to choose export format
 
-## Architecture
+Popup actions:
 
-```
-ctxport/
-  packages/
-    core-schema/       # Zod schemas for Context Bundle format
-    core-plugins/      # Platform adapters (ChatGPT, Claude, etc.)
-    core-markdown/     # Markdown serialization engine
-    shared-ui/         # Shared React components
+- `Copy Current Conversation`
+- `Save Current Conversation (.md)`
+
+Shortcuts:
+
+- `Alt+Shift+C` copy current
+- `Alt+Shift+S` save current
+
+## Command Reference
+
+Primary commands:
+
+- `grabber` or `grabber build`
+- `grabber dev`
+- `grabber path`
+- `grabber update`
+- `grabber clean`
+- `grabber help`
+
+Archive/automation commands:
+
+- `grabber save`
+- `grabber save "context override"`
+- `grabber autosave start`
+- `grabber autosave stop`
+- `grabber autosave status`
+- `grabber autosave restart`
+
+Compatibility aliases are still available:
+
+- `ctxport`
+- `ctxport-save`
+- `ctxport-autosave`
+
+## Archive Naming
+
+Saved filenames are short but context-rich:
+
+`YYYYMMDD-HHMMSS_source@host_context.md`
+
+Example:
+
+`20260219-132000_chatgpt@chatgpt-com_lambda-agent-memory-ingest-strategy.md`
+
+Field mapping:
+
+- timestamp from frontmatter `date` (UTC fallback if unavailable)
+- source from `source`
+- host from frontmatter `url`
+- context from `title` or manual override
+
+If a filename already exists, Grabber appends a suffix (`_02`, `_03`, ...).
+
+## Platform Coverage (Feb 19, 2026)
+
+### API-first adapters
+
+- ChatGPT
+- Claude
+- Gemini
+- DeepSeek
+- Grok
+- GitHub Issues/PR
+
+### Universal best-effort web adapters
+
+- Google AI Studio
+- Perplexity
+- Kimi
+- Genspark
+- Poe
+- Mistral Le Chat
+- Microsoft Copilot
+- Qwen Chat
+- Meta AI
+- Pi
+- You.com
+- Duck.ai
+- Groq Chat
+- Character.AI
+- HuggingChat
+- NotebookLM
+- OpenRouter Chat
+- Phind
+- Blackbox
+- Codex Cloud pages on `chatgpt.com/codex`
+- localhost/127.0.0.1 web agent chat UIs
+
+## Extension Model vs Non-Browser Conversations
+
+Grabber is still extension-first.
+
+- For web-based chat UIs: use one-click copy/save directly in browser.
+- For terminal-only conversations (`codex` CLI, `claude code`, `opencode` in pure terminal):
+  use transcript/log/clipboard workflow + `grabber save`.
+
+This hybrid model is intentional: browser-native ease for users, scriptable tooling for agents.
+
+## Security & Privacy
+
+- Local-first behavior
+- No required account
+- No cloud upload required for core export flows
+- Uses browser permissions needed for extraction + save/download behavior
+
+See `SECURITY.md` for policy and reporting.
+
+## Repository Layout
+
+```text
+Grabber/
   apps/
-    browser-extension/ # WXT + React 19 + Tailwind CSS 4
+    browser-extension/      # Chrome extension
+    web/                    # Docs/website app
+  packages/
+    core-plugins/           # Platform adapters
+    core-markdown/          # Serializer + formatting
+    core-schema/            # Shared schema/types
+    shared-ui/              # Shared UI components
+  scripts/
+    grabber-save.sh         # Archive save helper
+    grabber-autosave.sh     # Clipboard autosave daemon
 ```
 
-Built as a monorepo with pnpm workspaces and Turborepo. Each platform adapter is a self-contained plugin, making it straightforward to add new platforms.
+## Development
 
----
+Requirements:
 
-## Contributing
+- Node.js >= 22
+- pnpm >= 10
 
-Contributions are welcome! Whether it's a bug report, feature request, or pull request -- every contribution helps.
+Install:
 
 ```bash
-# Fork and clone the repo
-git clone https://github.com/YOUR_USERNAME/ctxport.git
-
-# Install dependencies
 pnpm install
-
-# Start development
-pnpm dev:ext
 ```
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
+Build extension only:
 
-### Contributors
+```bash
+pnpm build:ext
+```
 
-<a href="https://github.com/nicepkg/ctxport/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=nicepkg/ctxport" />
-</a>
+Typecheck:
+
+```bash
+pnpm --filter @ctxport/core-plugins typecheck
+pnpm --filter @ctxport/extension typecheck
+```
+
+Run all tests:
+
+```bash
+pnpm test
+```
+
+## Operational Notes
+
+- For fastest user experience, keep browser extension loaded and just click Reload after new builds.
+- For deterministic archives, use `grabber save` in ingestion pipelines.
+- For unattended local capture workflows, run `grabber autosave start`.
+
+## Roadmap Direction
+
+Near-term:
+
+- improve per-site reliability on universal adapters
+- strengthen non-browser transcript import paths
+- streamline batch export workflows
+
+Long-term:
+
+- richer agent-native ingestion/export APIs
+- optional multi-conversation packaging
+- stronger cross-tool context portability standards
 
 ---
 
 ## License
 
-[MIT](LICENSE) -- Use it however you want.
-
----
-
-<div align="center">
-
-**If CtxPort saves you time, consider giving it a star.**
-
-It helps others discover the project and keeps development going.
-
-[![Star on GitHub](https://img.shields.io/github/stars/nicepkg/ctxport?style=social)](https://github.com/nicepkg/ctxport)
-
-</div>
+MIT

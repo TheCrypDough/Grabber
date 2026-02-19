@@ -1,4 +1,4 @@
-# Contributing to ctxport
+# Contributing to Grabber
 
 Thank you for your interest in contributing! This document provides guidelines and instructions for contributing.
 
@@ -10,13 +10,13 @@ Please read and follow our [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ### Reporting Bugs
 
-1. Check if the bug has already been reported in [Issues](https://github.com/nicepkg/ctxport/issues)
+1. Check if the bug has already been reported in [Issues](https://github.com/TheCrypDough/Grabber/issues)
 2. If not, create a new issue using the bug report template
 3. Provide as much detail as possible
 
 ### Suggesting Features
 
-1. Check if the feature has already been suggested in [Issues](https://github.com/nicepkg/ctxport/issues)
+1. Check if the feature has already been suggested in [Issues](https://github.com/TheCrypDough/Grabber/issues)
 2. If not, create a new issue using the feature request template
 3. Explain the use case and benefits
 
@@ -34,8 +34,8 @@ Please read and follow our [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ```bash
 # Clone the repository
-git clone https://github.com/nicepkg/ctxport.git
-cd ctxport
+git clone https://github.com/TheCrypDough/Grabber.git
+cd Grabber
 
 # Install dependencies
 pnpm install
@@ -105,4 +105,4 @@ refactor: simplify authentication logic
 
 ## Questions?
 
-Feel free to open a [Discussion](https://github.com/nicepkg/ctxport/discussions) if you have any questions.
+Feel free to open a [Discussion](https://github.com/TheCrypDough/Grabber/discussions) if you have any questions.

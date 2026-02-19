@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "CtxPort browser extension - Copy AI conversations as Context Bundles",
+  "description": "Grabber browser extension - Copy and save AI conversations as Context Bundles",
   "scripts": {
     "prepare": "wxt prepare",
     "dev": "wxt",

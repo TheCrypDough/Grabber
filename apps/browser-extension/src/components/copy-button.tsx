@@ -4,6 +4,7 @@ import { ContextMenu } from "./context-menu";
 import { EXTENSION_WINDOW_EVENT } from "~/constants/extension-runtime";
 import {
   useCopyConversation,
+  type ConversationAction,
   type CopyState,
 } from "~/hooks/use-copy-conversation";
 
@@ -19,6 +20,7 @@ const MOTION = {
 } as const;
 
 interface CopyButtonProps {
+  mode?: ConversationAction;
   onToast: (data: {
     title: string;
     subtitle?: string;
@@ -27,8 +29,8 @@ interface CopyButtonProps {
   }) => void;
 }
 
-export function CopyButton({ onToast }: CopyButtonProps) {
-  const { state, result, error, copy } = useCopyConversation();
+export function CopyButton({ mode = "copy", onToast }: CopyButtonProps) {
+  const { state, result, error, copy, save } = useCopyConversation();
   const [menu, setMenu] = useState<{ x: number; y: number } | null>(null);
   const [hovered, setHovered] = useState(false);
   const [pressed, setPressed] = useState(false);
@@ -36,18 +38,30 @@ export function CopyButton({ onToast }: CopyButtonProps) {
   const prevStateRef = useRef<CopyState>("idle");
 
   const handleClick = useCallback(async () => {
+    if (mode === "save") {
+      await save("full");
+      return;
+    }
     await copy("full");
-  }, [copy]);
+  }, [copy, mode, save]);
 
-  // Respond to COPY_CURRENT window event (from popup / keyboard shortcut)
+  // Respond to runtime window event (from popup / keyboard shortcut)
   useEffect(() => {
     const handler = () => {
+      if (mode === "save") {
+        void save("full");
+        return;
+      }
       void copy("full");
     };
-    window.addEventListener(EXTENSION_WINDOW_EVENT.COPY_CURRENT, handler);
+    const eventName =
+      mode === "save"
+        ? EXTENSION_WINDOW_EVENT.SAVE_CURRENT
+        : EXTENSION_WINDOW_EVENT.COPY_CURRENT;
+    window.addEventListener(eventName, handler);
     return () =>
-      window.removeEventListener(EXTENSION_WINDOW_EVENT.COPY_CURRENT, handler);
-  }, [copy]);
+      window.removeEventListener(eventName, handler);
+  }, [copy, mode, save]);
 
   const handleContextMenu = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
@@ -57,9 +71,13 @@ export function CopyButton({ onToast }: CopyButtonProps) {
 
   const handleFormatSelect = useCallback(
     async (format: BundleFormatType) => {
+      if (mode === "save") {
+        await save(format);
+        return;
+      }
       await copy(format);
     },
-    [copy],
+    [copy, mode, save],
   );
 
   // Trigger icon scale-in animation on success/error
@@ -87,19 +105,28 @@ export function CopyButton({ onToast }: CopyButtonProps) {
       const isLarge =
         result.messageCount >= 50 || result.estimatedTokens >= 10000;
       onToast({
-        title: "CtxPort \u00b7 Copied to clipboard",
-        subtitle: `${result.messageCount} messages \u00b7 ${tokenStr} tokens`,
+        title:
+          result.action === "save"
+            ? "Grabber \u00b7 Saved markdown file"
+            : "Grabber \u00b7 Copied to clipboard",
+        subtitle:
+          result.action === "save"
+            ? `${result.messageCount} messages \u00b7 ${tokenStr} tokens \u00b7 ${result.filename ?? "conversation.md"}`
+            : `${result.messageCount} messages \u00b7 ${tokenStr} tokens`,
         type: "success",
         isLarge,
       });
     } else if (state === "error" && error) {
       onToast({
-        title: "CtxPort \u00b7 Copy failed",
+        title:
+          mode === "save"
+            ? "Grabber \u00b7 Save failed"
+            : "Grabber \u00b7 Copy failed",
         subtitle: error,
         type: "error",
       });
     }
-  }, [state, result, error, onToast]);
+  }, [state, result, error, mode, onToast]);
 
   const isIdle = state === "idle";
   const isLoading = state === "loading";
@@ -143,11 +170,17 @@ export function CopyButton({ onToast }: CopyButtonProps) {
         onMouseDown={() => setPressed(true)}
         onMouseUp={() => setPressed(false)}
         disabled={isLoading}
-        title="Copy as Context Bundle (CtxPort)"
-        className="ctxport-copy-btn"
+        title={
+          mode === "save"
+            ? "Save as Markdown (Grabber)"
+            : "Copy as Context Bundle (Grabber)"
+        }
+        className={
+          mode === "save" ? "ctxport-save-btn" : "ctxport-copy-btn"
+        }
         style={buttonStyle}
       >
-        <IconForState state={state} animated={iconAnimated} />
+        <IconForState state={state} animated={iconAnimated} mode={mode} />
       </button>
       {menu && (
         <ContextMenu
@@ -155,6 +188,7 @@ export function CopyButton({ onToast }: CopyButtonProps) {
           y={menu.y}
           onSelect={handleFormatSelect}
           onClose={() => setMenu(null)}
+          action={mode}
         />
       )}
     </>
@@ -175,9 +209,11 @@ function iconColor(state: CopyState): string {
 function IconForState({
   state,
   animated,
+  mode,
 }: {
   state: CopyState;
   animated: boolean;
+  mode: ConversationAction;
 }) {
   if (state === "loading") {
     return (
@@ -255,6 +291,26 @@ function IconForState({
         <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
         <line x1="12" y1="9" x2="12" y2="13" />
         <line x1="12" y1="17" x2="12.01" y2="17" />
+      </svg>
+    );
+  }
+
+  // idle -- clipboard icon
+  if (mode === "save") {
+    return (
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+        <polyline points="7 10 12 15 17 10" />
+        <line x1="12" y1="15" x2="12" y2="3" />
       </svg>
     );
   }

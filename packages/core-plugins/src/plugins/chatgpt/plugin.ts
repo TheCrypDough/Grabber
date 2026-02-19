@@ -9,6 +9,8 @@ import { buildLinearConversation } from "./tree-linearizer";
 import type { ChatGPTConversationResponse, MessageNode } from "./types";
 
 const HOST_PATTERN = /^https:\/\/(?:chatgpt\.com|chat\.openai\.com)\//i;
+const SUPPORTED_PATH_PATTERN =
+  /^https?:\/\/(?:chat\.openai\.com|chatgpt\.com)\/(?:c|g)\/[a-zA-Z0-9-]+/i;
 const CONVERSATION_PATTERN =
   /^https?:\/\/(?:chat\.openai\.com|chatgpt\.com)\/c\/([a-zA-Z0-9-]+)/;
 
@@ -24,7 +26,7 @@ export const chatgptPlugin: Plugin = {
 
   urls: {
     hosts: ["https://chatgpt.com/*", "https://chat.openai.com/*"],
-    match: (url) => HOST_PATTERN.test(url),
+    match: (url) => HOST_PATTERN.test(url) && SUPPORTED_PATH_PATTERN.test(url),
   },
 
   async extract(ctx: PluginContext): Promise<ContentBundle> {

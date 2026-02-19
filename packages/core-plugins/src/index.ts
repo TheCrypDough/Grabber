@@ -28,6 +28,7 @@ export {
   geminiPlugin,
   githubPlugin,
   grokPlugin,
+  universalWebChatPlugin,
 } from "./plugins";
 
 // Host permissions constant (for WXT config)
@@ -37,6 +38,7 @@ import { deepseekPlugin } from "./plugins/deepseek/plugin";
 import { geminiPlugin } from "./plugins/gemini/plugin";
 import { githubPlugin } from "./plugins/github/plugin";
 import { grokPlugin } from "./plugins/grok/plugin";
+import { universalWebChatPlugin } from "./plugins/universal/plugin";
 export const EXTENSION_HOST_PERMISSIONS = [
   ...chatgptPlugin.urls.hosts,
   ...claudePlugin.urls.hosts,
@@ -44,4 +46,5 @@ export const EXTENSION_HOST_PERMISSIONS = [
   ...geminiPlugin.urls.hosts,
   ...githubPlugin.urls.hosts,
   ...grokPlugin.urls.hosts,
-];
+  ...universalWebChatPlugin.urls.hosts,
+].filter((host, index, list) => list.indexOf(host) === index);

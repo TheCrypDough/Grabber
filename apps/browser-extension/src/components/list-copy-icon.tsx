@@ -79,7 +79,7 @@ export function ListCopyIcon({ conversationId, onToast }: ListCopyIconProps) {
         const isLarge =
           serialized.messageCount >= 50 || serialized.estimatedTokens >= 10000;
         onToast({
-          title: "CtxPort \u00b7 Copied to clipboard",
+          title: "Grabber \u00b7 Copied to clipboard",
           subtitle: `${serialized.messageCount} messages \u00b7 ${tokenStr} tokens`,
           type: "success",
           isLarge,
@@ -92,7 +92,7 @@ export function ListCopyIcon({ conversationId, onToast }: ListCopyIconProps) {
         if (!mountedRef.current) return;
         setState("error");
         onToast({
-          title: "CtxPort \u00b7 Copy failed",
+          title: "Grabber \u00b7 Copy failed",
           subtitle:
             "Fetch failed. Please open the conversation and use the in-page copy button.",
           type: "error",
@@ -162,7 +162,7 @@ export function ListCopyIcon({ conversationId, onToast }: ListCopyIconProps) {
         onMouseDown={() => setPressed(true)}
         onMouseUp={() => setPressed(false)}
         disabled={isLoading}
-        title="Copy this conversation (CtxPort)"
+        title="Copy this conversation (Grabber)"
         className="ctxport-list-copy-icon"
         style={buttonStyle}
       >

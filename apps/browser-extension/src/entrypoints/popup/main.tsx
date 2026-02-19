@@ -5,6 +5,7 @@ import {
   EXTENSION_RUNTIME_MESSAGE,
   isSupportedTabUrl,
 } from "~/constants/extension-runtime";
+import { getSaveSettings } from "~/lib/save-settings";
 
 // Must register plugins before isSupportedTabUrl can work
 registerBuiltinPlugins();
@@ -92,6 +93,25 @@ function ClipboardIcon() {
   );
 }
 
+function DownloadIcon() {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+      <polyline points="7 10 12 15 17 10" />
+      <line x1="12" y1="15" x2="12" y2="3" />
+    </svg>
+  );
+}
+
 function LogoIcon() {
   return (
     <svg width="20" height="20" viewBox="0 0 512 512">
@@ -143,6 +163,25 @@ function Popup() {
   const tabState = useActiveTab();
   const [primaryHover, setPrimaryHover] = useState(false);
   const [primaryActive, setPrimaryActive] = useState(false);
+  const [secondaryHover, setSecondaryHover] = useState(false);
+  const [secondaryActive, setSecondaryActive] = useState(false);
+  const [saveSummary, setSaveSummary] = useState("Loading save setup...");
+
+  useEffect(() => {
+    void (async () => {
+      try {
+        const settings = await getSaveSettings();
+        const mode =
+          settings.saveMode === "prompt"
+            ? "Ask each save"
+            : "Quick save";
+        const folder = settings.saveSubfolder || "(Downloads root)";
+        setSaveSummary(`${mode} \u00b7 ${folder}`);
+      } catch {
+        setSaveSummary("Save setup unavailable");
+      }
+    })();
+  }, []);
 
   const handleCopyCurrent = async () => {
     if (tabState.kind !== "supported") return;
@@ -154,6 +193,22 @@ function Popup() {
       // Content script not ready
     }
     window.close();
+  };
+
+  const handleSaveCurrent = async () => {
+    if (tabState.kind !== "supported") return;
+    try {
+      await browser.tabs.sendMessage(tabState.tabId, {
+        type: EXTENSION_RUNTIME_MESSAGE.SAVE_CURRENT,
+      });
+    } catch {
+      // Content script not ready
+    }
+    window.close();
+  };
+
+  const openSetup = () => {
+    void browser.runtime.openOptionsPage();
   };
 
   const isSupported = tabState.kind === "supported";
@@ -186,7 +241,7 @@ function Popup() {
             color: "inherit",
           }}
         >
-          CtxPort
+          Grabber
         </span>
       </div>
       <p
@@ -198,7 +253,7 @@ function Popup() {
           marginTop: 0,
         }}
       >
-        Copy AI conversations as Context Bundles.
+        Copy or save AI conversations as Context Bundles.
       </p>
 
       {/* Content area — changes based on tab state */}
@@ -251,17 +306,81 @@ function Popup() {
             Copy Current Conversation
           </button>
 
+          {/* Secondary: Save Current */}
+          <button
+            type="button"
+            onClick={handleSaveCurrent}
+            onMouseEnter={() => setSecondaryHover(true)}
+            onMouseLeave={() => {
+              setSecondaryHover(false);
+              setSecondaryActive(false);
+            }}
+            onMouseDown={() => setSecondaryActive(true)}
+            onMouseUp={() => setSecondaryActive(false)}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 8,
+              width: "100%",
+              padding: "10px 14px",
+              borderRadius: 10,
+              border: dark
+                ? "1px solid rgba(255, 255, 255, 0.10)"
+                : "1px solid rgba(0, 0, 0, 0.08)",
+              backgroundColor: secondaryHover
+                ? dark
+                  ? "rgba(255, 255, 255, 0.08)"
+                  : "rgba(0, 0, 0, 0.05)"
+                : dark
+                  ? "rgba(255, 255, 255, 0.04)"
+                  : "#f8fafc",
+              color: dark ? "#e5e7eb" : "#111827",
+              fontSize: 13,
+              fontWeight: 600,
+              fontFamily: FONT_STACK,
+              cursor: "pointer",
+              textAlign: "left",
+              transform: secondaryActive ? "scale(0.97)" : "scale(1)",
+              transition: `background-color ${MOTION.fast} ${MOTION.easeOut}, transform ${MOTION.fast} ${MOTION.spring}`,
+            }}
+          >
+            <DownloadIcon />
+            Save Current Conversation (.md)
+          </button>
+
           {/* Platform indicator */}
           <div
             style={{
               marginTop: 4,
-              fontSize: 11,
+              fontSize: 10,
               color: dark ? "#4b5563" : "#d1d5db",
               textAlign: "center",
             }}
           >
             {tabState.platformName} detected
           </div>
+
+          <button
+            type="button"
+            onClick={openSetup}
+            style={{
+              marginTop: 2,
+              padding: "6px 10px",
+              borderRadius: 8,
+              border: dark
+                ? "1px solid rgba(255, 255, 255, 0.08)"
+                : "1px solid rgba(0, 0, 0, 0.08)",
+              backgroundColor: dark
+                ? "rgba(255, 255, 255, 0.04)"
+                : "rgba(2, 132, 199, 0.05)",
+              color: dark ? "#cbd5e1" : "#0f172a",
+              fontSize: 11,
+              fontWeight: 600,
+              cursor: "pointer",
+            }}
+          >
+            Save setup: {saveSummary}
+          </button>
         </div>
       )}
 
@@ -274,10 +393,16 @@ function Popup() {
 /* ---- Footer ---- */
 
 const FOOTER_LINKS = [
-  { label: "Website", url: "https://ctxport.xiaominglab.com" },
-  { label: "Docs", url: "https://ctxport.xiaominglab.com/en/docs/" },
-  { label: "Privacy", url: "https://ctxport.xiaominglab.com/en/docs/privacy/" },
-  { label: "GitHub", url: "https://github.com/nicepkg/ctxport" },
+  { label: "GitHub", url: "https://github.com/TheCrypDough/Grabber" },
+  { label: "Issues", url: "https://github.com/TheCrypDough/Grabber/issues" },
+  {
+    label: "Setup",
+    url: "https://github.com/TheCrypDough/Grabber#quick-start",
+  },
+  {
+    label: "Security",
+    url: "https://github.com/TheCrypDough/Grabber/blob/main/SECURITY.md",
+  },
 ] as const;
 
 function FooterLink({
@@ -366,6 +491,10 @@ function UnsupportedState({ dark }: { dark: boolean }) {
     "DeepSeek",
     "Grok",
     "GitHub Issues & PRs",
+    "Perplexity",
+    "Kimi",
+    "AI Studio",
+    "Many more",
   ];
 
   return (
@@ -422,7 +551,7 @@ function UnsupportedState({ dark }: { dark: boolean }) {
             lineHeight: 1.4,
           }}
         >
-          Open an AI conversation to use CtxPort.
+          Open an AI conversation to use Grabber.
         </p>
       </div>
 

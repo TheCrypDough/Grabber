@@ -80,7 +80,8 @@ describe("serializeConversation", () => {
     const result = serializeConversation(bundle);
 
     expect(result.messageCount).toBe(0);
-    expect(result.estimatedTokens).toBe(0);
+    // Frontmatter still contributes tokens even when there are no message nodes.
+    expect(result.estimatedTokens).toBeGreaterThan(0);
   });
 
   it("should escape title with special characters in frontmatter", () => {

@@ -1,7 +1,7 @@
 import { findPlugin } from "@ctxport/core-plugins";
 import { useState, useCallback, useEffect, useRef } from "react";
 import { createRoot } from "react-dom/client";
-import { CopyButton } from "./copy-button";
+import { ConversationActions } from "./conversation-actions";
 import { ListCopyIcon } from "./list-copy-icon";
 import { Toast, type ToastData } from "./toast";
 import { useExtensionUrl } from "~/hooks/use-extension-url";
@@ -42,7 +42,7 @@ export default function App() {
         {
           renderCopyButton: (container) => {
             const root = createRoot(container);
-            root.render(<CopyButton onToast={showToast} />);
+            root.render(<ConversationActions onToast={showToast} />);
           },
           renderListIcon: (container, itemId) => {
             const root = createRoot(container);
@@ -65,12 +65,14 @@ export default function App() {
     };
   }, [url, plugin, showToast]);
 
-  // COPY_CURRENT is handled directly by CopyButton via window event listener
+  // COPY_CURRENT / SAVE_CURRENT are handled by action buttons via window events
 
   return (
     <>
       <Toast data={toast} onDismiss={dismissToast} />
-      {showFloatingCopy && plugin && <FloatingCopyButton onToast={showToast} />}
+      {showFloatingCopy && plugin && (
+        <FloatingCopyButton onToast={showToast} />
+      )}
     </>
   );
 }
@@ -81,7 +83,7 @@ const FLOATING_MOTION = {
   springSubtle: "cubic-bezier(0.22, 1.2, 0.36, 1)",
 } as const;
 
-/** Floating copy button rendered inside Shadow DOM overlay as fallback */
+/** Floating action buttons rendered inside Shadow DOM overlay as fallback */
 function FloatingCopyButton({
   onToast,
 }: {
@@ -119,7 +121,7 @@ function FloatingCopyButton({
         transition: `transform ${FLOATING_MOTION.normal} ${FLOATING_MOTION.springSubtle}, box-shadow ${FLOATING_MOTION.normal} ${FLOATING_MOTION.easeOut}`,
       }}
     >
-      <CopyButton onToast={onToast} />
+      <ConversationActions onToast={onToast} />
     </div>
   );
 }

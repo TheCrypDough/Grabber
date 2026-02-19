@@ -6,6 +6,7 @@ interface ContextMenuProps {
   y: number;
   onSelect: (format: BundleFormatType) => void;
   onClose: () => void;
+  action?: "copy" | "save";
 }
 
 const FONT_STACK =
@@ -97,15 +98,32 @@ function CompactIcon() {
 }
 
 const FORMAT_OPTIONS: {
-  label: string;
   value: BundleFormatType;
   icon: React.FC;
 }[] = [
-  { label: "Copy full conversation", value: "full", icon: FullIcon },
-  { label: "User messages only", value: "user-only", icon: UserIcon },
-  { label: "Code blocks only", value: "code-only", icon: CodeIcon },
-  { label: "Compact", value: "compact", icon: CompactIcon },
+  { value: "full", icon: FullIcon },
+  { value: "user-only", icon: UserIcon },
+  { value: "code-only", icon: CodeIcon },
+  { value: "compact", icon: CompactIcon },
 ];
+
+function getFormatLabel(
+  action: "copy" | "save",
+  format: BundleFormatType,
+): string {
+  if (format === "full") {
+    return action === "save"
+      ? "Save full conversation"
+      : "Copy full conversation";
+  }
+  if (format === "user-only") {
+    return action === "save" ? "Save user messages only" : "User messages only";
+  }
+  if (format === "code-only") {
+    return action === "save" ? "Save code blocks only" : "Code blocks only";
+  }
+  return action === "save" ? "Save compact" : "Compact";
+}
 
 function useIsDark(): boolean {
   const [dark, setDark] = useState(() => {
@@ -124,7 +142,13 @@ function useIsDark(): boolean {
   return dark;
 }
 
-export function ContextMenu({ x, y, onSelect, onClose }: ContextMenuProps) {
+export function ContextMenu({
+  x,
+  y,
+  onSelect,
+  onClose,
+  action = "copy",
+}: ContextMenuProps) {
   const ref = useRef<HTMLDivElement>(null);
   const dark = useIsDark();
   const [animatedIn, setAnimatedIn] = useState(false);
@@ -236,7 +260,7 @@ export function ContextMenu({ x, y, onSelect, onClose }: ContextMenuProps) {
             }}
           >
             <Icon />
-            {opt.label}
+            {getFormatLabel(action, opt.value)}
           </button>
         );
       })}

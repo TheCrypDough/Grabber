@@ -15,7 +15,7 @@ export function Logo({
   height = 32,
   className,
   showName = true,
-  name = "CtxPort",
+  name = "Grabber",
   ...props
 }: LogoProps) {
   return (

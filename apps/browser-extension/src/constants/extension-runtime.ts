@@ -1,16 +1,19 @@
 import { getAllPlugins } from "@ctxport/core-plugins";
 
-export const CTXPORT_COMPONENT_NAME = "ctxport-root";
+export const CTXPORT_COMPONENT_NAME = "grabber-root";
 
 export const EXTENSION_RUNTIME_MESSAGE = {
-  COPY_CURRENT: "ctxport:copy-current",
+  COPY_CURRENT: "grabber:copy-current",
+  SAVE_CURRENT: "grabber:save-current",
+  SAVE_BUNDLE: "grabber:save-bundle",
 } as const;
 
 export const EXTENSION_WINDOW_EVENT = {
-  URL_CHANGE: "ctxport:url-change",
-  COPY_CURRENT: "ctxport:copy-current-window",
-  COPY_SUCCESS: "ctxport:copy-success",
-  COPY_ERROR: "ctxport:copy-error",
+  URL_CHANGE: "grabber:url-change",
+  COPY_CURRENT: "grabber:copy-current-window",
+  SAVE_CURRENT: "grabber:save-current-window",
+  COPY_SUCCESS: "grabber:copy-success",
+  COPY_ERROR: "grabber:copy-error",
 } as const;
 
 export type ExtensionRuntimeMessageType =

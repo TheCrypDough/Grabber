@@ -29,7 +29,7 @@ export default defineContentScript({
       zIndex: 99999,
       onMount(container) {
         const wrapper = document.createElement("div");
-        wrapper.id = "ctxport-root";
+        wrapper.id = "grabber-root";
         container.appendChild(wrapper);
 
         const themeTarget =
@@ -98,6 +98,14 @@ export default defineContentScript({
             // Dispatch window event so both host-injected and Shadow DOM copy buttons can respond
             window.dispatchEvent(
               new Event(EXTENSION_WINDOW_EVENT.COPY_CURRENT),
+            );
+            return undefined;
+          }
+
+          if (messageType === EXTENSION_RUNTIME_MESSAGE.SAVE_CURRENT) {
+            // Dispatch window event so both host-injected and Shadow DOM save buttons can respond
+            window.dispatchEvent(
+              new Event(EXTENSION_WINDOW_EVENT.SAVE_CURRENT),
             );
             return undefined;
           }
