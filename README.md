@@ -310,8 +310,7 @@ pnpm build:ext
 Typecheck:
 
 ```bash
-pnpm --filter @ctxport/core-plugins typecheck
-pnpm --filter @ctxport/extension typecheck
+pnpm typecheck
 ```
 
 Run all tests:
