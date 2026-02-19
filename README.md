@@ -82,8 +82,11 @@ format: full
 ### 1. Build
 
 ```bash
+./scripts/install-global-commands.sh
 grabber build
 ```
+
+If `grabber` is not found, add `~/.local/bin` to your `PATH`.
 
 ### 2. Load In Chrome
 

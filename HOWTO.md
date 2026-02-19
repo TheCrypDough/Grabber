@@ -11,6 +11,7 @@ Default archive folder:
 
 Use these commands from any terminal directory:
 
+- `./scripts/install-global-commands.sh` -> install `grabber*` + `ctxport*` wrappers
 - `grabber` or `grabber build` -> build extension
 - `grabber path` -> print unpacked extension folder
 - `grabber dev` -> run extension watch mode

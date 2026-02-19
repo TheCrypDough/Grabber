@@ -48,8 +48,11 @@ Grabber 是一个开源对话抓取工具，把 AI 对话导出为结构化 Mark
 ### 1. 构建扩展
 
 ```bash
+./scripts/install-global-commands.sh
 grabber build
 ```
+
+如果终端提示找不到 `grabber`，请把 `~/.local/bin` 加到 `PATH`。
 
 ### 2. Chrome 加载
 
