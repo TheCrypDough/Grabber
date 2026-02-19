@@ -18,6 +18,8 @@ Use Grabber to normalize chat history from browser, CLI, and IDE tools into one 
 `/home/thecrypdough/convos`
 - Raw capture logs:
 `~/.local/state/grabber/raw`
+- Validation reports:
+`/home/thecrypdough/Github Repositories/Grabber/reports/latest`
 
 ## Required Command Surface
 
@@ -30,6 +32,8 @@ Agents should call these commands only:
 - `grabber find ...`
 - `grabber summary --file <bundle.md>`
 - `grabber code --file <bundle.md>`
+- `grabber self-test ...`
+- `grabber validate --full`
 
 ## Source Label Standard
 
@@ -215,7 +219,6 @@ grabber update
 Health checks:
 
 ```bash
-pnpm lint
-pnpm test
-pnpm build:ext
+grabber self-test --profile full --run-plugin-tests
+grabber validate --full
 ```

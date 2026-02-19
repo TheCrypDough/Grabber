@@ -51,6 +51,8 @@ General:
 - `grabber help`
 - `grabber path`
 - `grabber update`
+- `grabber self-test --profile full --run-plugin-tests`
+- `grabber validate --full`
 
 Archive:
 - `grabber save`
@@ -121,9 +123,11 @@ For CLI or non-browser flows, use:
 ```bash
 grabber help
 grabber path
+grabber self-test
+grabber validate --quick
 pnpm lint
 pnpm test
-pnpm build:ext
+pnpm build:extension
 ```
 
 ## 9) Compatibility Aliases

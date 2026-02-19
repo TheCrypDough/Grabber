@@ -9,6 +9,8 @@
     ·
     <a href="CHEATSHEET.md">Cheatsheet</a>
     ·
+    <a href="TESTING.md">测试指南</a>
+    ·
     <a href="AGENTS.md">Agent 指南</a>
     ·
     <a href="#命令总览">命令总览</a>
@@ -57,6 +59,13 @@ grabber build
 ```
 
 如果终端提示找不到 `grabber`，请把 `~/.local/bin` 加到 `PATH`。
+
+快速验证：
+
+```bash
+grabber self-test
+grabber validate --quick
+```
 
 ### 2. Chrome 加载
 

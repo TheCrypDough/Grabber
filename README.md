@@ -99,13 +99,19 @@ If `grabber` is not found, add `~/.local/bin` to your `PATH`.
 Run a local smoke test:
 
 ```bash
-./scripts/grabber-self-test.sh
+grabber self-test
 ```
 
 Full smoke + extension build:
 
 ```bash
-./scripts/grabber-self-test.sh --with-extension-build
+grabber self-test --profile full --run-plugin-tests --with-extension-build
+```
+
+Logged validation pipeline:
+
+```bash
+grabber validate --full
 ```
 
 ### 2. Load In Chrome
@@ -154,6 +160,8 @@ Primary commands:
 - `grabber path`
 - `grabber update`
 - `grabber clean`
+- `grabber self-test`
+- `grabber validate --full`
 - `grabber help`
 
 Archive/automation commands:
@@ -333,6 +341,12 @@ Typecheck:
 pnpm typecheck
 ```
 
+Extension-only typecheck:
+
+```bash
+pnpm typecheck:extension
+```
+
 Run all tests:
 
 ```bash
@@ -344,6 +358,13 @@ pnpm test
 - For fastest user experience, keep browser extension loaded and just click Reload after new builds.
 - For deterministic archives, use `grabber save` in ingestion pipelines.
 - For unattended local capture workflows, run `grabber autosave start`.
+- For auditable health checks and logs, run `grabber validate --full` and inspect `reports/latest`.
+
+## Rebrand Compatibility Notes
+
+- Internal workspace package scope names still use `@ctxport/*` during transition.
+- User-facing commands are Grabber-first (`grabber ...`).
+- Legacy alias commands (`ctxport*`) remain intentionally for compatibility.
 
 ## Roadmap Direction
 

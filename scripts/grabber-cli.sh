@@ -11,6 +11,8 @@ INGEST_SCRIPT="$REPO_DIR/scripts/grabber-ingest.sh"
 FIND_SCRIPT="$REPO_DIR/scripts/grabber-find.sh"
 CONTEXT_SCRIPT="$REPO_DIR/scripts/grabber-context.sh"
 CAPTURE_SCRIPT="$REPO_DIR/scripts/grabber-capture.sh"
+SELF_TEST_SCRIPT="$REPO_DIR/scripts/grabber-self-test.sh"
+VALIDATE_SCRIPT="$REPO_DIR/scripts/grabber-validate.sh"
 
 usage() {
   cat <<'USAGE'
@@ -29,6 +31,8 @@ Commands:
   summary    Generate a structured summary file from one conversation
   code       Extract code blocks from one conversation
   capture    Run a CLI tool, capture transcript, and auto-ingest
+  self-test  Run local Grabber smoke test
+  validate   Run logged validation pipeline (writes reports/)
   help       Show this help
 USAGE
 }
@@ -86,6 +90,12 @@ case "$cmd" in
     ;;
   capture)
     exec "$CAPTURE_SCRIPT" "${@:2}"
+    ;;
+  self-test)
+    exec "$SELF_TEST_SCRIPT" "${@:2}"
+    ;;
+  validate)
+    exec "$VALIDATE_SCRIPT" "${@:2}"
     ;;
   help|-h|--help)
     usage

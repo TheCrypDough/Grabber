@@ -37,7 +37,28 @@ Optional extension build during self-test:
 
 Expected:
 - all checks pass
+- `Self-test PASS` is printed
+- `Report: /tmp/grabber-selftest-.../self-test-report.md` is printed
 - generated artifacts are printed under a temporary test directory
+
+Notes:
+- quick profile uses a representative set (`claude-code`, `cursor`, `openclaw`) to validate each path type.
+- full profile validates a larger source matrix.
+- generated self-test artifacts are stored under the printed temp path:
+  - Linux path example: `/tmp/grabber-selftest-xxxx/`
+  - Windows access via WSL UNC: `\\wsl.localhost\Ubuntu\tmp\grabber-selftest-xxxx\`
+
+Run full profile:
+
+```bash
+./scripts/grabber-self-test.sh --profile full --run-plugin-tests
+```
+
+If you want temp files auto-removed:
+
+```bash
+./scripts/grabber-self-test.sh --cleanup
+```
 
 ## 3) Extension Build + Load Test
 
@@ -247,10 +268,20 @@ Run from repo root:
 ```bash
 pnpm lint
 pnpm test
-pnpm --filter @ctxport/extension typecheck
-pnpm --filter @ctxport/extension build
-pnpm --filter @ctxport/core-plugins test
+pnpm typecheck:extension
+pnpm build:extension
+pnpm test:core-plugins
 ```
+
+Or run one logged command:
+
+```bash
+grabber validate --full
+```
+
+This writes timestamped logs and summaries under:
+- `reports/runs/<timestamp>/`
+- `reports/latest` (symlink to newest run)
 
 ## 11) Troubleshooting
 
@@ -272,3 +303,8 @@ CLI capture fails:
 - test command alone first
 - use explicit source + title
 - inspect raw logs in `~/.local/state/grabber/raw`
+
+## 12) Why Some Internals Still Say `ctxport`
+
+`@ctxport/*` package scopes are currently internal workspace package identifiers kept for compatibility during rebrand transition.  
+User-facing commands and docs now use Grabber-first commands (`grabber ...`).
