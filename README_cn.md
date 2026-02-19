@@ -7,6 +7,10 @@
     ·
     <a href="#快速开始">快速开始</a>
     ·
+    <a href="CHEATSHEET.md">Cheatsheet</a>
+    ·
+    <a href="AGENTS.md">Agent 指南</a>
+    ·
     <a href="#命令总览">命令总览</a>
     ·
     <a href="#cliide-与-agent-工作流">CLI/IDE/Agent 工作流</a>

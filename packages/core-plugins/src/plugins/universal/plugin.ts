@@ -227,6 +227,61 @@ const UNIVERSAL_PROVIDERS: UniversalProvider[] = [
     match: (url) => /^https?:\/\/(?:www\.)?blackbox\.ai\//i.test(url),
   },
   {
+    id: "agent-zero",
+    name: "Agent Zero",
+    assistantName: "Agent Zero",
+    hosts: [
+      "http://localhost/*",
+      "https://localhost/*",
+      "http://127.0.0.1/*",
+      "https://127.0.0.1/*",
+      "http://0.0.0.0/*",
+      "https://0.0.0.0/*",
+    ],
+    match: (url) =>
+      /^https?:\/\/(?:localhost|127\.0\.0\.1|0\.0\.0\.0)(?::50001)(?:\/|$)/i.test(url) ||
+      /^https?:\/\/(?:localhost|127\.0\.0\.1|0\.0\.0\.0)(?::\d+)?\/.*(?:agent-zero|agent0)/i.test(
+        url,
+      ),
+    titleSelectors: ["h1", "title"],
+  },
+  {
+    id: "openclaw",
+    name: "OpenClaw",
+    assistantName: "OpenClaw",
+    hosts: [
+      "http://localhost/*",
+      "https://localhost/*",
+      "http://127.0.0.1/*",
+      "https://127.0.0.1/*",
+      "http://0.0.0.0/*",
+      "https://0.0.0.0/*",
+      "https://openclaw.my/*",
+      "https://www.openclaw.my/*",
+      "https://openclawdoc.com/*",
+      "https://www.openclawdoc.com/*",
+      "https://openclawai.io/*",
+      "https://www.openclawai.io/*",
+      "https://openclawdesktop.com/*",
+      "https://www.openclawdesktop.com/*",
+      "https://opensclaw.com/*",
+      "https://www.opensclaw.com/*",
+      "https://getclawdbot.com/*",
+      "https://www.getclawdbot.com/*",
+    ],
+    match: (url) =>
+      /^https?:\/\/(?:localhost|127\.0\.0\.1|0\.0\.0\.0)(?::(?:18789|3000))(?:\/|$)/i.test(
+        url,
+      ) ||
+      /^https?:\/\/(?:localhost|127\.0\.0\.1|0\.0\.0\.0)(?::\d+)?\/.*(?:openclaw|clawdbot|moltbot)/i.test(
+        url,
+      ) ||
+      /^https?:\/\/(?:www\.)?(?:openclaw\.my|openclawdoc\.com|openclawai\.io|openclawdesktop\.com|opensclaw\.com|getclawdbot\.com)(?:\/|$)/i.test(
+        url,
+      ),
+    titleSelectors: ["h1", "title"],
+  },
+  {
     id: "codex-cloud",
     name: "Codex Cloud",
     assistantName: "Codex",
@@ -243,8 +298,10 @@ const UNIVERSAL_PROVIDERS: UniversalProvider[] = [
       "https://localhost/*",
       "http://127.0.0.1/*",
       "https://127.0.0.1/*",
+      "http://0.0.0.0/*",
+      "https://0.0.0.0/*",
     ],
-    match: (url) => /^https?:\/\/(?:localhost|127\.0\.0\.1)(?::\d+)?\//i.test(url),
+    match: (url) => /^https?:\/\/(?:localhost|127\.0\.0\.1|0\.0\.0\.0)(?::\d+)?\//i.test(url),
     titleSelectors: ["h1", "title"],
   },
 ];

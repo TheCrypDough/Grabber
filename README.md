@@ -7,6 +7,10 @@
     ·
     <a href="#quick-start">Quick Start</a>
     ·
+    <a href="CHEATSHEET.md">Cheatsheet</a>
+    ·
+    <a href="AGENTS.md">Agent Guide</a>
+    ·
     <a href="#how-it-works">How It Works</a>
     ·
     <a href="#platform-coverage-feb-19-2026">Coverage</a>
