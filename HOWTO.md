@@ -72,6 +72,11 @@ Terminal companion commands (optional):
 - `grabber autosave stop`
 - `grabber autosave status`
 - `grabber autosave restart`
+- `grabber ingest --source claude-code --title "auth fix" --input ./session.md`
+- `grabber find --source codex-cli --latest 10`
+- `grabber find --source codex-cli --include-derived --latest 20`
+- `grabber summary --file ~/convos/<file>.md`
+- `grabber code --file ~/convos/<file>.md`
 
 Compatibility aliases still work:
 - `ctxport`, `ctxport-save`, `ctxport-autosave`
@@ -111,4 +116,26 @@ Universal best-effort web adapters include:
 
 Note:
 - Browser extension adapters work for web UIs.
-- Pure terminal chats are handled through transcript/log + `grabber save` flow.
+- Pure terminal and IDE chats are handled through transcript/log + `grabber ingest` flow.
+
+## CLI and IDE Workflows
+
+CLI tools (`claude code`, `codex`, `opencode`, etc.):
+1. Save a transcript/log file from your session.
+2. Run:
+- `grabber ingest --source claude-code --title "issue context" --input ./session.md`
+3. Retrieve later with:
+- `grabber find --source claude-code --latest 5`
+
+IDE chat tools (Cursor, VS Code chat extensions, etc.):
+1. Copy/export chat transcript to a file.
+2. Run:
+- `grabber ingest --source cursor --title "feature planning" --input ./cursor-chat.txt`
+3. Create reusable outputs:
+- `grabber summary --file ~/convos/<saved-file>.md`
+- `grabber code --file ~/convos/<saved-file>.md`
+
+For agentic workflows:
+- Ingest every completed run into archive
+- Query with `grabber find`
+- Attach `grabber summary` output as handoff context

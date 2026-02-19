@@ -66,6 +66,7 @@ Output frontmatter example:
 
 ```yaml
 ---
+grabber: v2
 ctxport: v2
 source: chatgpt
 url: https://chatgpt.com/c/abc123
@@ -140,6 +141,10 @@ Archive/automation commands:
 - `grabber autosave stop`
 - `grabber autosave status`
 - `grabber autosave restart`
+- `grabber ingest --source claude-code --title "auth fix" --input ./session.md`
+- `grabber find --source gemini --latest 10`
+- `grabber summary --file ~/convos/<file>.md`
+- `grabber code --file ~/convos/<file>.md`
 
 Compatibility aliases are still available:
 
@@ -206,10 +211,51 @@ If a filename already exists, Grabber appends a suffix (`_02`, `_03`, ...).
 Grabber is still extension-first.
 
 - For web-based chat UIs: use one-click copy/save directly in browser.
-- For terminal-only conversations (`codex` CLI, `claude code`, `opencode` in pure terminal):
-  use transcript/log/clipboard workflow + `grabber save`.
+- For terminal/IDE-only conversations (`codex` CLI, `claude code`, `opencode`, editor chat panes):
+  use transcript/log/clipboard workflow + `grabber ingest`.
 
 This hybrid model is intentional: browser-native ease for users, scriptable tooling for agents.
+
+## CLI/IDE Coverage Strategy
+
+Grabber supports these conversation sources by path type:
+
+- Browser chat UIs:
+  extension adapters capture directly in-page.
+- CLI chat sessions:
+  save terminal transcript, then ingest to Grabber format.
+- IDE chat panes:
+  export/copy transcript, then ingest to Grabber format.
+
+Example ingest commands:
+
+```bash
+grabber ingest --source claude-code --title "lambda deploy issue" --input ./claude-session.md
+grabber ingest --source codex-cli --title "grpc timeout triage" --input ./codex.log
+grabber ingest --source cursor --title "refactor planner" --input ./cursor-chat.txt
+```
+
+Find old conversations quickly:
+
+```bash
+grabber find --source claude-code --latest 5
+grabber find --contains "oauth refresh token" --date 2026-02-19
+grabber find --source claude-code --include-derived --latest 20
+```
+
+Generate reusable artifacts:
+
+```bash
+grabber summary --file ~/convos/20260219-132000_claude-code@unknown_lambda-deploy-issue.md
+grabber code --file ~/convos/20260219-132000_claude-code@unknown_lambda-deploy-issue.md
+```
+
+Agent automation pattern:
+
+1. Agent exports/captures transcript text.
+2. Agent runs `grabber ingest ...`.
+3. Agent uses `grabber find ...` for retrieval.
+4. Agent creates handoff with `grabber summary` or `grabber code`.
 
 ## Security & Privacy
 
