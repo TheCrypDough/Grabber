@@ -145,6 +145,7 @@ Archive/automation commands:
 - `grabber find --source gemini --latest 10`
 - `grabber summary --file ~/convos/<file>.md`
 - `grabber code --file ~/convos/<file>.md`
+- `grabber capture --source claude-code --title "hotfix run" -- claude`
 
 Compatibility aliases are still available:
 
@@ -233,6 +234,7 @@ Example ingest commands:
 grabber ingest --source claude-code --title "lambda deploy issue" --input ./claude-session.md
 grabber ingest --source codex-cli --title "grpc timeout triage" --input ./codex.log
 grabber ingest --source cursor --title "refactor planner" --input ./cursor-chat.txt
+grabber capture --source opencode --title "agent pipeline run" -- opencode
 ```
 
 Find old conversations quickly:

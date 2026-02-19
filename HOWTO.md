@@ -77,6 +77,7 @@ Terminal companion commands (optional):
 - `grabber find --source codex-cli --include-derived --latest 20`
 - `grabber summary --file ~/convos/<file>.md`
 - `grabber code --file ~/convos/<file>.md`
+- `grabber capture --source claude-code --title "debug run" -- claude`
 
 Compatibility aliases still work:
 - `ctxport`, `ctxport-save`, `ctxport-autosave`
@@ -124,6 +125,8 @@ CLI tools (`claude code`, `codex`, `opencode`, etc.):
 1. Save a transcript/log file from your session.
 2. Run:
 - `grabber ingest --source claude-code --title "issue context" --input ./session.md`
+or
+- `grabber capture --source claude-code --title "issue context" -- claude`
 3. Retrieve later with:
 - `grabber find --source claude-code --latest 5`
 

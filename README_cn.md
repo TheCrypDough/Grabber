@@ -90,6 +90,7 @@ grabber build
 - `grabber find --source gemini --include-derived --latest 20`
 - `grabber summary --file ~/convos/<file>.md`
 - `grabber code --file ~/convos/<file>.md`
+- `grabber capture --source claude-code --title \"debug run\" -- claude`
 
 兼容别名仍可用：
 
@@ -150,6 +151,7 @@ API-first 适配器：
 
 ```bash
 grabber ingest --source claude-code --title "lambda deploy issue" --input ./claude-session.md
+grabber capture --source claude-code --title "lambda deploy issue" -- claude
 ```
 
 3. 检索：
