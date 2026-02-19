@@ -121,11 +121,24 @@ export function downloadMarkdown(markdown: string, filename?: string): string {
   return finalFilename;
 }
 
+interface SaveBundleResponse {
+  ok: boolean;
+  filename?: string;
+}
+
+function isSaveBundleResponse(value: unknown): value is SaveBundleResponse {
+  if (!value || typeof value !== "object") return false;
+  const v = value as Record<string, unknown>;
+  if (typeof v.ok !== "boolean") return false;
+  if (v.filename !== undefined && typeof v.filename !== "string") return false;
+  return true;
+}
+
 export async function saveMarkdown(markdown: string): Promise<string> {
   const filename = buildBundleFilename(markdown);
 
   try {
-    const response = await browser.runtime.sendMessage({
+    const response: unknown = await browser.runtime.sendMessage({
       type: EXTENSION_RUNTIME_MESSAGE.SAVE_BUNDLE,
       payload: {
         markdown,
@@ -133,12 +146,7 @@ export async function saveMarkdown(markdown: string): Promise<string> {
       },
     });
 
-    if (
-      response &&
-      typeof response === "object" &&
-      "filename" in response &&
-      typeof response.filename === "string"
-    ) {
+    if (isSaveBundleResponse(response) && response.filename) {
       return response.filename;
     }
   } catch {

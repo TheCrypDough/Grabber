@@ -455,7 +455,7 @@ function sortAndDeduplicateCandidates(candidates: RoleCandidate[]): RoleCandidat
   const deduped: RoleCandidate[] = [];
   for (const candidate of sorted) {
     const last = deduped[deduped.length - 1];
-    if (last && last.role === candidate.role && last.text === candidate.text) {
+    if (last?.role === candidate.role && last?.text === candidate.text) {
       continue;
     }
     deduped.push(candidate);

@@ -63,6 +63,13 @@ async function saveBundleFromPayload(payload?: {
   return { filename, downloadId };
 }
 
+interface SaveBundleResponse {
+  ok: boolean;
+  filename?: string;
+  downloadId?: number;
+  error?: string;
+}
+
 export default defineBackground(() => {
   browser.runtime.onInstalled.addListener((details) => {
     if (details.reason === "install") {
@@ -70,22 +77,28 @@ export default defineBackground(() => {
     }
   });
 
-  browser.runtime.onMessage.addListener((message: unknown) => {
+  browser.runtime.onMessage.addListener((message: unknown, _sender, sendResponse) => {
     const typed = message as SaveBundleRequest;
     if (typed?.type !== EXTENSION_RUNTIME_MESSAGE.SAVE_BUNDLE) {
       return undefined;
     }
 
-    return saveBundleFromPayload(typed.payload)
-      .then((result) => ({
-        ok: true,
-        filename: result.filename,
-        downloadId: result.downloadId,
-      }))
-      .catch((error: unknown) => ({
-        ok: false,
-        error: error instanceof Error ? error.message : "Save failed",
-      }));
+    void saveBundleFromPayload(typed.payload)
+      .then((result) =>
+        sendResponse({
+          ok: true,
+          filename: result.filename,
+          downloadId: result.downloadId,
+        } satisfies SaveBundleResponse),
+      )
+      .catch((error: unknown) =>
+        sendResponse({
+          ok: false,
+          error: error instanceof Error ? error.message : "Save failed",
+        } satisfies SaveBundleResponse),
+      );
+
+    return true;
   });
 
   // Toolbar icon click: copy current conversation
