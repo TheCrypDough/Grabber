@@ -19,7 +19,7 @@ grabber help
 
 Expected:
 - `grabber` command exists
-- commands include `ingest`, `find`, `summary`, `code`, `capture`
+- commands include `ingest`, `find`, `summary`, `code`, `handoff`, `capture`, `sources`
 
 ## 2) Fast Automated Smoke Test
 
@@ -43,7 +43,7 @@ Expected:
 
 Notes:
 - quick profile uses a representative set (`claude-code`, `cursor`, `openclaw`) to validate each path type.
-- full profile validates a larger source matrix.
+- full profile validates every source returned by `grabber sources --ids`.
 - generated self-test artifacts are stored under the printed temp path:
   - Linux path example: `/tmp/grabber-selftest-xxxx/`
   - Windows access via WSL UNC: `\\wsl.localhost\Ubuntu\tmp\grabber-selftest-xxxx\`
@@ -92,7 +92,6 @@ For each platform:
 3. Confirm a `.md` file is created.
 4. Validate frontmatter contains:
 - `grabber: v2`
-- `ctxport: v2` (compat key)
 - `source`
 - `url`
 - `title`
@@ -101,17 +100,26 @@ For each platform:
 5. Verify retrieval:
 ```bash
 grabber find --source <source-id> --latest 3
+grabber find --source <source-id> --latest 3 --json
 ```
 6. Generate derived artifacts:
 ```bash
 f=$(grabber find --source <source-id> --latest 1 --paths)
 grabber summary --file "$f"
 grabber code --file "$f"
+grabber handoff --file "$f"
 ```
 
 ### Web platform matrix
 
 Use this source mapping when checking files with `grabber find`.
+Canonical list command:
+
+```bash
+grabber sources
+grabber sources --category web
+grabber sources --ids
+```
 
 - ChatGPT: `chatgpt`
 - Claude: `claude`
@@ -277,6 +285,7 @@ Or run one logged command:
 
 ```bash
 grabber validate --full
+grabber doctor --full --auto-fix
 ```
 
 This writes timestamped logs and summaries under:
@@ -304,7 +313,17 @@ CLI capture fails:
 - use explicit source + title
 - inspect raw logs in `~/.local/state/grabber/raw`
 
-## 12) Why Some Internals Still Say `ctxport`
+Handoff generation fails:
+- verify source file exists and is a `.md` bundle
+- run `grabber summary --file <bundle>.md` to isolate parser issues
+- run `grabber handoff --file <bundle>.md --json` for machine-readable output
 
-`@ctxport/*` package scopes are currently internal workspace package identifiers kept for compatibility during rebrand transition.  
-User-facing commands and docs now use Grabber-first commands (`grabber ...`).
+Validation failed:
+- run `grabber doctor --full --auto-fix`
+- inspect `reports/latest/SUMMARY.md`
+- inspect each failed check log under `reports/latest/*.log`
+
+## 12) Package Namespace
+
+Internal workspace package scopes use `@grabber/*`.  
+User-facing commands and docs use Grabber-first commands (`grabber ...`).

@@ -14,5 +14,5 @@ export default defineConfig({
   splitting: false,
   minify: false,
   tsconfig: "tsconfig.json",
-  external: ["@ctxport/core-schema"],
+  external: ["@grabber/core-schema"],
 });

@@ -1,4 +1,4 @@
-import { EXTENSION_HOST_PERMISSIONS } from "@ctxport/core-plugins";
+import { EXTENSION_HOST_PERMISSIONS } from "@grabber/core-plugins";
 import tailwindcss from "@tailwindcss/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import { defineConfig } from "wxt";
@@ -59,7 +59,7 @@ export default defineConfig({
       conditions: ["development", "import", "browser", "default"],
     },
     optimizeDeps: {
-      exclude: ["@ctxport/core-plugins", "@ctxport/core-markdown"],
+      exclude: ["@grabber/core-plugins", "@grabber/core-markdown"],
     },
     build: {
       sourcemap: false,

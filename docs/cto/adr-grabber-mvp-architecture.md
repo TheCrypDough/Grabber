@@ -1,8 +1,8 @@
-# ADR: CtxPort MVP 技术架构
+# ADR: Grabber MVP 技术架构
 
 > 版本：v1.0 | 日期：2026-02-07
 > 方法论：Werner Vogels — Everything Fails, Monolith First, Boring Technology
-> 输入：PR/FAQ (docs/ceo/pr-faq-ctxport-mvp.md) + 交互设计规格 (docs/interaction/ctxport-mvp-interaction-spec.md)
+> 输入：PR/FAQ (docs/ceo/pr-faq-grabber-mvp.md) + 交互设计规格 (docs/interaction/grabber-mvp-interaction-spec.md)
 > 参考项目：chat2poster (/Users/yangxiaoming/Documents/codes/chat2poster)
 
 ---
@@ -12,7 +12,7 @@
 在开始之前，明确本次架构设计的约束：
 
 1. **最大化复用 chat2poster**：不是"参考"，而是 fork + 精简 + 新增。相同的 monorepo 骨架、adapter 模式、构建工具链。
-2. **Monolith First**：CtxPort MVP 只有浏览器扩展，没有 Web App。所有逻辑在一个 extension 里跑完。
+2. **Monolith First**：Grabber MVP 只有浏览器扩展，没有 Web App。所有逻辑在一个 extension 里跑完。
 3. **Boring Technology**：继续使用 pnpm + Turborepo + WXT + React 19 + TypeScript 5.9 + Zod + tsup + Tailwind CSS。不引入新框架。
 4. **为失败而设计**：DOM 会变、API 会变、剪贴板会失败。每个环节都要有降级路径。
 5. **零网络权限**：这是产品宪法级约束。扩展不请求外部网络权限，所有处理在本地完成。
@@ -21,10 +21,10 @@
 
 ## 1. Monorepo 结构设计
 
-### 1.1 从 chat2poster 到 CtxPort 的变更
+### 1.1 从 chat2poster 到 Grabber 的变更
 
 ```
-chat2poster/                    CtxPort/
+chat2poster/                    Grabber/
 ├── apps/                       ├── apps/
 │   ├── browser-extension/ ──→  │   └── browser-extension/    [大幅修改]
 │   └── web/               ──→  │       (删除 web app)
@@ -37,10 +37,10 @@ chat2poster/                    CtxPort/
 │                               │   └── shared-ui/            [大幅精简]
 ```
 
-### 1.2 CtxPort 最终目录结构
+### 1.2 Grabber 最终目录结构
 
 ```
-ctxport/
+grabber/
 ├── apps/
 │   └── browser-extension/          # WXT 浏览器扩展 (Manifest V3)
 │       ├── src/
@@ -120,14 +120,14 @@ ctxport/
 
 ### 1.3 Package 变更决策表
 
-| chat2poster Package | CtxPort 处理 | 原因 |
+| chat2poster Package | Grabber 处理 | 原因 |
 |---------------------|-------------|------|
 | `core-schema` | **保留 + 修改** | Message / Conversation / Adapter schema 是核心数据合约，直接复用。移除 Theme / Export / Selection / Decoration 相关 schema（图片导出不需要）。新增 Bundle schema。 |
-| `core-adapters` | **保留 + 精简** | Adapter Registry + ChatGPT/Claude ext-adapter 是核心能力，直接复用。移除 Gemini adapter（MVP 不支持）、移除 share-link adapter（CtxPort 不需要 web 端解析）。 |
-| `core-export` | **删除** | 图片渲染引擎（SnapDOM → PNG/JPEG），CtxPort 完全不需要。 |
-| `core-pagination` | **删除** | 图片分页逻辑，CtxPort 不需要。 |
-| `shared-ui` | **大幅精简，不单独保留为 package** | chat2poster 的 shared-ui 包含编辑器面板、主题选择器、海报渲染器等重组件，CtxPort 全不需要。CtxPort 的 UI 极简（按钮+toast+菜单），直接在 browser-extension 内实现，不需要独立 shared-ui package。需要的 shadcn/ui 原子组件（Button、Checkbox、Tooltip 等）直接在 extension 内引入。 |
-| **core-markdown**（新增） | **新增** | Markdown Context Bundle 的序列化逻辑，是 CtxPort 的核心差异化能力。独立 package 便于未来 CLI 工具复用。 |
+| `core-adapters` | **保留 + 精简** | Adapter Registry + ChatGPT/Claude ext-adapter 是核心能力，直接复用。移除 Gemini adapter（MVP 不支持）、移除 share-link adapter（Grabber 不需要 web 端解析）。 |
+| `core-export` | **删除** | 图片渲染引擎（SnapDOM → PNG/JPEG），Grabber 完全不需要。 |
+| `core-pagination` | **删除** | 图片分页逻辑，Grabber 不需要。 |
+| `shared-ui` | **大幅精简，不单独保留为 package** | chat2poster 的 shared-ui 包含编辑器面板、主题选择器、海报渲染器等重组件，Grabber 全不需要。Grabber 的 UI 极简（按钮+toast+菜单），直接在 browser-extension 内实现，不需要独立 shared-ui package。需要的 shadcn/ui 原子组件（Button、Checkbox、Tooltip 等）直接在 extension 内引入。 |
+| **core-markdown**（新增） | **新增** | Markdown Context Bundle 的序列化逻辑，是 Grabber 的核心差异化能力。独立 package 便于未来 CLI 工具复用。 |
 
 ---
 
@@ -144,7 +144,7 @@ ctxport/
 
 ```markdown
 ---
-ctxport: v1
+grabber: v1
 source: chatgpt
 url: https://chatgpt.com/c/abc123
 title: "讨论 REST API 认证方案"
@@ -184,7 +184,7 @@ def create_token(user_id: str, secret: str) -> str:
 
 ```markdown
 ---
-ctxport: v1
+grabber: v1
 bundle: merged
 conversations: 3
 date: 2026-02-07T14:30:00Z
@@ -248,7 +248,7 @@ format: full
 **ADR-BUNDLE-001：使用 YAML frontmatter 而非 HTML 注释**
 
 - **决定**：用 YAML frontmatter (`---`) 做元数据区
-- **理由**：PR/FAQ 中的原始设计用 HTML 注释 `<!-- CtxPort Context Bundle -->`，但 YAML frontmatter 是 Markdown 生态的标准元数据格式（Hugo、Jekyll、Obsidian、Docusaurus 都支持），且 AI 工具解析 YAML frontmatter 的能力更强
+- **理由**：PR/FAQ 中的原始设计用 HTML 注释 `<!-- Grabber Context Bundle -->`，但 YAML frontmatter 是 Markdown 生态的标准元数据格式（Hugo、Jekyll、Obsidian、Docusaurus 都支持），且 AI 工具解析 YAML frontmatter 的能力更强
 - **取舍**：YAML frontmatter 在纯文本查看时稍显 "技术感"，但目标用户是开发者，这反而是优势
 
 **ADR-BUNDLE-002：角色标记用 `## User` / `## Assistant` 而非 XML 标签**
@@ -276,7 +276,7 @@ format: full
     → core-export 渲染 → PNG/JPEG
 ```
 
-### 3.2 CtxPort 新数据流
+### 3.2 Grabber 新数据流
 
 ```
 用户点击复制按钮
@@ -301,7 +301,7 @@ format: full
 ```typescript
 // packages/core-markdown/src/serializer.ts
 
-import type { Conversation } from "@ctxport/core-schema";
+import type { Conversation } from "@grabber/core-schema";
 
 export type BundleFormat = "full" | "user-only" | "code-only" | "compact";
 
@@ -371,7 +371,7 @@ ChatGPT ext-adapter 的 `getRawMessages` 方法已经能拿到会话标题（从
 
 ### 4.1 与 chat2poster 扩展的对比
 
-| 维度 | chat2poster | CtxPort |
+| 维度 | chat2poster | Grabber |
 |------|------------|---------|
 | Content Script 模式 | Shadow DOM overlay（全屏模态编辑器） | Shadow DOM + DOM 注入（多个小型注入点） |
 | UI 复杂度 | 浮动按钮 → 模态编辑器（主题/分页/设备/导出） | 复制按钮 + 列表图标 + 批量 bar + toast |
@@ -380,7 +380,7 @@ ChatGPT ext-adapter 的 `getRawMessages` 方法已经能拿到会话标题（从
 
 ### 4.2 Content Script 注入策略
 
-chat2poster 使用 WXT 的 `createShadowRootUi` 创建一个全屏 overlay。CtxPort 需要不同的策略：
+chat2poster 使用 WXT 的 `createShadowRootUi` 创建一个全屏 overlay。Grabber 需要不同的策略：
 
 **策略：混合注入模式**
 
@@ -391,7 +391,7 @@ chat2poster 使用 WXT 的 `createShadowRootUi` 创建一个全屏 overlay。Ctx
 ┌─────────────────────────────────────────────────────┐
 │ Host Page (ChatGPT / Claude)                         │
 │                                                      │
-│  ┌─── Shadow DOM Root (ctxport-root) ──────────────┐ │
+│  ┌─── Shadow DOM Root (grabber-root) ──────────────┐ │
 │  │  React App:                                     │ │
 │  │  - Toast notifications                          │ │
 │  │  - Context menu (right-click)                   │ │
@@ -444,11 +444,11 @@ interface PlatformInjector {
 
 ### 4.3 Background Script 职责
 
-CtxPort 的 Background Script 比 chat2poster 多一个核心职责：**协调列表复制的会话数据获取**。
+Grabber 的 Background Script 比 chat2poster 多一个核心职责：**协调列表复制的会话数据获取**。
 
 ```typescript
 // 消息类型定义
-type CtxPortMessage =
+type GrabberMessage =
   | { type: "COPY_CURRENT" }                    // 复制当前会话
   | { type: "COPY_FROM_LIST"; conversationId: string; provider: string }
                                                  // 从列表复制（不打开会话）
@@ -579,9 +579,9 @@ type CtxPortMessage =
 
 **ADR-PERM-001：移除 `tabs` 权限**
 
-- **决定**：CtxPort 不申请 `tabs` 权限
+- **决定**：Grabber 不申请 `tabs` 权限
 - **chat2poster 需要 `tabs` 权限**是因为 Background Script 需要查询 tab URL 判断是否为支持的站点
-- **CtxPort 的替代方案**：使用 `activeTab` 权限（用户点击扩展图标时临时获得当前 tab 的权限）+ Content Script 自身的 URL 判断
+- **Grabber 的替代方案**：使用 `activeTab` 权限（用户点击扩展图标时临时获得当前 tab 的权限）+ Content Script 自身的 URL 判断
 - **安全收益**：`tabs` 权限允许读取所有 tab 的 URL 和标题，这对隐私敏感的用户是一个红旗。PR/FAQ 明确要求 "最小权限"
 
 ---
@@ -628,10 +628,10 @@ type CtxPortMessage =
 
 | chat2poster 文件路径 | 删除原因 |
 |---------------------|---------|
-| `apps/web/` 整个目录 | CtxPort MVP 不需要 Web App |
-| `packages/core-export/` 整个目录 | 图片渲染引擎，CtxPort 不需要 |
-| `packages/core-pagination/` 整个目录 | 分页逻辑，CtxPort 不需要 |
-| `packages/shared-ui/` 整个目录 | 编辑器 UI 组件，CtxPort 不需要（需要的原子组件直接在 extension 内引入 shadcn/ui） |
+| `apps/web/` 整个目录 | Grabber MVP 不需要 Web App |
+| `packages/core-export/` 整个目录 | 图片渲染引擎，Grabber 不需要 |
+| `packages/core-pagination/` 整个目录 | 分页逻辑，Grabber 不需要 |
+| `packages/shared-ui/` 整个目录 | 编辑器 UI 组件，Grabber 不需要（需要的原子组件直接在 extension 内引入 shadcn/ui） |
 | `packages/core-schema/src/theme.ts` | 海报主题 schema，不需要 |
 | `packages/core-schema/src/export.ts` | 图片导出 schema，不需要 |
 | `packages/core-schema/src/selection.ts` | 消息选择/分页 schema，不需要 |
@@ -670,24 +670,24 @@ type CtxPortMessage =
 
 ### ADR-001：Fork chat2poster 代码而非依赖
 
-- **上下文**：创始人要求复用 chat2poster 架构。选项有：(A) 将 chat2poster 作为 git submodule/npm 依赖；(B) Fork 代码到 CtxPort 仓库
+- **上下文**：创始人要求复用 chat2poster 架构。选项有：(A) 将 chat2poster 作为 git submodule/npm 依赖；(B) Fork 代码到 Grabber 仓库
 - **决定**：Fork 代码（选项 B）
 - **理由**：
-  - chat2poster 和 CtxPort 的演进方向不同（图片 vs Markdown），作为依赖会产生不必要的耦合
-  - CtxPort 需要删除大量 chat2poster 代码（core-export、core-pagination、shared-ui），依赖方式无法干净地做到这一点
+  - chat2poster 和 Grabber 的演进方向不同（图片 vs Markdown），作为依赖会产生不必要的耦合
+  - Grabber 需要删除大量 chat2poster 代码（core-export、core-pagination、shared-ui），依赖方式无法干净地做到这一点
   - 两个项目的 adapter 实现可能根据各自需求独立演进
 - **风险**：fork 后两个项目无法自动同步 adapter 更新（如 ChatGPT DOM 变更的修复）
 - **缓解**：短期内创始人作为两个项目的维护者，可以手动 cherry-pick adapter 修复。长期看可以抽取 adapter 为独立的 npm 包
 
 ### ADR-002：不引入 shared-ui package
 
-- **上下文**：chat2poster 有一个庞大的 shared-ui 包（编辑器、主题、渲染器、布局组件）。CtxPort 的 UI 极简。
+- **上下文**：chat2poster 有一个庞大的 shared-ui 包（编辑器、主题、渲染器、布局组件）。Grabber 的 UI 极简。
 - **决定**：不保留 shared-ui package，直接在 browser-extension 内使用 shadcn/ui 原子组件
 - **理由**：
-  - CtxPort 的 UI 元素很少（按钮、toast、checkbox、菜单），不需要独立的 UI 库
+  - Grabber 的 UI 元素很少（按钮、toast、checkbox、菜单），不需要独立的 UI 库
   - shared-ui 的存在增加了一层抽象和构建依赖
   - "能删的不留" — 一人公司的维护负担必须最小化
-- **取舍**：如果未来 CtxPort 增加 Web App 或 CLI 带 TUI，可能需要重新创建 shared-ui。但 MVP 阶段 YAGNI
+- **取舍**：如果未来 Grabber 增加 Web App 或 CLI 带 TUI，可能需要重新创建 shared-ui。但 MVP 阶段 YAGNI
 
 ### ADR-003：DOM 注入使用原生 DOM API 而非 React Portal
 
@@ -716,10 +716,10 @@ type CtxPortMessage =
 - **决定**：主策略 `navigator.clipboard.writeText()`，降级 `document.execCommand('copy')`，最终降级显示可选中文本框
 - **理由**：与交互设计规格 7.5 节完全对齐。`navigator.clipboard.writeText()` 在 Content Script 中需要页面有焦点，这在用户刚点击按钮时是满足的。`execCommand` 作为保险。
 
-### ADR-006：命名空间 `@ctxport/` 而非 `@chat2poster/`
+### ADR-006：命名空间 `@grabber/` 而非 `@chat2poster/`
 
-- **决定**：所有 package 使用 `@ctxport/` 命名空间
-- **理由**：CtxPort 是独立产品，使用独立的命名空间避免混淆。
+- **决定**：所有 package 使用 `@grabber/` 命名空间
+- **理由**：Grabber 是独立产品，使用独立的命名空间避免混淆。
 - **涉及**：package.json 的 `name` 字段、import 路径中的包名
 
 ---
@@ -760,7 +760,7 @@ type CtxPortMessage =
 | 剪贴板写入被浏览器策略阻止 | 低 | 中 | 三级降级策略（ADR-005） |
 | 大型会话（100+ 消息）序列化超时 | 中 | 低 | 流式处理；超时后提供 "仅复制已解析部分" |
 | 虚拟滚动列表的注入遗漏 | 中 | 低 | MutationObserver + IntersectionObserver 组合；滚动事件补偿 |
-| CSS 变量命名冲突 | 低 | 低 | 所有 CtxPort CSS 使用 `ctxport-` 前缀；Shadow DOM 隔离浮动 UI |
+| CSS 变量命名冲突 | 低 | 低 | 所有 Grabber CSS 使用 `grabber-` 前缀；Shadow DOM 隔离浮动 UI |
 
 ---
 
@@ -786,4 +786,4 @@ type CtxPortMessage =
 > *"Failures are a given and everything will eventually fail over time. [...] Design your system so that when failure happens, the blast radius is contained."*
 > — Werner Vogels
 >
-> chat2poster 的 Adapter Registry 模式正是这个哲学的体现：一个 adapter 失败不影响其他 adapter。CtxPort 继承了这个架构优势，在此基础上用最小变更实现了从 "会话→图片" 到 "会话→Markdown" 的核心能力转换。
+> chat2poster 的 Adapter Registry 模式正是这个哲学的体现：一个 adapter 失败不影响其他 adapter。Grabber 继承了这个架构优势，在此基础上用最小变更实现了从 "会话→图片" 到 "会话→Markdown" 的核心能力转换。

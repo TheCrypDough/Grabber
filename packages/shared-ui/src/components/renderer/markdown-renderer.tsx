@@ -61,7 +61,7 @@ export const MarkdownRenderer = memo(function MarkdownRenderer({
 
         // Inline code
         return (
-          <code {...props} className="ctxport-markdown-inline-code">
+          <code {...props} className="grabber-markdown-inline-code">
             {children}
           </code>
         );
@@ -76,7 +76,7 @@ export const MarkdownRenderer = memo(function MarkdownRenderer({
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="ctxport-markdown-link"
+          className="grabber-markdown-link"
         >
           {children}
         </a>
@@ -87,89 +87,89 @@ export const MarkdownRenderer = memo(function MarkdownRenderer({
             {...props}
             src={src}
             alt={alt || ""}
-            className="ctxport-markdown-image"
+            className="grabber-markdown-image"
             loading="lazy"
           />
         ) : null,
       p: ({ children }) => (
-        <p className="ctxport-markdown-paragraph">{children}</p>
+        <p className="grabber-markdown-paragraph">{children}</p>
       ),
       ul: ({ children }) => (
-        <ul className="ctxport-markdown-list ctxport-markdown-ul">
+        <ul className="grabber-markdown-list grabber-markdown-ul">
           {children}
         </ul>
       ),
       ol: ({ children }) => (
-        <ol className="ctxport-markdown-list ctxport-markdown-ol">
+        <ol className="grabber-markdown-list grabber-markdown-ol">
           {children}
         </ol>
       ),
       li: ({ children }) => (
-        <li className="ctxport-markdown-list-item">{children}</li>
+        <li className="grabber-markdown-list-item">{children}</li>
       ),
       blockquote: ({ children }) => (
-        <blockquote className="ctxport-markdown-blockquote">
+        <blockquote className="grabber-markdown-blockquote">
           {children}
         </blockquote>
       ),
       h1: ({ children }) => (
-        <h1 className="ctxport-markdown-heading ctxport-markdown-h1">
+        <h1 className="grabber-markdown-heading grabber-markdown-h1">
           {children}
         </h1>
       ),
       h2: ({ children }) => (
-        <h2 className="ctxport-markdown-heading ctxport-markdown-h2">
+        <h2 className="grabber-markdown-heading grabber-markdown-h2">
           {children}
         </h2>
       ),
       h3: ({ children }) => (
-        <h3 className="ctxport-markdown-heading ctxport-markdown-h3">
+        <h3 className="grabber-markdown-heading grabber-markdown-h3">
           {children}
         </h3>
       ),
       h4: ({ children }) => (
-        <h4 className="ctxport-markdown-heading ctxport-markdown-h4">
+        <h4 className="grabber-markdown-heading grabber-markdown-h4">
           {children}
         </h4>
       ),
       h5: ({ children }) => (
-        <h5 className="ctxport-markdown-heading ctxport-markdown-h5">
+        <h5 className="grabber-markdown-heading grabber-markdown-h5">
           {children}
         </h5>
       ),
       h6: ({ children }) => (
-        <h6 className="ctxport-markdown-heading ctxport-markdown-h6">
+        <h6 className="grabber-markdown-heading grabber-markdown-h6">
           {children}
         </h6>
       ),
-      hr: () => <hr className="ctxport-markdown-hr" />,
+      hr: () => <hr className="grabber-markdown-hr" />,
       table: ({ children }) => (
-        <div className="ctxport-markdown-table-wrapper">
-          <table className="ctxport-markdown-table">{children}</table>
+        <div className="grabber-markdown-table-wrapper">
+          <table className="grabber-markdown-table">{children}</table>
         </div>
       ),
       thead: ({ children }) => (
-        <thead className="ctxport-markdown-thead">{children}</thead>
+        <thead className="grabber-markdown-thead">{children}</thead>
       ),
       tbody: ({ children }) => (
-        <tbody className="ctxport-markdown-tbody">{children}</tbody>
+        <tbody className="grabber-markdown-tbody">{children}</tbody>
       ),
-      tr: ({ children }) => <tr className="ctxport-markdown-tr">{children}</tr>,
-      th: ({ children }) => <th className="ctxport-markdown-th">{children}</th>,
-      td: ({ children }) => <td className="ctxport-markdown-td">{children}</td>,
+      tr: ({ children }) => <tr className="grabber-markdown-tr">{children}</tr>,
+      th: ({ children }) => <th className="grabber-markdown-th">{children}</th>,
+      td: ({ children }) => <td className="grabber-markdown-td">{children}</td>,
       strong: ({ children }) => (
-        <strong className="ctxport-markdown-strong">{children}</strong>
+        <strong className="grabber-markdown-strong">{children}</strong>
       ),
-      em: ({ children }) => <em className="ctxport-markdown-em">{children}</em>,
+      em: ({ children }) => <em className="grabber-markdown-em">{children}</em>,
       del: ({ children }) => (
-        <del className="ctxport-markdown-del">{children}</del>
+        <del className="grabber-markdown-del">{children}</del>
       ),
     }),
     [codeTheme, defaultLanguage],
   );
 
   return (
-    <div className={`ctxport-markdown-markdown ${className || ""}`}>
+    <div className={`grabber-markdown-markdown ${className || ""}`}>
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw]}
@@ -213,14 +213,14 @@ const ShikiCodeBlock = memo(function ShikiCodeBlock({
   }, [code, language, theme]);
 
   return (
-    <div className="ctxport-markdown-code-block">
+    <div className="grabber-markdown-code-block">
       {html ? (
         <div
-          className="ctxport-markdown-code-block-content"
+          className="grabber-markdown-code-block-content"
           dangerouslySetInnerHTML={{ __html: html }}
         />
       ) : (
-        <pre className="ctxport-markdown-code-block-content ctxport-markdown-code-block-fallback">
+        <pre className="grabber-markdown-code-block-content grabber-markdown-code-block-fallback">
           <code>{code}</code>
         </pre>
       )}

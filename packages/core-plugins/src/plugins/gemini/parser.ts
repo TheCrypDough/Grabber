@@ -1,4 +1,4 @@
-import { createAppError } from "@ctxport/core-schema";
+import { createAppError } from "@grabber/core-schema";
 import type { GeminiRuntimeParams } from "./types";
 
 const BATCH_EXECUTE_BASE = "https://gemini.google.com";

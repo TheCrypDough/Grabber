@@ -1,4 +1,4 @@
-import type { ContentBundle } from "@ctxport/core-schema";
+import type { ContentBundle } from "@grabber/core-schema";
 import { filterNodes, type BundleFormatType } from "./formats";
 import { estimateTokens, formatTokenCount } from "./token-estimator";
 
@@ -46,7 +46,7 @@ export function serializeConversation(
 
   if (includeFrontmatter) {
     const meta: Record<string, string | number> = {
-      ctxport: "v2",
+      grabber: "v2",
     };
 
     if (bundle.source.platform) {
@@ -110,7 +110,7 @@ export function serializeBundle(
 
   if (includeFrontmatter) {
     const meta: Record<string, string | number> = {
-      ctxport: "v2",
+      grabber: "v2",
       bundle: "merged" as string,
       conversations: total,
       date: new Date().toISOString(),

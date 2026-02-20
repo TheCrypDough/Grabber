@@ -53,29 +53,36 @@ General:
 - `grabber update`
 - `grabber self-test --profile full --run-plugin-tests`
 - `grabber validate --full`
+- `grabber doctor --full --auto-fix`
+- `grabber sources`
 
 Archive:
 - `grabber save`
 - `grabber save "context override"`
+- `grabber save --print-path`
 - `grabber autosave start|stop|status|restart`
 
 Import non-browser transcript:
 - `grabber ingest --source claude-code --title "auth refactor" --input ./session.md`
 - `cat session.txt | grabber ingest --stdin --source codex-cli --title "db fix"`
+- `grabber ingest --source codex-cli --title "db fix" --input ./session.md --print-path`
 
 Run a CLI tool and auto-capture session:
 - `grabber capture --source claude-code --title "lambda hotfix" -- claude`
-- `grabber capture --source codex-cli --title "repo cleanup" -- codex`
+- `grabber capture --source codex-cli --title "repo cleanup" --print-path -- codex`
 
 Find old conversations:
 - `grabber find --source claude-code --latest 10`
 - `grabber find --contains "oauth refresh token" --date 2026-02-19`
 - `grabber find --context "blank project" --latest 5 --paths`
+- `grabber find --source claude-code --latest 10 --json`
+- `grabber sources --ids`
 - `grabber find --include-derived --latest 20`
 
 Generate derived files:
 - `grabber summary --file ~/convos/<file>.md`
 - `grabber code --file ~/convos/<file>.md`
+- `grabber handoff --file ~/convos/<file>.md`
 
 ## 5) Real Scenarios
 
@@ -91,7 +98,7 @@ grabber code --file /home/thecrypdough/convos/<exact-file>.md
 
 Scenario: "I need summary context for another agent"
 ```bash
-grabber summary --file /home/thecrypdough/convos/<exact-file>.md
+grabber handoff --file /home/thecrypdough/convos/<exact-file>.md
 ```
 
 Scenario: Cursor/IDE chat export
@@ -125,14 +132,8 @@ grabber help
 grabber path
 grabber self-test
 grabber validate --quick
+grabber doctor --quick
 pnpm lint
 pnpm test
 pnpm build:extension
 ```
-
-## 9) Compatibility Aliases
-
-Legacy commands still work:
-- `ctxport`
-- `ctxport-save`
-- `ctxport-autosave`

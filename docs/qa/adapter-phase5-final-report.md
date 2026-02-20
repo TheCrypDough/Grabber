@@ -29,7 +29,7 @@ Phase 4 had two Vite warnings about dynamic imports conflicting with static impo
 - `docs/fullstack/adapter-refactor-plan.md` (historical reference)
 - `docs/cto/adr-declarative-adapter-architecture.md` (ADR context)
 - `docs/product/adapter-dx-assessment.md` (assessment reference)
-- `docs/cto/adr-ctxport-mvp-architecture.md` (original architecture)
+- `docs/cto/adr-grabber-mvp-architecture.md` (original architecture)
 
 **Verdict**: PASS. Class fully removed from runtime code.
 
@@ -54,7 +54,7 @@ Phase 4 had two Vite warnings about dynamic imports conflicting with static impo
 **Result**: NOT FOUND in source code. Only found in documentation:
 - `docs/qa/adapter-phase4-report.md` (cleanup recommendation)
 - `docs/fullstack/adapter-refactor-plan.md` (refactor plan)
-- `docs/cto/adr-ctxport-mvp-architecture.md` (original architecture)
+- `docs/cto/adr-grabber-mvp-architecture.md` (original architecture)
 
 **Verdict**: PASS. `chatgpt-injector.ts` file deleted.
 
@@ -204,7 +204,7 @@ No stale export entries (no `ext-adapter` paths). All current exports point to e
 ### 4.6 Extension Components
 
 **app.tsx**: Uses `ManifestInjector` + `getRegisteredManifests()`. No old injector imports.
-**content.tsx**: Uses attribute selector `[class^="ctxport-"][class$="-copy-btn"]` for platform-agnostic button targeting.
+**content.tsx**: Uses attribute selector `[class^="grabber-"][class$="-copy-btn"]` for platform-agnostic button targeting.
 
 **Verdict**: PASS.
 

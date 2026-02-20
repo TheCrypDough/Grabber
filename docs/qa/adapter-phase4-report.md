@@ -57,7 +57,7 @@ export function registerBuiltinAdapters(): void {
 **File**: `apps/browser-extension/src/components/app.tsx`
 
 - Imports `ManifestInjector` from `~/injectors/manifest-injector` (line 9)
-- Imports `getRegisteredManifests` from `@ctxport/core-adapters/manifest` (line 14-16)
+- Imports `getRegisteredManifests` from `@grabber/core-adapters/manifest` (line 14-16)
 - `detectManifest()` and `isConversationPage()` now use manifest registry (lines 18-28)
 - `ManifestInjector` created from `entry.manifest` (line 57)
 - No imports of `ChatGPTInjector` or `ClaudeInjector`
@@ -110,13 +110,13 @@ Exported in `manifest/index.ts` (line 11).
 **Before**:
 ```typescript
 const injected = document.querySelector(
-  ".ctxport-chatgpt-copy-btn, .ctxport-claude-copy-btn",
+  ".grabber-chatgpt-copy-btn, .grabber-claude-copy-btn",
 );
 ```
 **Issue**: Hardcoded platform names. Adding a new platform (e.g., Gemini) would not trigger the floating fallback correctly.
 **Fix**: Changed to use `entry.manifest.provider` dynamically:
 ```typescript
-const copyBtnClass = `ctxport-${entry.manifest.provider}-copy-btn`;
+const copyBtnClass = `grabber-${entry.manifest.provider}-copy-btn`;
 const injected = document.querySelector(`.${copyBtnClass}`);
 ```
 
@@ -125,14 +125,14 @@ const injected = document.querySelector(`.${copyBtnClass}`);
 **File**: `apps/browser-extension/src/entrypoints/content.tsx:93-95`
 **Before**:
 ```typescript
-".ctxport-copy-btn button, .ctxport-chatgpt-copy-btn button, .ctxport-claude-copy-btn button"
+".grabber-copy-btn button, .grabber-chatgpt-copy-btn button, .grabber-claude-copy-btn button"
 ```
 **Issue**: Hardcoded platform names for keyboard shortcut copy trigger.
 **Fix**: Changed to attribute selector pattern:
 ```typescript
-'[class^="ctxport-"][class$="-copy-btn"] button'
+'[class^="grabber-"][class$="-copy-btn"] button'
 ```
-This matches any `ctxport-{provider}-copy-btn` pattern, making it future-proof.
+This matches any `grabber-{provider}-copy-btn` pattern, making it future-proof.
 
 ---
 

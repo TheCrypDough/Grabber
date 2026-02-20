@@ -1,5 +1,5 @@
-import type { ContentBundle } from "@ctxport/core-schema";
-import { createAppError } from "@ctxport/core-schema";
+import type { ContentBundle } from "@grabber/core-schema";
+import { createAppError } from "@grabber/core-schema";
 import type { Plugin, PluginContext } from "../../types";
 import { generateId } from "../../utils";
 import { createChatInjector } from "../shared/chat-injector";

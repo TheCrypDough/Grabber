@@ -1,4 +1,4 @@
-# CtxPort 愉悦微交互设计文档
+# Grabber 愉悦微交互设计文档
 
 > 版本：v1.0 | 日期：2026-02-07
 > 方法论：Alan Cooper Goal-Directed Design
@@ -11,7 +11,7 @@
 
 在 Alan Cooper 的交互礼仪框架中，愉悦（Delight）不是一种装饰，而是软件向用户传递**尊重和能力感**的方式。一个体贴的人类助手不会每次帮你复印完文件后放烟花，但他会微笑着说"搞定了，24 页"，然后安静地退到一边。
 
-CtxPort 的微交互遵循三个设计约束：
+Grabber 的微交互遵循三个设计约束：
 
 | 约束 | 含义 | 反面教材 |
 |------|------|---------|
@@ -19,7 +19,7 @@ CtxPort 的微交互遵循三个设计约束：
 | **有信息量** | 每一帧动画都在传递有用信息（消息数、token 数、状态变化） | 纯装饰性动画 |
 | **渐进惊喜** | 首次使用简洁克制，随使用深度逐渐解锁惊喜时刻 | 首次使用就弹 5 步引导 |
 
-**核心判断标准**：如果 Alex 在深度工作（flow state）中使用 CtxPort，这个微交互会不会打断他的心流？如果会，砍掉它。
+**核心判断标准**：如果 Alex 在深度工作（flow state）中使用 Grabber，这个微交互会不会打断他的心流？如果会，砍掉它。
 
 ---
 
@@ -99,7 +99,7 @@ CtxPort 的微交互遵循三个设计约束：
 理由：
 
 1. **违反"不打断"原则**：Alex 复制完会话后的下一个动作是 Cmd+Tab 切换窗口。Confetti 会遮挡他正在看的内容，哪怕只有 0.5 秒。
-2. **与产品调性不符**：CtxPort 是一个开发者生产力工具，不是游戏化应用。开发者在 flow state 中不希望被烟花打断。
+2. **与产品调性不符**：Grabber 是一个开发者生产力工具，不是游戏化应用。开发者在 flow state 中不希望被烟花打断。
 3. **重复使用后的厌烦**：Alex 每天复制 5-10 次。第一次 confetti 可能觉得有趣，第三次就会觉得烦。Alan Cooper 的交互礼仪原则明确反对"每次都庆祝日常操作"。
 4. **性能开销**：粒子系统占用 GPU 资源，在已经被 ChatGPT/Claude 自身占用大量资源的页面上增加额外渲染负担。
 
@@ -111,7 +111,7 @@ CtxPort 的微交互遵循三个设计约束：
 
 ### 2.1 设计定位：统计不是虚荣指标，是用户的成就感来源
 
-Alex 不关心"你用了 CtxPort 100 次"，他关心"CtxPort 帮我节省了多少时间"。统计设计必须回答这个问题。
+Alex 不关心"你用了 Grabber 100 次"，他关心"Grabber 帮我节省了多少时间"。统计设计必须回答这个问题。
 
 ### 2.2 展示位置：Extension Popup
 
@@ -131,7 +131,7 @@ Alex 不关心"你用了 CtxPort 100 次"，他关心"CtxPort 帮我节省了多
 
 ```
 ┌──────────────────────────────────┐
-│  [logo] CtxPort                  │
+│  [logo] Grabber                  │
 │  Copy AI conversations as        │
 │  Context Bundles.                │
 │                                  │
@@ -165,10 +165,10 @@ Alex 不关心"你用了 CtxPort 100 次"，他关心"CtxPort 帮我节省了多
 **为什么选这三个指标而非其他？**
 
 - **不展示 "连续使用天数"**：这是虚荣指标，不反映实际价值。Alex 周末不用不代表产品价值减少。
-- **不展示 "排名"**：没有社交比较的必要。CtxPort 不是社交产品。
+- **不展示 "排名"**：没有社交比较的必要。Grabber 不是社交产品。
 - **不展示 "本周/本月趋势图"**：MVP 阶段过度设计。用户不需要在 Popup 的 280px 宽窗口里看趋势图。
 - **展示 token 数**：因为 Alex 关心 "我搬运了多少上下文"，token 是 AI 时代的通用度量单位。
-- **展示时间节省**：因为这直接回答 "CtxPort 对我有什么用"。
+- **展示时间节省**：因为这直接回答 "Grabber 对我有什么用"。
 
 ### 2.5 统计数字的微交互
 
@@ -199,7 +199,7 @@ Alex 不关心"你用了 CtxPort 100 次"，他关心"CtxPort 帮我节省了多
 
 Alan Cooper 的交互礼仪有一条铁律：**不要在用户完成任务时打断他去做另一件事**。"Rate this app" 弹窗之所以令人厌恶，正是因为它在用户达成目标（完成复制）的瞬间，强行插入了一个与用户目标无关的请求。
 
-CtxPort 的分享策略：**永远不弹出"请分享/评价"的提示。**
+Grabber 的分享策略：**永远不弹出"请分享/评价"的提示。**
 
 取而代之的是，让产品本身成为分享的载体。
 
@@ -208,16 +208,16 @@ CtxPort 的分享策略：**永远不弹出"请分享/评价"的提示。**
 每个 Context Bundle 的 Markdown 末尾包含一行轻量签名：
 
 ```markdown
-<!-- Copied with CtxPort (https://ctxport.com) -->
+<!-- Copied with Grabber (https://grabber.com) -->
 ```
 
 这是一个 HTML 注释，在大多数 Markdown 渲染器中不可见，但：
 - 被粘贴到 AI 聊天中时，AI 会"看到"这行注释
-- AI 可能会提到"看起来你用 CtxPort 整理了上下文"，自然地向对话中的其他人（如果是团队共享场景）暴露品牌
+- AI 可能会提到"看起来你用 Grabber 整理了上下文"，自然地向对话中的其他人（如果是团队共享场景）暴露品牌
 - 技术人员在查看 Markdown 原文时会注意到
 - 不影响内容、不占视觉空间、不侵犯用户内容所有权
 
-**用户可以关闭**：在 Popup 设置中提供 "Include CtxPort signature in copied content" 开关，默认开启，随时关闭。尊重用户的控制权。
+**用户可以关闭**：在 Popup 设置中提供 "Include Grabber signature in copied content" 开关，默认开启，随时关闭。尊重用户的控制权。
 
 ### 3.3 里程碑时刻的柔性分享引导
 
@@ -243,7 +243,7 @@ CtxPort 的分享策略：**永远不弹出"请分享/评价"的提示。**
 │                                  │
 │ ┌──────────────────────────────┐ │
 │ │ You've saved ~2.5 hours.     │ │ <-- 柔性提示区
-│ │ If CtxPort is useful,        │ │
+│ │ If Grabber is useful,        │ │
 │ │ a Chrome Store review helps  │ │
 │ │ others find it.              │ │
 │ │              [Leave a review] │ │ <-- 低调链接
@@ -260,7 +260,7 @@ CtxPort 的分享策略：**永远不弹出"请分享/评价"的提示。**
 | **用户主动打开 Popup 才看到** | 用户没有打开 Popup 就永远不会看到 |
 | **可永久关闭** | 点击 [Dismiss] 后永远不再显示（存储在 `chrome.storage.local`） |
 | **文案基于事实** | "You've saved ~2.5 hours" 是基于实际使用数据的陈述，不是"你喜欢我们吗？" |
-| **不使用情感操控** | 不说"Love CtxPort?"，不用表情符号，不用渐变色高亮 |
+| **不使用情感操控** | 不说"Love Grabber?"，不用表情符号，不用渐变色高亮 |
 | **终身最多 3 次** | 即使用户每次都 Dismiss，也只会在 10/50/100 三个节点出现 |
 
 ### 3.4 "复制为 Tweet" 功能（可选，非侵入式）
@@ -274,7 +274,7 @@ CtxPort 的分享策略：**永远不弹出"请分享/评价"的提示。**
 点击后，在系统剪贴板写入一段预生成的分享文案（不打开浏览器新 Tab）：
 
 ```
-I've used CtxPort to transfer 186K tokens across AI tools, saving ~3 hours of manual copy-paste. If you work with multiple AI assistants, check it out: https://ctxport.com
+I've used Grabber to transfer 186K tokens across AI tools, saving ~3 hours of manual copy-paste. If you work with multiple AI assistants, check it out: https://grabber.com
 ```
 
 然后 Toast 提示："Share text copied to clipboard. Paste anywhere."
@@ -304,7 +304,7 @@ I've used CtxPort to transfer 186K tokens across AI tools, saving ~3 hours of ma
 
 Alex 是高级开发者，日常使用 4-5 个 AI 工具。他**不需要被教**如何使用一个复制按钮。
 
-CtxPort 的首次使用体验应该是：
+Grabber 的首次使用体验应该是：
 
 ```
 安装扩展 → 打开 ChatGPT/Claude → 看到复制按钮 → 点一下 → 成功了 → "哦，好用"
@@ -539,7 +539,7 @@ const MOTION = {
 微交互系统需要以下数据存储在 `chrome.storage.local` 中：
 
 ```typescript
-interface CtxPortLocalStorage {
+interface GrabberLocalStorage {
   // 使用统计
   stats: {
     totalConversations: number;    // 累计复制会话数
@@ -601,7 +601,7 @@ interface CtxPortLocalStorage {
 
 ### 8.3 陷阱：统计数字给用户压力
 
-**问题**：展示"你用了 CtxPort 42 次"可能让某些用户感到"我是不是用太多了"或"我应该用更多"。
+**问题**：展示"你用了 Grabber 42 次"可能让某些用户感到"我是不是用太多了"或"我应该用更多"。
 
 **规避**：
 - 统计用积极的框架：不说"你复制了 42 次"，说"42 conversations copied"——强调产出而非行为频率
@@ -657,7 +657,7 @@ interface CtxPortLocalStorage {
 
 ## 10. 总结
 
-CtxPort 的微交互策略可以用一句话概括：
+Grabber 的微交互策略可以用一句话概括：
 
 > **在用户的外围视觉中传递"一切尽在掌控"的信号，在用户主动关注时提供有意义的累积价值感。**
 
@@ -667,8 +667,8 @@ CtxPort 的微交互策略可以用一句话概括：
 - **价值累积**：Popup 中的统计数字随使用增长，用"时间节省"而非"使用次数"框定价值。
 - **被动传播**：Bundle 中的 HTML 注释签名 + Popup 中的可选分享。永不弹窗催促。
 
-这些设计让 Alex 在每次使用时感到"这工具懂我"——它不会烦我、不会浪费我的时间、但它在安静地帮我追踪价值。当他在 Dev 社区被问到"你怎么管理跨 AI 工具的上下文"时，他会自然地提到 CtxPort——不是因为被催促分享，而是因为产品真的好用。
+这些设计让 Alex 在每次使用时感到"这工具懂我"——它不会烦我、不会浪费我的时间、但它在安静地帮我追踪价值。当他在 Dev 社区被问到"你怎么管理跨 AI 工具的上下文"时，他会自然地提到 Grabber——不是因为被催促分享，而是因为产品真的好用。
 
 ---
 
-*本文档由 Alan Cooper Goal-Directed Design 方法论驱动。所有微交互决策均以 "Alex 在 flow state 中使用 CtxPort 时是否会被打断" 为核心判断标准。*
+*本文档由 Alan Cooper Goal-Directed Design 方法论驱动。所有微交互决策均以 "Alex 在 flow state 中使用 Grabber 时是否会被打断" 为核心判断标准。*

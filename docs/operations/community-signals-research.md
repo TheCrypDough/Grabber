@@ -35,7 +35,7 @@
 
 #### r/ClaudeAI
 - **Copy-paste workaround 是标准做法**：用户普遍手动复制整个对话，开新窗口粘贴，让 Claude "从底部向上阅读并继续"。
-- **Summary handoff 策略**：在对话即将超长时，让 Claude 生成 summary prompt 用于启动新对话——这本质上就是用户在手动做 CtxPort 要自动化的事情。
+- **Summary handoff 策略**：在对话即将超长时，让 Claude 生成 summary prompt 用于启动新对话——这本质上就是用户在手动做 Grabber 要自动化的事情。
 - **Claude Code 的 CLAUDE.md 文件**：开发者用 CLAUDE.md 在 session 之间保持项目上下文，这是对"上下文不可持久化"问题的 workaround。
 
 #### r/cursor
@@ -99,12 +99,12 @@
 
 ### 2.5 安全事件——浏览器扩展信任危机（2025年12月）
 
-**这是 CtxPort 的重大市场机会**：
+**这是 Grabber 的重大市场机会**：
 - 900K+ 用户被恶意 Chrome 扩展偷取 ChatGPT 和 DeepSeek 对话。
 - Urban VPN 扩展 8M 用户的 AI 对话被截获并卖给数据经纪商。
 - 扩展获得了 Google Chrome Featured 徽章，在 Chrome Web Store 上线数月。
 - **用户对"AI 对话导出扩展"的信任已严重受损。**
-- **CtxPort 的本地处理、脱敏方案直接解决这个信任问题。**
+- **Grabber 的本地处理、脱敏方案直接解决这个信任问题。**
 
 ---
 
@@ -184,7 +184,7 @@
 - Repomix 21.7k stars 证明了"代码上下文 -> AI"方向的巨大需求。
 
 **具体动作**：
-1. 做一个 CLI 工具：`ctxport pack` 把当前项目 context 打包，`ctxport feed` 输入到另一个工具。
+1. 做一个 CLI 工具：`grabber pack` 把当前项目 context 打包，`grabber feed` 输入到另一个工具。
 2. 率先支持 Claude Code <-> Cursor 的 context 双向迁移。
 3. 发 Show HN 帖子，附上具体的 before/after 演示。
 4. 在 r/ClaudeAI 和 r/cursor 中回复相关痛点帖子，自然地提及工具。
@@ -217,7 +217,7 @@
 - 从 "prompt engineering" 到 "context engineering" 的范式转变在 2025 年完成。
 - Andrej Karpathy、Tobi Lutke 等顶级人物背书。
 - Anthropic 官方发布 "Effective context engineering for AI agents" 指南。
-- **对 CtxPort 的意义**：产品定位可以直接关联这个热门概念，"CtxPort = context engineering 的基础设施"。
+- **对 Grabber 的意义**：产品定位可以直接关联这个热门概念，"Grabber = context engineering 的基础设施"。
 
 ### 6.2 MCP 生态爆发
 
@@ -225,21 +225,21 @@
 - 97M/月 SDK 下载量（Python + TypeScript）。
 - 2025年11月 MCP Bundle Format (.mcpb) 规范发布。
 - 2025年12月 Anthropic 将 MCP 捐赠给 Linux Foundation 下的 AAIF。
-- **对 CtxPort 的意义**：Context Bundle 格式应该兼容或补充 MCP 生态，而非独立造轮子。可以做"MCP for human context"的定位。
+- **对 Grabber 的意义**：Context Bundle 格式应该兼容或补充 MCP 生态，而非独立造轮子。可以做"MCP for human context"的定位。
 
 ### 6.3 Agentic AI 与多 Agent 协作
 
 - Agent 是 2025 年最大的开发故事。
 - Cursor 2.0 支持 8 个 agent 并行运行。
 - 多 Agent 协作带来全新的 context handoff 需求。
-- **对 CtxPort 的意义**：Agent 之间的 context 传递比人类之间更标准化、更可自动化——这是 CtxPort 的高阶使用场景。
+- **对 Grabber 的意义**：Agent 之间的 context 传递比人类之间更标准化、更可自动化——这是 Grabber 的高阶使用场景。
 
 ### 6.4 Vibecoding 大众化
 
 - Andrej Karpathy 2025年2月提出 "vibe coding"。
 - AI 编码工具使用率飙升至 84%（Stack Overflow 2025 Survey）。
 - 非专业开发者涌入——他们的 context management 能力更弱，需求更大。
-- **对 CtxPort 的意义**：vibecoder 是潜在的大众化用户群，他们最不会手动管理 context。
+- **对 Grabber 的意义**：vibecoder 是潜在的大众化用户群，他们最不会手动管理 context。
 
 ### 6.5 Context 持久化成为核心功能
 
@@ -248,7 +248,7 @@
 - Cursor 的 .cursorrules、codebase indexing。
 - Mem0 等第三方 memory 层框架（AWS 集成）。
 - Plurality.network 的 AI Context Flow（跨平台 memory 同步）。
-- **对 CtxPort 的意义**：平台级 memory 是各家的"竞争护城河"——Plurality 文章指出"platforms lock in AI context as a competitive moat"。CtxPort 的价值在于打破这个锁定，做 context 的 portability 层。
+- **对 Grabber 的意义**：平台级 memory 是各家的"竞争护城河"——Plurality 文章指出"platforms lock in AI context as a competitive moat"。Grabber 的价值在于打破这个锁定，做 context 的 portability 层。
 
 ---
 
@@ -265,7 +265,7 @@
 
 - 当前解决方案高度碎片化：每个平台一个导出工具，每种格式一个转换器。
 - 没有一个工具实现"跨平台、结构化、安全、双向"的 context 迁移。
-- Plurality.network 最接近 CtxPort 的定位，但它偏"memory sync"而非"context bundle"。
+- Plurality.network 最接近 Grabber 的定位，但它偏"memory sync"而非"context bundle"。
 
 ### 7.3 安全叙事是差异化杀手锏
 
@@ -293,7 +293,7 @@
 |---------|------|
 | 平台原生功能改善 | ChatGPT Memory、Claude Memory 等不断进化 |
 | MCP 可能覆盖此场景 | MCP Bundle Format 可能标准化 context 传输 |
-| 大公司可能快速跟进 | 如果 CtxPort 证明需求，平台可能直接内建 |
+| 大公司可能快速跟进 | 如果 Grabber 证明需求，平台可能直接内建 |
 
 ### 7.6 核心 Next Action
 

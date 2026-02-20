@@ -1,4 +1,4 @@
-# MVP Final QA Report: CtxPort Browser Extension
+# MVP Final QA Report: Grabber Browser Extension
 
 **Date:** 2026-02-07
 **Reviewer:** QA Agent (James Bach model)
@@ -64,17 +64,17 @@ Removed symbols verified absent from all `.ts`/`.tsx` source files:
 
 ### 1.5 Consumer Import Verification -- PASS
 
-All extension imports from `@ctxport/core-adapters` resolve to valid sub-path exports:
+All extension imports from `@grabber/core-adapters` resolve to valid sub-path exports:
 
 | Consumer File | Import Path | Status |
 |---------------|-------------|--------|
-| `content.tsx` | `@ctxport/core-adapters` (root) | OK |
-| `extension-runtime.ts` | `@ctxport/core-adapters` (root) | OK |
-| `use-copy-conversation.ts` | `@ctxport/core-adapters` (root) | OK |
-| `app.tsx` | `@ctxport/core-adapters/manifest` | OK |
-| `list-copy-icon.tsx` | `@ctxport/core-adapters/manifest` | OK |
-| `manifest-injector.ts` | `@ctxport/core-adapters/manifest` | OK |
-| `use-batch-mode.ts` | `@ctxport/core-adapters/manifest` | OK |
+| `content.tsx` | `@grabber/core-adapters` (root) | OK |
+| `extension-runtime.ts` | `@grabber/core-adapters` (root) | OK |
+| `use-copy-conversation.ts` | `@grabber/core-adapters` (root) | OK |
+| `app.tsx` | `@grabber/core-adapters/manifest` | OK |
+| `list-copy-icon.tsx` | `@grabber/core-adapters/manifest` | OK |
+| `manifest-injector.ts` | `@grabber/core-adapters/manifest` | OK |
+| `use-batch-mode.ts` | `@grabber/core-adapters/manifest` | OK |
 
 Removed sub-path exports (`./extension-sites`, `./extension-site-types`, `./adapters/chatgpt/shared/api-client`, `./adapters/chatgpt/shared/message-converter`, `./adapters/claude/shared/api-client`, `./adapters/claude/shared/message-converter`) confirmed to have zero consumers in `apps/browser-extension/src/`.
 
@@ -141,7 +141,7 @@ The strategy below follows SFDPOT (Structure, Function, Data, Platform, Operatio
 - [ ] Verify copy button appears in conversation header area
 - [ ] Click copy button -> toast shows "Copied X messages" -> clipboard contains Markdown
 - [ ] Verify Markdown contains: metadata header, all user/assistant messages, code blocks preserved
-- [ ] If header injection fails, verify floating CtxPort button appears at bottom-right
+- [ ] If header injection fails, verify floating Grabber button appears at bottom-right
 
 #### CT-02: Right-Click Format Menu (Conversation Page)
 - [ ] Right-click the copy button -> context menu appears with 4 format options

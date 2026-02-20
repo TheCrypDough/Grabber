@@ -3,7 +3,7 @@ import { siteConfig } from "~/lib/site-info";
 const softwareApp = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  name: "CtxPort",
+  name: "Grabber",
   description:
     "Copy AI conversations as structured Markdown Context Bundles. One-click copy from ChatGPT, Claude, Gemini, DeepSeek, Grok and more.",
   url: siteConfig.url,
@@ -16,15 +16,15 @@ const softwareApp = {
   },
   author: {
     "@type": "Organization",
-    name: "nicepkg",
-    url: "https://github.com/nicepkg",
+    name: "TheCrypDough",
+    url: "https://github.com/TheCrypDough",
   },
 };
 
 const webSite = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "CtxPort",
+  name: "Grabber",
   url: siteConfig.url,
 };
 

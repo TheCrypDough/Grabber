@@ -1,6 +1,6 @@
 import { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
-import { defaultLocale, locales } from "@ctxport/shared-ui/i18n/core";
+import { defaultLocale, locales } from "@grabber/shared-ui/i18n/core";
 import nextra from "nextra";
 
 const dir = dirname(fileURLToPath(import.meta.url));
@@ -47,7 +47,7 @@ const config = {
     locales,
     defaultLocale,
   },
-  transpilePackages: ["@ctxport/shared-ui"],
+  transpilePackages: ["@grabber/shared-ui"],
   // Required for image optimization
   images: {
     unoptimized: true,

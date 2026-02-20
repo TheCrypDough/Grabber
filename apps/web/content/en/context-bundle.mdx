@@ -5,7 +5,7 @@ description: "Context Bundle format explained - structured Markdown with YAML fr
 
 # Context Bundle
 
-A Context Bundle is the structured Markdown format that CtxPort produces when you copy a conversation. It combines machine-readable metadata with human-readable content.
+A Context Bundle is the structured Markdown format that Grabber produces when you copy a conversation. It combines machine-readable metadata with human-readable content.
 
 ## Format Overview
 
@@ -20,7 +20,7 @@ The frontmatter sits between `---` delimiters at the top of the output:
 
 | Field | Description | Example |
 |-------|-------------|---------|
-| `ctxport` | Format version | `v2` |
+| `grabber` | Format version | `v2` |
 | `source` | Platform the conversation came from | `chatgpt`, `claude`, `gemini`, `deepseek`, `grok`, `github` |
 | `url` | Original conversation URL | `https://chatgpt.com/c/abc123` |
 | `title` | Conversation title | `Debug React Hook` |
@@ -36,7 +36,7 @@ The conversation body uses `## User` and `## Assistant` headings to separate mes
 
 ```markdown
 ---
-ctxport: v2
+grabber: v2
 source: chatgpt
 url: https://chatgpt.com/c/abc123
 title: Fix TypeScript Error

@@ -1,4 +1,4 @@
-import type { BundleFormatType } from "@ctxport/core-markdown";
+import type { BundleFormatType } from "@grabber/core-markdown";
 import { useState, useCallback, useRef, useEffect } from "react";
 import { ContextMenu } from "./context-menu";
 import { EXTENSION_WINDOW_EVENT } from "~/constants/extension-runtime";
@@ -176,7 +176,7 @@ export function CopyButton({ mode = "copy", onToast }: CopyButtonProps) {
             : "Copy as Context Bundle (Grabber)"
         }
         className={
-          mode === "save" ? "ctxport-save-btn" : "ctxport-copy-btn"
+          mode === "save" ? "grabber-save-btn" : "grabber-copy-btn"
         }
         style={buttonStyle}
       >

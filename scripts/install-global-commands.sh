@@ -22,12 +22,6 @@ install_wrapper "grabber" "$REPO_DIR/scripts/grabber-cli.sh"
 install_wrapper "grabber-save" "$REPO_DIR/scripts/grabber-save.sh"
 install_wrapper "grabber-autosave" "$REPO_DIR/scripts/grabber-autosave.sh"
 
-# Backward-compatible aliases
-install_wrapper "ctxport" "$BIN_DIR/grabber"
-install_wrapper "ctxport-save" "$BIN_DIR/grabber-save"
-install_wrapper "ctxport-autosave" "$BIN_DIR/grabber-autosave"
-
 echo "Installed commands to: $BIN_DIR"
 echo "Commands:"
 echo "  grabber, grabber-save, grabber-autosave"
-echo "  ctxport, ctxport-save, ctxport-autosave (aliases)"

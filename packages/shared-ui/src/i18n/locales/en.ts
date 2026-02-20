@@ -33,7 +33,7 @@ const en = {
     "Copy AI conversations as structured Markdown. Works with ChatGPT, Claude, Gemini, DeepSeek, Grok, and GitHub.",
 
   // Web banner
-  "web.banner.text": "CtxPort is open source!",
+  "web.banner.text": "Grabber is open source!",
   "web.banner.linkText": "Star us on GitHub",
 
   // Web docs
@@ -64,8 +64,8 @@ const en = {
 
   // ─── Landing Page: Comparison ───
   "web.home.compare.title": "Before & After",
-  "web.home.compare.without": "Without CtxPort",
-  "web.home.compare.with": "With CtxPort",
+  "web.home.compare.without": "Without Grabber",
+  "web.home.compare.with": "With Grabber",
   "web.home.compare.copy.without": "Broken HTML, lost formatting",
   "web.home.compare.copy.with": "Clean Markdown in one click",
   "web.home.compare.migrate.without":
@@ -162,7 +162,7 @@ const en = {
   // ─── Landing Page: Install ───
   "web.home.install.title": "Get Started in 2 Minutes",
   "web.home.install.step1":
-    "Go to GitHub Releases and download ctxport-chrome-mv3.zip",
+    "Go to GitHub Releases and download grabber-chrome-mv3.zip",
   "web.home.install.step2": "Unzip the downloaded file",
   "web.home.install.step3": "Open Chrome and navigate to chrome://extensions",
   "web.home.install.step4": 'Enable "Developer mode" in the top right corner',

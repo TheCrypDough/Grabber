@@ -261,7 +261,7 @@ PR Discussion
 ```typescript
 // packages/core-adapters/src/v2/adapter.ts
 
-import type { ContentBundle } from "@ctxport/core-schema";
+import type { ContentBundle } from "@grabber/core-schema";
 
 /** V2 Adapter 输入——比 V1 更通用 */
 interface V2AdapterInput {
@@ -535,9 +535,9 @@ V1 的 `ManifestAdapter` 继续工作，输出 `Conversation`。框架在 regist
 ```typescript
 // packages/core-adapters/src/v2/compat.ts
 
-import type { Adapter } from "@ctxport/core-schema";
+import type { Adapter } from "@grabber/core-schema";
 import type { V2Adapter, V2AdapterInput } from "./adapter";
-import { conversationToContentBundle } from "@ctxport/core-schema";
+import { conversationToContentBundle } from "@grabber/core-schema";
 
 /**
  * 将 V1 Adapter 包装为 V2 Adapter。
@@ -707,7 +707,7 @@ ChatGPT 的现有 `chatgptManifest` + `chatgptHooks` 完全不需要修改。V1A
 ```typescript
 // 注册时（apps/browser-extension 或 core-adapters/index.ts）
 
-import { registerManifestAdapter } from "@ctxport/core-adapters";
+import { registerManifestAdapter } from "@grabber/core-adapters";
 import { chatgptManifest, chatgptHooks } from "./adapters/chatgpt/manifest";
 
 // V1 注册方式不变

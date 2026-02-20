@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ARCHIVE_DIR="${GRABBER_ARCHIVE_DIR:-${CTXPORT_ARCHIVE_DIR:-$HOME/convos}}"
+ARCHIVE_DIR="${GRABBER_ARCHIVE_DIR:-$HOME/convos}"
 
 usage() {
   cat <<'USAGE'
-Usage: grabber-save.sh [--from-stdin] [context override]
+Usage: grabber-save.sh [--from-stdin] [--print-path] [context override]
 
 Save Grabber markdown into /home/thecrypdough/convos (or $GRABBER_ARCHIVE_DIR).
 
@@ -16,6 +16,7 @@ Examples:
   grabber-save.sh
   grabber-save.sh "lambda agent routing"
   grabber-save.sh --from-stdin < convo.md
+  grabber-save.sh --from-stdin --print-path < convo.md
 USAGE
 }
 
@@ -120,15 +121,31 @@ first_context_line() {
 }
 
 from_stdin=false
-if [ "${1:-}" = "-h" ] || [ "${1:-}" = "--help" ]; then
-  usage
-  exit 0
-fi
+print_path_only=false
 
-if [ "${1:-}" = "--from-stdin" ]; then
-  from_stdin=true
-  shift
-fi
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --from-stdin)
+      from_stdin=true
+      shift
+      ;;
+    --print-path)
+      print_path_only=true
+      shift
+      ;;
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    --)
+      shift
+      break
+      ;;
+    *)
+      break
+      ;;
+  esac
+done
 
 context_override="${*:-}"
 
@@ -200,6 +217,11 @@ if [ -e "$path" ]; then
 fi
 
 printf "%s\n" "$content" > "$path"
+
+if [ "$print_path_only" = true ]; then
+  printf "%s\n" "$path"
+  exit 0
+fi
 
 echo "Saved: $path"
 echo "Program: $program_raw"

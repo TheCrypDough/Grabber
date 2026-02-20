@@ -23,5 +23,5 @@ export default defineConfig({
   esbuildOptions(options) {
     options.jsx = "automatic";
   },
-  external: ["@ctxport/core-schema"],
+  external: ["@grabber/core-schema"],
 });

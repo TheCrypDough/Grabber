@@ -2,13 +2,13 @@
 
 > 版本：v1.0 | 日期：2026-02-07
 > 角色：产品设计（Don Norman 设计哲学视角）
-> 产品：CtxPort — AI 时代的剪贴板
+> 产品：Grabber — AI 时代的剪贴板
 
 ---
 
 ## 0. 分析框架说明
 
-本文档从**用户认知和使用场景**出发，分析 CtxPort 未来要适配的各类平台的内容提取需求。分析不关注"技术上能不能做"，而是关注"用户期望它怎么工作"。
+本文档从**用户认知和使用场景**出发，分析 Grabber 未来要适配的各类平台的内容提取需求。分析不关注"技术上能不能做"，而是关注"用户期望它怎么工作"。
 
 核心问题：**当用户在某个平台上看到有价值的内容，想把它喂给 AI 时，他们的心智模型是什么？他们期望怎样的操作和结果？**
 
@@ -72,7 +72,7 @@ GitHub 的内容本质上是**线程式对话**，但有几个关键特征使其
 用户期望的输出格式：
 
 ```markdown
-<!-- CtxPort Context Bundle -->
+<!-- Grabber Context Bundle -->
 <!-- Source: GitHub Issue | Repo: owner/repo | Date: 2026-02-07 -->
 <!-- URL: https://github.com/owner/repo/issues/123 -->
 
@@ -147,7 +147,7 @@ Good catch. Let me look into the error handling in...
 ### 2.7 输出格式期望
 
 ```markdown
-<!-- CtxPort Context Bundle -->
+<!-- Grabber Context Bundle -->
 <!-- Source: Gmail Thread | Subject: Q2 Marketing Plan | Date: 2026-02-07 -->
 
 # Re: Q2 Marketing Plan
@@ -171,7 +171,7 @@ Good points Bob. Updated version attached.
 
 ### 2.8 特殊考量：信任门槛极高
 
-Gmail 是 CtxPort 扩展到非 AI 平台后**信任挑战最大的场景**。邮件包含的敏感信息远超 AI 对话：
+Gmail 是 Grabber 扩展到非 AI 平台后**信任挑战最大的场景**。邮件包含的敏感信息远超 AI 对话：
 
 - 商业机密、客户信息、财务数据
 - 个人隐私、健康信息
@@ -232,7 +232,7 @@ Gmail 是 CtxPort 扩展到非 AI 平台后**信任挑战最大的场景**。邮
 ### 3.7 输出格式期望
 
 ```markdown
-<!-- CtxPort Context Bundle -->
+<!-- Grabber Context Bundle -->
 <!-- Source: Stack Overflow | Tags: javascript, react, hooks | Date: 2026-02-07 -->
 <!-- URL: https://stackoverflow.com/questions/12345678 -->
 
@@ -328,7 +328,7 @@ Notion 是所有目标平台中**数据结构最复杂**的：
 ### 4.7 输出格式期望
 
 ```markdown
-<!-- CtxPort Context Bundle -->
+<!-- Grabber Context Bundle -->
 <!-- Source: Notion Page | Date: 2026-02-07 -->
 <!-- URL: https://www.notion.so/workspace/page-id -->
 
@@ -411,7 +411,7 @@ This document describes...
 ### 5.7 输出格式期望
 
 ```markdown
-<!-- CtxPort Context Bundle -->
+<!-- Grabber Context Bundle -->
 <!-- Source: Slack Thread | Channel: #engineering | Date: 2026-02-07 -->
 
 # Thread: Database migration strategy
@@ -500,7 +500,7 @@ Let's go with Charlie's approach. Action items:
 ### 6.7 输出格式期望
 
 ```markdown
-<!-- CtxPort Context Bundle -->
+<!-- Grabber Context Bundle -->
 <!-- Source: MDN Web Docs | Date: 2026-02-07 -->
 <!-- URL: https://developer.mozilla.org/en-US/docs/Web/API/Fetch -->
 
@@ -545,7 +545,7 @@ const json = await response.json();
 
 **"我看到了有价值的内容 -> 我想把它喂给 AI -> AI 应该理解这个上下文"**
 
-这个三步心智模型是 CtxPort 统一操作的基础。不管内容来自 GitHub Issue、Gmail 邮件还是 MDN 文档，用户的认知过程是相同的。
+这个三步心智模型是 Grabber 统一操作的基础。不管内容来自 GitHub Issue、Gmail 邮件还是 MDN 文档，用户的认知过程是相同的。
 
 ### 7.2 心智模型的差异
 
@@ -608,7 +608,7 @@ const json = await response.json();
 | 优先级 | 平台 | 理由 |
 |--------|------|------|
 | **Phase 1（MVP 后第一批）** | Stack Overflow | 公开数据、DOM 稳定、开发者高频使用、复制代码到 AI 是最自然的场景 |
-| **Phase 1** | GitHub Issues | 开发者核心工具、数据结构清晰、和 CtxPort 目标用户高度重叠 |
+| **Phase 1** | GitHub Issues | 开发者核心工具、数据结构清晰、和 Grabber 目标用户高度重叠 |
 | **Phase 2** | 技术文档站（MDN 等） | 公开数据、"给 AI 补最新知识"是强需求、但站点多样性增加适配成本 |
 | **Phase 2** | GitHub PR Reviews | 在 Issue 基础上扩展，但 PR 审查的二维结构（文件 x 评论）增加复杂度 |
 | **Phase 3** | Notion | 用户价值高，但 DOM 极其复杂，且需要认证 |
@@ -618,7 +618,7 @@ const json = await response.json();
 ### 优先级决策逻辑
 
 1. **先公开后私密**——公开数据的平台优先，降低隐私争议风险
-2. **先开发者后通用**——与 CtxPort 核心用户（开发者）最相关的平台优先
+2. **先开发者后通用**——与 Grabber 核心用户（开发者）最相关的平台优先
 3. **先稳定后复杂**——DOM 结构稳定、数据模型简单的平台优先
 4. **先验证后扩展**——每个 Phase 验证用户反馈后再推进下一批
 
@@ -658,7 +658,7 @@ const json = await response.json();
 
 ## 10. 总结
 
-CtxPort 从 AI 聊天扩展到通用网站内容提取，本质上是在回答一个更大的问题：
+Grabber 从 AI 聊天扩展到通用网站内容提取，本质上是在回答一个更大的问题：
 
 **在 AI 时代，用户如何把散落在各处的知识和讨论，无摩擦地喂给 AI？**
 
@@ -671,7 +671,7 @@ CtxPort 从 AI 聊天扩展到通用网站内容提取，本质上是在回答�
 
 > "Design is not just what it looks like and feels like. Design is how it works."
 >
-> CtxPort 的设计哲学：让用户忘记"上下文迁移"这件事的存在——因为它已经变得如呼吸般自然。
+> Grabber 的设计哲学：让用户忘记"上下文迁移"这件事的存在——因为它已经变得如呼吸般自然。
 
 ---
 

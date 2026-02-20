@@ -1,4 +1,4 @@
-# CtxPort 口碑传播运营策略
+# Grabber 口碑传播运营策略
 
 > 版本：v1.0 | 日期：2026-02-07
 > 作者：Operations Agent (Paul Graham 思维模型)
@@ -12,7 +12,7 @@
 
 在这个阶段谈"病毒传播"是危险的。Paul Graham 反复说过一件事：**增长是好产品的副产品，不是运营技巧的产物。** 如果产品不够好，任何传播策略都是在加速失败。
 
-所以本文的前提是：CtxPort 的核心体验（一键复制、格式保真、2 秒完成）必须先达到让 10 个种子用户中至少 5 个自然回来使用的水平。**如果做不到这一点，停止阅读本文，回去修产品。**
+所以本文的前提是：Grabber 的核心体验（一键复制、格式保真、2 秒完成）必须先达到让 10 个种子用户中至少 5 个自然回来使用的水平。**如果做不到这一点，停止阅读本文，回去修产品。**
 
 以下策略假设产品体验已经过了最低门槛。
 
@@ -20,9 +20,9 @@
 
 ## 1. 自然传播路径分析
 
-### 1.1 CtxPort 的天然传播时刻
+### 1.1 Grabber 的天然传播时刻
 
-用户在什么场景下会自然地向别人提到 CtxPort？答案不是"看到了一个很酷的扩展"，而是**当他们在别人面前使用了 CtxPort，而对方看到了结果时**。
+用户在什么场景下会自然地向别人提到 Grabber？答案不是"看到了一个很酷的扩展"，而是**当他们在别人面前使用了 Grabber，而对方看到了结果时**。
 
 具体有三个天然传播时刻：
 
@@ -36,14 +36,14 @@
 
 **传播时刻 #2：团队协作中的"你怎么做到的"**
 
-开发团队中，当一个人用 CtxPort 复制了一段结构化的 AI 对话，粘贴到 GitHub Issue/PR Comment/Confluence 中时，其他人会注意到输出质量的差异。
+开发团队中，当一个人用 Grabber 复制了一段结构化的 AI 对话，粘贴到 GitHub Issue/PR Comment/Confluence 中时，其他人会注意到输出质量的差异。
 
 关键路径：
 1. 用户 A 在 ChatGPT 中讨论了一个技术方案
-2. 用户 A 用 CtxPort 一键复制为 Context Bundle
+2. 用户 A 用 Grabber 一键复制为 Context Bundle
 3. 用户 A 粘贴到团队 Slack 频道或 GitHub PR 描述中
 4. 同事 B 看到结构化的输出，问："你用什么工具做的？"
-5. 用户 A 说："一个叫 CtxPort 的扩展，装了就行"
+5. 用户 A 说："一个叫 Grabber 的扩展，装了就行"
 
 **这个路径不需要用户 A 主动推荐。** 工具的输出质量让推荐自然发生。
 
@@ -62,13 +62,13 @@
 **可以做的：**
 
 ```markdown
-<!-- Exported with CtxPort (https://ctxport.com) -->
+<!-- Exported with Grabber (https://grabber.com) -->
 ```
 
 一行 HTML 注释，放在 Context Bundle 的最末尾。在 Markdown 渲染时**不可见**，但在纯文本编辑器中可见。当同事在 VS Code 或 GitHub 中查看时，可能会注意到。
 
 **为什么是 HTML 注释而不是可见文字：**
-- 可见的品牌标记（如"Powered by CtxPort"）会让用户觉得自己在替你做广告——这会降低信任
+- 可见的品牌标记（如"Powered by Grabber"）会让用户觉得自己在替你做广告——这会降低信任
 - HTML 注释是技术人员的暗号——只有打开源码的人才会看到，这恰好是你的目标用户
 - Git commit message 里的 `Co-Authored-By` 就是这个模式——不影响输出，但留下了来源线索
 
@@ -81,15 +81,15 @@
 
 ### 1.3 团队场景的传播机制
 
-当用户把 Context Bundle 分享给同事时，同事如何发现 CtxPort？
+当用户把 Context Bundle 分享给同事时，同事如何发现 Grabber？
 
 **被动发现路径（推荐，低侵入）：**
 1. HTML 注释中的链接（如上所述）
-2. Context Bundle 元数据头中的 `<!-- Source: ChatGPT | Bundled by: CtxPort -->`
-3. 当同事搜索 "how to copy chatgpt conversation as markdown" 时，SEO 会引导到 CtxPort
+2. Context Bundle 元数据头中的 `<!-- Source: ChatGPT | Bundled by: Grabber -->`
+3. 当同事搜索 "how to copy chatgpt conversation as markdown" 时，SEO 会引导到 Grabber
 
 **主动发现路径（仅在用户自愿时触发）：**
-1. 复制成功后的 toast 中提供一个"Share CtxPort with your team"的链接——一行小字，不阻断操作
+1. 复制成功后的 toast 中提供一个"Share Grabber with your team"的链接——一行小字，不阻断操作
 2. 用户累计复制 50 次后，在扩展 popup 中显示："你的团队成员可能也需要这个。分享安装链接？"——一次性提示，关闭后永不再弹
 
 ---
@@ -98,7 +98,7 @@
 
 ### 2.1 使用统计是否能驱动分享？
 
-> "你用 CtxPort 已经复制了 XX 个对话"——这能驱动分享吗？
+> "你用 Grabber 已经复制了 XX 个对话"——这能驱动分享吗？
 
 **不能。至少不是以这种形式。**
 
@@ -106,8 +106,8 @@
 
 **但有一种变体可以工作：把数字翻译成用户真正在乎的东西。**
 
-不要说："你用 CtxPort 复制了 147 个对话"
-要说："你用 CtxPort 节省了约 12 小时的上下文重建时间"
+不要说："你用 Grabber 复制了 147 个对话"
+要说："你用 Grabber 节省了约 12 小时的上下文重建时间"
 
 前者是产品指标，后者是用户成就。用户分享的是**自己的效率提升**，不是你的产品功能。
 
@@ -121,13 +121,13 @@ Paul Graham 说："Make something people want." 在传播层面，对应的是�
 
 当开发者在 GitHub PR 中贴出一段格式完美的 AI 对话引用，附带清晰的角色分段和代码块，同事的反应是："这个人的工作流好专业。"
 
-**这才是传播动力。** 用户不是在推荐 CtxPort，而是在展示自己的专业度。CtxPort 只是他们专业工具箱中的一个。
+**这才是传播动力。** 用户不是在推荐 Grabber，而是在展示自己的专业度。Grabber 只是他们专业工具箱中的一个。
 
 **行动建议：** 优化 Context Bundle 的格式美感。不仅仅是"格式正确"，而是"粘贴到 GitHub/Notion/Slack 后看起来赏心悦目"。排版是无声的推荐。
 
 **社交货币 #2：帮别人解决一个具体问题**
 
-当同事抱怨"ChatGPT 的对话复制出来代码缩进全没了"时，用户说："试试 CtxPort，一键就搞定了。" 这不是推销，这是帮忙。
+当同事抱怨"ChatGPT 的对话复制出来代码缩进全没了"时，用户说："试试 Grabber，一键就搞定了。" 这不是推销，这是帮忙。
 
 **行动建议：** 在冷启动阶段，创始人亲自在 Reddit/Discord 中回答关于 AI 对话导出的问题。不推销，只解决问题。当你帮了足够多的人后，他们会成为你的传播节点。
 
@@ -217,13 +217,13 @@ Estimated time saved: ~8 min
 
 直接问每个种子用户："你身边有谁也经常在 AI 工具之间复制粘贴？能帮我介绍一下吗？"
 
-给他们一个理由帮你推荐——不是物质激励，而是**身份认同**："你是 CtxPort 的前 10 个用户之一。你的反馈直接影响了产品的方向。我在 README 的 Early Supporters 中加上你的名字（如果你愿意的话）。"
+给他们一个理由帮你推荐——不是物质激励，而是**身份认同**："你是 Grabber 的前 10 个用户之一。你的反馈直接影响了产品的方向。我在 README 的 Early Supporters 中加上你的名字（如果你愿意的话）。"
 
 **周 3-4：第一篇技术内容**
 
 标题："为什么你不应该信任 AI Chat 导出扩展——2025 安全事件技术分析"
 
-不推销 CtxPort。只分析安全事件的技术细节，解释为什么"零上传"架构是正确的设计。文末自然提到 CtxPort 作为一个实践这种理念的项目。
+不推销 Grabber。只分析安全事件的技术细节，解释为什么"零上传"架构是正确的设计。文末自然提到 Grabber 作为一个实践这种理念的项目。
 
 发布渠道：Dev.to → Hacker News → Reddit
 
@@ -237,7 +237,7 @@ r/ChatGPT："After the 2025 extension data breaches, I built a local-only AI cha
 
 **帖子要素：**
 - 诚实地说你是开发者
-- 附上 before/after 对比截图（手动复制 vs CtxPort）
+- 附上 before/after 对比截图（手动复制 vs Grabber）
 - 提到开源，附 GitHub 链接
 - 问社区要反馈，不要只要 upvotes
 
@@ -275,7 +275,7 @@ r/ChatGPT："After the 2025 extension data breaches, I built a local-only AI cha
 
 ### 陷阱 3：伪造社会证明
 
-"已有 10,000 名开发者信任 CtxPort"——在只有 50 个用户的时候。
+"已有 10,000 名开发者信任 Grabber"——在只有 50 个用户的时候。
 
 **为什么是陷阱：** 开发者会查你的 Chrome Web Store 安装数。一旦被发现造假，信誉归零且不可恢复。Hacker News 对这种行为零容忍。
 
@@ -301,7 +301,7 @@ r/ChatGPT："After the 2025 extension data breaches, I built a local-only AI cha
 
 ### 陷阱 6：收集用户数据做"个性化推荐"
 
-**为什么是陷阱：** CtxPort 的核心品牌叙事是"隐私优先、零上传"。如果你开始收集用户行为数据来"优化传播"，你就在破坏自己的核心资产。
+**为什么是陷阱：** Grabber 的核心品牌叙事是"隐私优先、零上传"。如果你开始收集用户行为数据来"优化传播"，你就在破坏自己的核心资产。
 
 **正确做法：** 数据收集只做最基础的匿名统计（安装数、使用频率、复制成功率），且明确写在隐私政策中。不追踪用户的对话内容或行为序列。
 

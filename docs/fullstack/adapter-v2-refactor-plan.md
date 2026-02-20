@@ -198,7 +198,7 @@ export { conversationToContentBundle } from "./compat";
 ```typescript
 // packages/core-adapters/src/v2/types.ts（~25 行）
 
-import type { ContentBundle } from "@ctxport/core-schema";
+import type { ContentBundle } from "@grabber/core-schema";
 
 export interface V2AdapterInput {
   type: "ext";
@@ -221,9 +221,9 @@ export interface V2Adapter {
 ```typescript
 // packages/core-adapters/src/v2/bridge.ts（~35 行）
 
-import type { Adapter } from "@ctxport/core-schema";
-import { conversationToContentBundle } from "@ctxport/core-schema";
-import type { ContentBundle } from "@ctxport/core-schema";
+import type { Adapter } from "@grabber/core-schema";
+import { conversationToContentBundle } from "@grabber/core-schema";
+import type { ContentBundle } from "@grabber/core-schema";
 import type { V2Adapter, V2AdapterInput } from "./types";
 
 export class V1AdapterBridge implements V2Adapter {
@@ -269,7 +269,7 @@ registry 的改动是**添加一组新函数**，不改动现有函数：
 // 在 registry.ts 末尾新增（~40 行）
 
 import type { V2Adapter, V2AdapterInput } from "./v2/types";
-import type { ContentBundle } from "@ctxport/core-schema";
+import type { ContentBundle } from "@grabber/core-schema";
 import { V1AdapterBridge } from "./v2/bridge";
 
 const v2Adapters = new Map<string, V2Adapter>();
@@ -372,7 +372,7 @@ export type { ExtractResult } from "./registry";
 `serializer.ts` 新增 `serializeContentBundle()` 函数（~60 行）：
 
 ```typescript
-import type { ContentBundle, ContentNode, Participant } from "@ctxport/core-schema";
+import type { ContentBundle, ContentNode, Participant } from "@grabber/core-schema";
 
 export function serializeContentBundle(
   bundle: ContentBundle,
@@ -397,7 +397,7 @@ export function serializeContentBundle(
   const sections: string[] = [];
 
   if (includeFrontmatter) {
-    const meta: Record<string, string | number> = { ctxport: "v2" };
+    const meta: Record<string, string | number> = { grabber: "v2" };
     if (bundle.sourceMeta?.platform) meta.source = bundle.sourceMeta.platform;
     if (bundle.sourceMeta?.url) meta.url = bundle.sourceMeta.url;
     if (bundle.title) meta.title = bundle.title;
@@ -501,7 +501,7 @@ Stack Overflow 选择 **DOM 抓取** 策略：
 // adapter.ts（~80 行）
 
 import type { V2Adapter, V2AdapterInput } from "../../v2/types";
-import type { ContentBundle } from "@ctxport/core-schema";
+import type { ContentBundle } from "@grabber/core-schema";
 import { parseSOPage } from "./dom-parser";
 
 const SO_URL_PATTERN = /^https:\/\/(stackoverflow\.com|[^.]+\.stackexchange\.com)\/questions\/(\d+)/;
@@ -573,8 +573,8 @@ export function registerBuiltinAdapters(): void {
 ```typescript
 // 改动核心逻辑（~20 行改动）
 
-import { extractWithAdapters } from "@ctxport/core-adapters";
-import { serializeContentBundle } from "@ctxport/core-markdown";
+import { extractWithAdapters } from "@grabber/core-adapters";
+import { serializeContentBundle } from "@grabber/core-markdown";
 
 const copy = useCallback(async (format: BundleFormatType = "full") => {
   setState("loading");

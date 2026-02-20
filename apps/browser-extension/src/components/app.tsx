@@ -1,4 +1,4 @@
-import { findPlugin } from "@ctxport/core-plugins";
+import { findPlugin } from "@grabber/core-plugins";
 import { useState, useCallback, useEffect, useRef } from "react";
 import { createRoot } from "react-dom/client";
 import { ConversationActions } from "./conversation-actions";

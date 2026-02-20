@@ -12,7 +12,7 @@
       "outputs": ["dist/**", ".next/**", ".output/**"]
     },
     "lint": {
-      "dependsOn": ["^lint"]
+      "dependsOn": ["^build", "^lint"]
     },
     "lint:fix": {
       "cache": false

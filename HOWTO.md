@@ -11,12 +11,14 @@ Default archive folder:
 
 Use these commands from any terminal directory:
 
-- `./scripts/install-global-commands.sh` -> install `grabber*` + `ctxport*` wrappers
+- `./scripts/install-global-commands.sh` -> install global `grabber*` wrappers
 - `grabber` or `grabber build` -> build extension
 - `grabber path` -> print unpacked extension folder
 - `grabber dev` -> run extension watch mode
 - `grabber update` -> pull latest + reinstall + rebuild
 - `grabber clean` -> remove old `dist/chrome-mv3` output
+- `grabber doctor --full --auto-fix` -> validate logs + try safe lint autofix
+- `grabber sources` -> list canonical source labels for web/cli/ide/agent
 - `grabber help` -> command help
 
 ## Chrome Install / Reload
@@ -69,19 +71,20 @@ Terminal companion commands (optional):
 
 - `grabber save` -> save current clipboard bundle into archive folder
 - `grabber save "context override"` -> force context text in filename
+- `grabber save --print-path` -> print saved path only (for scripts/agents)
 - `grabber autosave start` -> watch clipboard and auto-save Grabber bundles
 - `grabber autosave stop`
 - `grabber autosave status`
 - `grabber autosave restart`
 - `grabber ingest --source claude-code --title "auth fix" --input ./session.md`
+- `grabber ingest --source codex-cli --title "session" --input ./session.md --print-path`
 - `grabber find --source codex-cli --latest 10`
 - `grabber find --source codex-cli --include-derived --latest 20`
+- `grabber sources --ids`
 - `grabber summary --file ~/convos/<file>.md`
 - `grabber code --file ~/convos/<file>.md`
-- `grabber capture --source claude-code --title "debug run" -- claude`
-
-Compatibility aliases still work:
-- `ctxport`, `ctxport-save`, `ctxport-autosave`
+- `grabber handoff --file ~/convos/<file>.md`
+- `grabber capture --source claude-code --title "debug run" --print-path -- claude`
 
 ## Archive Naming
 

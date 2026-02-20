@@ -30,14 +30,22 @@ Agents should call these commands only:
 - `grabber ingest ...`
 - `grabber capture ... -- <command>`
 - `grabber find ...`
+- `grabber sources [--ids|--json]`
 - `grabber summary --file <bundle.md>`
 - `grabber code --file <bundle.md>`
+- `grabber handoff --file <bundle.md>`
 - `grabber self-test ...`
 - `grabber validate --full`
+- `grabber doctor --full --auto-fix`
 
 ## Source Label Standard
 
 Always provide a stable `--source` label for predictable retrieval.
+
+To fetch canonical IDs dynamically:
+```bash
+grabber sources --ids
+```
 
 Recommended source names:
 - Browser: `chatgpt`, `claude`, `gemini`, `grok`, `perplexity`, `aistudio`, `kimi`, `genspark`
@@ -57,7 +65,8 @@ Use when a transcript/log already exists.
 grabber ingest \
   --source claude-code \
   --title "lambda deploy debugging" \
-  --input ./session.md
+  --input ./session.md \
+  --print-path
 ```
 
 ### Mode B: Piped transcript
@@ -65,7 +74,7 @@ grabber ingest \
 Use when transcript text is produced by another command.
 
 ```bash
-cat ./session.txt | grabber ingest --stdin --source codex-cli --title "repo cleanup"
+cat ./session.txt | grabber ingest --stdin --source codex-cli --title "repo cleanup" --print-path
 ```
 
 ### Mode C: Live command capture
@@ -73,8 +82,8 @@ cat ./session.txt | grabber ingest --stdin --source codex-cli --title "repo clea
 Use to run a CLI agent and archive automatically.
 
 ```bash
-grabber capture --source claude-code --title "hotfix run" -- claude
-grabber capture --source codex-cli --title "migration run" -- codex
+grabber capture --source claude-code --title "hotfix run" --print-path -- claude
+grabber capture --source codex-cli --title "migration run" --print-path -- codex
 ```
 
 ## Retrieval Strategy
@@ -101,7 +110,12 @@ grabber find --contains "oauth refresh token" --date 2026-02-19 --latest 10
 grabber find --source claude-code --latest 1 --paths
 ```
 
-By default, `grabber find` excludes derived files (`.summary.md`, `.code.md`).
+5. For structured automation, request JSON rows:
+```bash
+grabber find --source claude-code --latest 10 --json
+```
+
+By default, `grabber find` excludes derived files (`.summary.md`, `.code.md`, `.handoff.md`).
 Use `--include-derived` only when needed.
 
 ## Artifact Generation
@@ -133,31 +147,44 @@ Use for:
 - extracting reusable snippets
 - fast implementation handoff
 
+### Handoff artifact
+
+```bash
+grabber handoff --file /home/thecrypdough/convos/<bundle>.md
+```
+
+Output:
+- `/home/thecrypdough/convos/<bundle>.handoff.md`
+
+Use for:
+- single-file context transfer to another agent
+- attaching summary + code extract in one artifact
+
 ## Agentic Workflow Templates
 
 ### Template: End-of-run archive
 
 1. Capture or ingest transcript
-2. Generate summary
-3. Emit summary path to workflow state
+2. Generate handoff artifact
+3. Emit handoff path to workflow state
 
 Example:
 ```bash
 grabber capture --source codex-cli --title "billing retry patch" -- codex
 f="$(grabber find --source codex-cli --context billing-retry-patch --latest 1 --paths)"
-grabber summary --file "$f"
-echo "${f%.md}.summary.md"
+grabber handoff --file "$f"
+echo "${f%.md}.handoff.md"
 ```
 
 ### Template: Resume prior task
 
 1. Locate previous convo
-2. Generate summary + code
-3. Feed both files into next agent prompt/context
+2. Generate handoff (+ optional code extract)
+3. Feed handoff file into next agent prompt/context
 
 ```bash
 f="$(grabber find --source claude-code --context blank --latest 1 --paths)"
-grabber summary --file "$f"
+grabber handoff --file "$f"
 grabber code --file "$f"
 ```
 
@@ -204,7 +231,7 @@ grabber help
 - Archive may contain sensitive conversation content.
 - Do not upload bundle files externally unless explicitly approved.
 - Keep processing local by default.
-- Redact secrets before sharing `.summary.md` or `.code.md`.
+- Redact secrets before sharing `.summary.md`, `.code.md`, or `.handoff.md`.
 
 ## Maintenance
 
@@ -221,4 +248,5 @@ Health checks:
 ```bash
 grabber self-test --profile full --run-plugin-tests
 grabber validate --full
+grabber doctor --full --auto-fix
 ```

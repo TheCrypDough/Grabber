@@ -5,7 +5,7 @@ description: "Context Bundle 格式详解 - 使用 YAML frontmatter + Markdown �
 
 # Context Bundle
 
-Context Bundle 是 CtxPort 复制对话时产出的结构化 Markdown 格式。它将机器可读的元数据和人类可读的内容结合在一起。
+Context Bundle 是 Grabber 复制对话时产出的结构化 Markdown 格式。它将机器可读的元数据和人类可读的内容结合在一起。
 
 ## 格式概览
 
@@ -20,7 +20,7 @@ Frontmatter 位于输出顶部的 `---` 分隔符之间：
 
 | 字段 | 说明 | 示例 |
 |------|------|------|
-| `ctxport` | 格式版本 | `v2` |
+| `grabber` | 格式版本 | `v2` |
 | `source` | 对话来源平台 | `chatgpt`、`claude`、`gemini`、`deepseek`、`grok`、`github` |
 | `url` | 原始对话 URL | `https://chatgpt.com/c/abc123` |
 | `title` | 对话标题 | `Debug React Hook` |
@@ -36,7 +36,7 @@ Frontmatter 位于输出顶部的 `---` 分隔符之间：
 
 ```markdown
 ---
-ctxport: v2
+grabber: v2
 source: chatgpt
 url: https://chatgpt.com/c/abc123
 title: Fix TypeScript Error

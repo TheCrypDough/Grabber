@@ -3,7 +3,7 @@
  * Override variables here if app-specific colors are needed.
  */
 @import "tailwindcss";
-@import "@ctxport/shared-ui/styles/globals.css";
+@import "@grabber/shared-ui/styles/globals.css";
 @import "tw-animate-css";
 
 @source "../../../../packages/shared-ui/src/**/*.{ts,tsx,js,jsx}";

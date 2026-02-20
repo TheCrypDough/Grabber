@@ -62,7 +62,7 @@ export const MermaidBlock = memo(function MermaidBlock({
     return (
       <div
         ref={containerRef}
-        className={`ctxport-markdown-mermaid-block ctxport-markdown-mermaid-error p-4 bg-gray-50 rounded-lg overflow-auto text-center ${className || ""}`}
+        className={`grabber-markdown-mermaid-block grabber-markdown-mermaid-error p-4 bg-gray-50 rounded-lg overflow-auto text-center ${className || ""}`}
       >
         <div className="text-red-600 p-3 bg-red-50 rounded text-sm font-mono whitespace-pre-wrap text-left">
           {t("mermaid.error")}: {error}
@@ -83,7 +83,7 @@ export const MermaidBlock = memo(function MermaidBlock({
     return (
       <div
         ref={containerRef}
-        className={`ctxport-markdown-mermaid-block ctxport-markdown-mermaid-loading my-4 p-4 bg-gray-50 rounded-lg overflow-auto text-center ${className || ""}`}
+        className={`grabber-markdown-mermaid-block grabber-markdown-mermaid-loading my-4 p-4 bg-gray-50 rounded-lg overflow-auto text-center ${className || ""}`}
       >
         <div className="text-gray-500 text-sm">{t("mermaid.loading")}</div>
       </div>
@@ -93,7 +93,7 @@ export const MermaidBlock = memo(function MermaidBlock({
   return (
     <div
       ref={containerRef}
-      className={`ctxport-markdown-mermaid-block my-4 p-4 bg-gray-50 rounded-lg overflow-auto text-center ${className || ""}`}
+      className={`grabber-markdown-mermaid-block my-4 p-4 bg-gray-50 rounded-lg overflow-auto text-center ${className || ""}`}
       dangerouslySetInnerHTML={{ __html: svg }}
     />
   );

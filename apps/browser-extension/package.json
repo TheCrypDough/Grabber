@@ -1,5 +1,5 @@
 {
-  "name": "@ctxport/extension",
+  "name": "@grabber/extension",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -19,9 +19,9 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@ctxport/core-plugins": "workspace:*",
-    "@ctxport/core-markdown": "workspace:*",
-    "@ctxport/core-schema": "workspace:*",
+    "@grabber/core-plugins": "workspace:*",
+    "@grabber/core-markdown": "workspace:*",
+    "@grabber/core-schema": "workspace:*",
     "clsx": "^2.1.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4"

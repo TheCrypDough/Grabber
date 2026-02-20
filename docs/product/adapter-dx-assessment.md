@@ -1,6 +1,6 @@
 # Adapter DX 评估报告
 
-> 从 Don Norman 的以人为本设计视角，审视 CtxPort 声明式 adapter 架构的开发者体验（Developer Experience）。
+> 从 Don Norman 的以人为本设计视角，审视 Grabber 声明式 adapter 架构的开发者体验（Developer Experience）。
 
 ---
 
@@ -9,14 +9,14 @@
 ### Persona A：独立开发者"小李"
 
 - **背景**：前端/全栈开发者，日常使用 ChatGPT/Claude 之外的 AI 平台（如 Gemini、Poe、Kimi、通义千问）
-- **动机**：自己常用的 AI 平台没有被 CtxPort 支持，想自己适配一下
+- **动机**：自己常用的 AI 平台没有被 Grabber 支持，想自己适配一下
 - **技术水平**：熟悉 TypeScript、JSON，了解 CSS 选择器和浏览器 DevTools，但对浏览器扩展开发不熟悉
 - **可忍受复杂度**：一个下午能搞定。如果要花超过两个小时来理解框架概念，就会放弃
 - **工具**：VS Code，Chrome DevTools，GitHub
 
 ### Persona B：社区贡献者"Alex"
 
-- **背景**：开源爱好者，在 GitHub 上看到 CtxPort 项目，想贡献一个 adapter
+- **背景**：开源爱好者，在 GitHub 上看到 Grabber 项目，想贡献一个 adapter
 - **动机**：想回馈社区，或者想在简历里加一个开源贡献
 - **技术水平**：中等。写过 TypeScript，但不一定深入理解 Zod、抽象类继承
 - **可忍受复杂度**：如果 CONTRIBUTING.md 写得好、有清晰的模板，愿意花半天。但如果要理解整个 monorepo 架构才能开始写第一行代码，就会转去贡献别的项目
@@ -24,7 +24,7 @@
 
 ### Persona C：高级用户"资深"
 
-- **背景**：企业内部部署了私有 AI 平台，想把 CtxPort 接入内部工具链
+- **背景**：企业内部部署了私有 AI 平台，想把 Grabber 接入内部工具链
 - **动机**：业务需求，需要把 AI 对话导出为标准化格式
 - **技术水平**：高。能写复杂的脚本，理解 API 逆向工程
 - **可忍受复杂度**：可以花一天，但需要清晰的 API 文档和类型定义
@@ -32,7 +32,7 @@
 
 ### 核心洞察
 
-> 三个 Persona 的共同点：**他们不想成为 CtxPort 框架专家，他们只想让自己的平台能用。**
+> 三个 Persona 的共同点：**他们不想成为 Grabber 框架专家，他们只想让自己的平台能用。**
 
 这意味着声明式 adapter 的设计目标不是"提供一个灵活的框架"，而是"让开发者用最少的知识完成适配"。这两个目标看似相同，实则不同 —— 前者容易陷入"万能配置"的陷阱，后者关注的是认知负担的最小化。
 
@@ -64,7 +64,7 @@
 
 #### 故事："小李"的第一次尝试
 
-小李想给 Kimi（月之暗面的 AI 聊天平台）写一个 adapter。他打开了 CtxPort 的源码仓库。
+小李想给 Kimi（月之暗面的 AI 聊天平台）写一个 adapter。他打开了 Grabber 的源码仓库。
 
 首先，他看到了 `packages/core-adapters/src/base.ts`。这里定义了 `BaseExtAdapter` 抽象类，需要实现 `getRawMessages()` 方法。看起来还好。
 
@@ -283,7 +283,7 @@ Playground 不是一个"文档页面"，而是一个"可交互的表单"。它�
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│  CtxPort Adapter Playground                    [?]  │
+│  Grabber Adapter Playground                    [?]  │
 ├───────────────────────┬─────────────────────────────┤
 │                       │                             │
 │  [配置编辑器]          │  [实时预览]                   │
@@ -365,7 +365,7 @@ Playground 应该支持直接粘贴这个 JSON，然后实时显示：
 
 ### 终端用户的担忧
 
-当一个终端用户（非开发者）安装了 CtxPort 并看到"此扩展支持第三方 adapter"时，他们会问：
+当一个终端用户（非开发者）安装了 Grabber 并看到"此扩展支持第三方 adapter"时，他们会问：
 
 1. **安全性**："第三方 adapter 会偷我的对话内容吗？"
 2. **可靠性**："这个 adapter 是某个不认识的人写的，它靠谱吗？"
@@ -376,7 +376,7 @@ Playground 应该支持直接粘贴这个 JSON，然后实时显示：
 ```
 ┌─────────────────────────────────────────┐
 │  官方 Adapter                      [✓]  │
-│  由 CtxPort 团队维护                     │
+│  由 Grabber 团队维护                     │
 │  ChatGPT · Claude                       │
 │  → 自动启用，无需用户操作                 │
 ├─────────────────────────────────────────┤
@@ -466,7 +466,7 @@ Playground 应该支持直接粘贴这个 JSON，然后实时显示：
 | P1 | 渐进式配置结构（Level 0→1→2→3 平滑过渡） | 渐进式披露 |
 | P1 | "点击 JSON 字段自动填充路径"的 Playground 交互 | 可供性、减少认知负担 |
 | P2 | adapter 信任层级和元数据展示系统 | 约束、安全 |
-| P2 | adapter 模板生成器（`npx ctxport create-adapter`） | 约束、引导 |
+| P2 | adapter 模板生成器（`npx grabber create-adapter`） | 约束、引导 |
 | P3 | GitHub 集成（一键 PR） | 减少摩擦 |
 | P3 | DevTools 面板集成 | 环境中的可发现性 |
 

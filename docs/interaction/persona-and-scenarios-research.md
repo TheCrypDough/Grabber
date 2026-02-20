@@ -1,4 +1,4 @@
-# CtxPort 用户画像与场景调研报告
+# Grabber 用户画像与场景调研报告
 
 > 交互设计视角 | 基于 Alan Cooper Goal-Directed Design 方法论
 > 调研日期：2026-02-07
@@ -185,7 +185,7 @@
 2. **痛点最深**：开发者在 CLI/IDE/Web 三个界面间的上下文迁移摩擦最大，且涉及代码这种高结构化内容
 3. **付费意愿最强**：开发者已经在为 Cursor ($20/mo)、Claude Pro ($20/mo)、Copilot ($19/mo) 付费，对生产力工具的付费习惯已建立
 4. **口碑传播最快**：开发者社区的 Build in Public 文化天然适合产品推广
-5. **CtxPort 的核心功能（Context Bundle、CLI 工具链、结构化格式）与开发者工作流匹配度最高**
+5. **Grabber 的核心功能（Context Bundle、CLI 工具链、结构化格式）与开发者工作流匹配度最高**
 
 Maya（Vibecoder）是重要的 **Secondary Persona**——她的需求与 Alex 高度重叠，但使用门槛要求更低。Sam（Knowledge Orchestrator）是 **Supplementary Persona**——代表了产品扩展到非开发者市场时的用户画像。
 
@@ -419,7 +419,7 @@ MCP 是 2025 年最重要的 AI 互操作标准：
 - 97M+ 月 SDK 下载，5800+ MCP servers，300+ MCP clients
 - 已获得 OpenAI、Google、Microsoft 的支持
 
-**对 CtxPort 的启示**：MCP 解决的是"AI 工具如何连接外部数据源"的问题，CtxPort 解决的是"用户如何在 AI 工具之间搬运上下文"的问题——两者互补而非竞争。CtxPort 的 Context Bundle 可以作为 MCP 的一种 resource type 存在。
+**对 Grabber 的启示**：MCP 解决的是"AI 工具如何连接外部数据源"的问题，Grabber 解决的是"用户如何在 AI 工具之间搬运上下文"的问题——两者互补而非竞争。Grabber 的 Context Bundle 可以作为 MCP 的一种 resource type 存在。
 
 ---
 
@@ -475,7 +475,7 @@ MCP 是 2025 年最重要的 AI 互操作标准：
 - ☐ 跨平台会话合并
 - ☐ 按项目/主题自动聚类
 
-这些缺失不是因为技术实现困难，而是因为 AI 平台将会话视为"用完即弃"的临时交互，而不是**有价值的知识资产**。CtxPort 的核心认知转变就是：**AI 会话是可复用、可组合、可迁移的上下文资产**。
+这些缺失不是因为技术实现困难，而是因为 AI 平台将会话视为"用完即弃"的临时交互，而不是**有价值的知识资产**。Grabber 的核心认知转变就是：**AI 会话是可复用、可组合、可迁移的上下文资产**。
 
 ---
 
@@ -491,7 +491,7 @@ MCP 是 2025 年最重要的 AI 互操作标准：
 - 实现工作生活平衡——用工具提升效率，把时间还给生活
 - 作为独立开发者/小团队实现商业价值——一个人做出原本需要一个团队的产品
 
-**设计启示**：CtxPort 不应该增加用户的工具负担，而应该**减少**他们在工具间的摩擦，让他们感觉"更强大"而不是"又多了一个要管理的工具"。
+**设计启示**：Grabber 不应该增加用户的工具负担，而应该**减少**他们在工具间的摩擦，让他们感觉"更强大"而不是"又多了一个要管理的工具"。
 
 ### Experience Goals（体验目标）
 
@@ -529,7 +529,7 @@ MCP 是 2025 年最重要的 AI 互操作标准：
 
 ### 洞察 1：上下文是 AI 时代的"新货币"
 
-跨 AI 平台切换每年浪费用户 200+ 小时——这不只是效率问题，这是**生产力税**。84% 的开发者使用 AI 工具，但没有任何工具专门解决"上下文在工具间流动"的问题。MCP 解决了 AI-to-Data 的连接，**CtxPort 应该解决 AI-to-AI 的上下文连接**。
+跨 AI 平台切换每年浪费用户 200+ 小时——这不只是效率问题，这是**生产力税**。84% 的开发者使用 AI 工具，但没有任何工具专门解决"上下文在工具间流动"的问题。MCP 解决了 AI-to-Data 的连接，**Grabber 应该解决 AI-to-AI 的上下文连接**。
 
 ### 洞察 2：痛点集中在"高频低效"操作
 
@@ -541,11 +541,11 @@ MCP 是 2025 年最重要的 AI 互操作标准：
 
 ### 洞察 4："本地优先 + 脱敏"不是功能，是信任基石
 
-2025 年的 AI 隐私环境急剧变化（Anthropic ToS 变更、Stanford 隐私研究、Washington Post 曝光）。用户对"我的数据被谁看到"的焦虑前所未有。CtxPort 的本地处理 + 脱敏能力应该是产品的**信任品牌**，而不仅仅是一个功能复选框。
+2025 年的 AI 隐私环境急剧变化（Anthropic ToS 变更、Stanford 隐私研究、Washington Post 曝光）。用户对"我的数据被谁看到"的焦虑前所未有。Grabber 的本地处理 + 脱敏能力应该是产品的**信任品牌**，而不仅仅是一个功能复选框。
 
 ### 洞察 5：Context Bundle 应对齐 MCP 生态
 
-MCP 已成为 AI 互操作的事实标准（97M+ 月下载，Linux Foundation 治理）。CtxPort 的 Context Bundle 格式应该与 MCP 生态兼容——这样 Context Bundle 不仅可以被用户手动使用，还可以被 AI agents 通过 MCP 协议自动消费。
+MCP 已成为 AI 互操作的事实标准（97M+ 月下载，Linux Foundation 治理）。Grabber 的 Context Bundle 格式应该与 MCP 生态兼容——这样 Context Bundle 不仅可以被用户手动使用，还可以被 AI agents 通过 MCP 协议自动消费。
 
 ### 交互设计建议
 
@@ -553,7 +553,7 @@ MCP 已成为 AI 互操作的事实标准（97M+ 月下载，Linux Foundation �
 2. **批量选择 + 打包为 Context Bundle 是第二优先级**——将"会话是消耗品"转变为"会话是资产"
 3. **浏览器扩展的注入点必须极其精准**——在 ChatGPT/Claude/Gemini 的会话列表和会话详情页添加按钮，不要污染其他页面元素
 4. **Token 预算可视化是 Vibecoder 的刚需**——Maya 不理解"200K tokens"意味着什么，需要直观的视觉反馈
-5. **CLI 集成应支持 pipe 语法**——`ctxport pack | claude` 这样的 Unix 哲学才是 Alex 的母语
+5. **CLI 集成应支持 pipe 语法**——`grabber pack | claude` 这样的 Unix 哲学才是 Alex 的母语
 6. **格式保真是基本功**——代码块、表格、列表层级在复制过程中必须零丢失，否则用户第一次使用就会放弃
 
 ---

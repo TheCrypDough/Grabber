@@ -1,9 +1,9 @@
 {
-  "name": "@ctxport/core-schema",
+  "name": "@grabber/core-schema",
   "version": "0.0.1",
   "private": true,
   "type": "module",
-  "description": "Core types, schemas, and validators for CtxPort",
+  "description": "Core types, schemas, and validators for Grabber",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./src/index.ts",

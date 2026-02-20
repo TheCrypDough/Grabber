@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-SAVE_SCRIPT="${GRABBER_SAVE_SCRIPT:-${CTXPORT_SAVE_SCRIPT:-$HOME/Github Repositories/Grabber/scripts/grabber-save.sh}}"
+SAVE_SCRIPT="${GRABBER_SAVE_SCRIPT:-$HOME/Github Repositories/Grabber/scripts/grabber-save.sh}"
 
 usage() {
   cat <<'USAGE'
@@ -15,6 +15,7 @@ Options:
   --url <value>       Optional source URL/path marker
   --date <value>      Optional date (any GNU date-compatible string)
   --context <text>    Optional filename context override
+  --print-path        Print saved file path only (machine-friendly)
   --input <file>      Read transcript from file
   --stdin             Read transcript from stdin
   -h, --help          Show help
@@ -55,7 +56,7 @@ first_context_line() {
 
 looks_like_bundle() {
   local body="$1"
-  printf "%s\n" "$body" | head -n 40 | grep -Eq '^(ctxport|grabber):[[:space:]]*v2$'
+  printf "%s\n" "$body" | head -n 40 | grep -Eq '^grabber:[[:space:]]*v2$'
 }
 
 count_nodes() {
@@ -75,6 +76,7 @@ title_text=""
 url_text=""
 date_text=""
 context_override=""
+print_path_only=false
 
 while [ $# -gt 0 ]; do
   case "$1" in
@@ -97,6 +99,10 @@ while [ $# -gt 0 ]; do
     --context)
       context_override="${2:-}"
       shift 2
+      ;;
+    --print-path)
+      print_path_only=true
+      shift
       ;;
     --input)
       input_file="${2:-}"
@@ -147,11 +153,16 @@ if [ -z "${content//[$'\t\n\r ']/}" ]; then
   exit 1
 fi
 
+save_args=(--from-stdin)
+if [ "$print_path_only" = true ]; then
+  save_args+=(--print-path)
+fi
+
 if looks_like_bundle "$content"; then
   if [ -n "$context_override" ]; then
-    printf "%s\n" "$content" | "$SAVE_SCRIPT" --from-stdin "$context_override"
+    printf "%s\n" "$content" | "$SAVE_SCRIPT" "${save_args[@]}" "$context_override"
   else
-    printf "%s\n" "$content" | "$SAVE_SCRIPT" --from-stdin
+    printf "%s\n" "$content" | "$SAVE_SCRIPT" "${save_args[@]}"
   fi
   exit 0
 fi
@@ -178,7 +189,6 @@ bundle="$(
   cat <<EOF
 ---
 grabber: v2
-ctxport: v2
 source: $(yaml_quote "$source_name")
 url: $(yaml_quote "$url_text")
 title: $(yaml_quote "$title_text")
@@ -193,4 +203,4 @@ $content
 EOF
 )"
 
-printf "%s\n" "$bundle" | "$SAVE_SCRIPT" --from-stdin "$context_override"
+printf "%s\n" "$bundle" | "$SAVE_SCRIPT" "${save_args[@]}" "$context_override"

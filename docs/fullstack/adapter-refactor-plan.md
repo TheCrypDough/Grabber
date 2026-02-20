@@ -253,7 +253,7 @@ export const EXTENSION_SITE_CONFIGS: ExtensionSiteConfig[] =
 
 ```typescript
 // 从 manifest 驱动，消除硬编码
-import { getRegisteredManifests } from "@ctxport/core-adapters/manifest";
+import { getRegisteredManifests } from "@grabber/core-adapters/manifest";
 import { ManifestInjector } from "~/injectors/manifest-injector";
 
 function detectManifest(url: string) {
@@ -402,7 +402,7 @@ apps/browser-extension/src/injectors/
 
 ### 3.3 对外暴露的 API
 
-**新增公共 API**（从 `@ctxport/core-adapters/manifest` 导出）：
+**新增公共 API**（从 `@grabber/core-adapters/manifest` 导出）：
 
 ```typescript
 // 注册

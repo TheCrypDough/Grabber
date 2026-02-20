@@ -1,5 +1,5 @@
 /**
- * Semantic Release Configuration for CtxPort
+ * Semantic Release Configuration for Grabber
  *
  * This config handles:
  * - Version calculation based on conventional commits

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ARCHIVE_DIR="${GRABBER_ARCHIVE_DIR:-${CTXPORT_ARCHIVE_DIR:-$HOME/convos}}"
+ARCHIVE_DIR="${GRABBER_ARCHIVE_DIR:-$HOME/convos}"
 
 usage() {
   cat <<'USAGE'
@@ -16,8 +16,9 @@ Options:
   --context <text>    Case-insensitive context match in filename
   --contains <text>   Case-insensitive full-text match in file body
   --latest <n>        Limit number of results (default: all)
-  --include-derived   Include .summary.md and .code.md files
+  --include-derived   Include .summary.md, .code.md, and .handoff.md files
   --paths             Print only file paths
+  --json              Print structured JSON array
   --tsv               Print tab-separated rows
   -h, --help          Show help
 
@@ -35,6 +36,16 @@ to_date_key() {
     return
   fi
   printf "%s" "$raw"
+}
+
+json_escape() {
+  local value="${1:-}"
+  value="${value//\\/\\\\}"
+  value="${value//\"/\\\"}"
+  value="${value//$'\n'/\\n}"
+  value="${value//$'\r'/\\r}"
+  value="${value//$'\t'/\\t}"
+  printf "%s" "$value"
 }
 
 source_filter=""
@@ -84,6 +95,10 @@ while [ $# -gt 0 ]; do
       mode="tsv"
       shift
       ;;
+    --json)
+      mode="json"
+      shift
+      ;;
     -h|--help)
       usage
       exit 0
@@ -109,13 +124,17 @@ fi
 if [ "$mode" = "tsv" ]; then
   printf "timestamp\tsource\thost\tcontext\tpath\n"
 fi
+if [ "$mode" = "json" ]; then
+  printf "[\n"
+fi
 
 count=0
+json_first=true
 
 while IFS= read -r file; do
   name="$(basename "$file")"
 
-  if [ "$include_derived" != true ] && printf "%s" "$name" | grep -Eq '\.(summary|code)\.md$'; then
+  if [ "$include_derived" != true ] && printf "%s" "$name" | grep -Eq '\.(summary|code|handoff)\.md$'; then
     continue
   fi
 
@@ -151,6 +170,18 @@ while IFS= read -r file; do
     printf "%s\n" "$file"
   elif [ "$mode" = "tsv" ]; then
     printf "%s\t%s\t%s\t%s\t%s\n" "$timestamp" "$source" "$host" "$context" "$file"
+  elif [ "$mode" = "json" ]; then
+    if [ "$json_first" = true ]; then
+      json_first=false
+    else
+      printf ",\n"
+    fi
+    printf '  {"timestamp":"%s","source":"%s","host":"%s","context":"%s","path":"%s"}' \
+      "$(json_escape "$timestamp")" \
+      "$(json_escape "$source")" \
+      "$(json_escape "$host")" \
+      "$(json_escape "$context")" \
+      "$(json_escape "$file")"
   else
     printf "%s | %s | %s | %s\n" "$timestamp" "$source" "$host" "$context"
     printf "  %s\n" "$file"
@@ -162,8 +193,12 @@ while IFS= read -r file; do
   fi
 done < <(find "$ARCHIVE_DIR" -maxdepth 1 -type f -name '*.md' | sort -r)
 
+if [ "$mode" = "json" ]; then
+  printf "\n]\n"
+fi
+
 if [ "$count" -eq 0 ]; then
-  if [ "$mode" != "tsv" ]; then
+  if [ "$mode" != "tsv" ] && [ "$mode" != "json" ]; then
     echo "No matching files."
   fi
   exit 1

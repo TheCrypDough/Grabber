@@ -65,6 +65,7 @@ grabber build
 ```bash
 grabber self-test
 grabber validate --quick
+grabber doctor --quick
 ```
 
 ### 2. Chrome 加载
@@ -92,27 +93,27 @@ grabber validate --quick
 - `grabber update`
 - `grabber clean`
 - `grabber help`
+- `grabber doctor --full --auto-fix`
+- `grabber sources`
 
 归档命令：
 
 - `grabber save`
 - `grabber save "context override"`
+- `grabber save --print-path`
 - `grabber autosave start|stop|status|restart`
 
 跨来源/检索/再加工：
 
 - `grabber ingest --source claude-code --title "auth fix" --input ./session.md`
+- `grabber ingest --source codex-cli --title "session" --input ./session.md --print-path`
 - `grabber find --source gemini --latest 10`
 - `grabber find --source gemini --include-derived --latest 20`
+- `grabber sources --ids`
 - `grabber summary --file ~/convos/<file>.md`
 - `grabber code --file ~/convos/<file>.md`
-- `grabber capture --source claude-code --title \"debug run\" -- claude`
-
-兼容别名仍可用：
-
-- `ctxport`
-- `ctxport-save`
-- `ctxport-autosave`
+- `grabber handoff --file ~/convos/<file>.md`
+- `grabber capture --source claude-code --title \"debug run\" --print-path -- claude`
 
 ## 文件命名规则
 
@@ -191,14 +192,15 @@ grabber ingest --source cursor --title "feature planning" --input ./cursor-chat.
 ```bash
 grabber summary --file ~/convos/<saved-file>.md
 grabber code --file ~/convos/<saved-file>.md
+grabber handoff --file ~/convos/<saved-file>.md
 ```
 
 ### Agent 自动化建议
 
 1. 每次 Agent run 结束后自动执行 `grabber ingest`
 2. 需要历史上下文时先执行 `grabber find`
-3. 交接时生成 `grabber summary`
-4. 需要代码片段时生成 `grabber code`
+3. 交接时生成 `grabber handoff`
+4. 需要单独代码片段时生成 `grabber code`
 
 这样同一套归档规范即可覆盖：浏览器对话、CLI 会话、IDE 会话、Agent workflow。
 
@@ -211,7 +213,7 @@ grabber code --file ~/convos/<saved-file>.md
 
 ```bash
 pnpm install
-pnpm build:ext
+pnpm build:extension
 pnpm test
 ```
 

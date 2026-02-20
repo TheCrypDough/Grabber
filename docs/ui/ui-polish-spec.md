@@ -1,4 +1,4 @@
-# CtxPort UI Polish Specification
+# Grabber UI Polish Specification
 
 > Design Language: Precision-crafted tool aesthetic. Every element earns its pixel.
 >
@@ -34,7 +34,7 @@ fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 monoFamily: '"SF Mono", "Fira Code", "Cascadia Code", "JetBrains Mono", Menlo, monospace'
 ```
 
-Inter is the system-level choice. It has optical sizing, tabular numerals, and reads cleanly at 11-13px. The fallback chain ensures every platform has a native-quality sans-serif. All text in CtxPort uses this single stack.
+Inter is the system-level choice. It has optical sizing, tabular numerals, and reads cleanly at 11-13px. The fallback chain ensures every platform has a native-quality sans-serif. All text in Grabber uses this single stack.
 
 ### 1.2 Duration Tokens
 
@@ -61,7 +61,7 @@ The `spring` curve overshoots by ~56%. Use it for interactive elements that bene
 
 ### 1.4 Semantic Colors
 
-These are the CtxPort-owned colors. They do NOT replace plugin theme colors, they complement them.
+These are the Grabber-owned colors. They do NOT replace plugin theme colors, they complement them.
 
 ```typescript
 const COLORS = {
@@ -127,7 +127,7 @@ const MOTION = {
 
 ### 3.1 The Problem
 
-CtxPort runs across 6+ platforms. Each has its own color language. A button that feels native on ChatGPT (near-black) looks alien on Claude (warm terracotta). Hardcoded colors break everywhere.
+Grabber runs across 6+ platforms. Each has its own color language. A button that feels native on ChatGPT (near-black) looks alien on Claude (warm terracotta). Hardcoded colors break everywhere.
 
 ### 3.2 The Solution: `currentColor` + Plugin Theme Overrides
 
@@ -139,9 +139,9 @@ color: currentColor
 
 This is the single most important rule. The idle-state icon inherits the text color of its container in the host page. It blends automatically.
 
-**For state colors** (success, error, loading), CtxPort uses its own palette because these carry universal semantic meaning that transcends platform branding.
+**For state colors** (success, error, loading), Grabber uses its own palette because these carry universal semantic meaning that transcends platform branding.
 
-**For owned surfaces** (toast, context menu, popup, batch bar), CtxPort uses its own surface tokens. These float above the host page and must look consistent.
+**For owned surfaces** (toast, context menu, popup, batch bar), Grabber uses its own surface tokens. These float above the host page and must look consistent.
 
 ### 3.3 Plugin Theme Integration
 
@@ -162,8 +162,8 @@ interface ThemeConfig {
 
 **Where plugin theme is NOT used:**
 - Icon idle color (uses `currentColor`)
-- Success/error states (uses CtxPort semantic colors)
-- Toast/context menu surfaces (uses CtxPort surface tokens)
+- Success/error states (uses Grabber semantic colors)
+- Toast/context menu surfaces (uses Grabber surface tokens)
 
 ### 3.4 Dark Mode Detection
 
@@ -762,7 +762,7 @@ const subtitleStyle = {
 
 **Layout:**
 ```
-[Logo] CtxPort
+[Logo] Grabber
 Copy AI conversations as Context Bundles.
 ```
 
@@ -1075,7 +1075,7 @@ const floatingLabelStyle = {
 };
 ```
 
-**Text:** `CTXPORT` in uppercase with slight letter-spacing. Small, discreet, branded.
+**Text:** `GRABBER` in uppercase with slight letter-spacing. Small, discreet, branded.
 
 ### 10.3 Hover
 

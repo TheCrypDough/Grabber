@@ -1,4 +1,4 @@
-import { defaultLocale, locales } from "@ctxport/shared-ui/i18n/core";
+import { defaultLocale, locales } from "@grabber/shared-ui/i18n/core";
 import { NextResponse, type NextRequest } from "next/server";
 
 const PUBLIC_FILE = /\.(?:\w+)$/;

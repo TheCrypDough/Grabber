@@ -1,6 +1,6 @@
 "use client";
 
-import { useI18n, Badge, Button } from "@ctxport/shared-ui";
+import { useI18n, Badge, Button } from "@grabber/shared-ui";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -24,8 +24,8 @@ import {
   X,
 } from "lucide-react";
 
-const GITHUB_REPO = "https://github.com/nicepkg/ctxport";
-const GITHUB_RELEASES = "https://github.com/nicepkg/ctxport/releases";
+const GITHUB_REPO = "https://github.com/TheCrypDough/Grabber";
+const GITHUB_RELEASES = "https://github.com/TheCrypDough/Grabber/releases";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },

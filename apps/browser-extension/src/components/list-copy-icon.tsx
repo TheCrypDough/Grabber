@@ -1,8 +1,8 @@
 import {
   serializeConversation,
   type BundleFormatType,
-} from "@ctxport/core-markdown";
-import { findPlugin } from "@ctxport/core-plugins";
+} from "@grabber/core-markdown";
+import { findPlugin } from "@grabber/core-plugins";
 import { useState, useCallback, useRef, useEffect } from "react";
 import { ContextMenu } from "./context-menu";
 import { writeToClipboard } from "~/lib/utils";
@@ -163,7 +163,7 @@ export function ListCopyIcon({ conversationId, onToast }: ListCopyIconProps) {
         onMouseUp={() => setPressed(false)}
         disabled={isLoading}
         title="Copy this conversation (Grabber)"
-        className="ctxport-list-copy-icon"
+        className="grabber-list-copy-icon"
         style={buttonStyle}
       >
         <SmallIcon state={state} animated={iconAnimated} />

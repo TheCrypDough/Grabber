@@ -101,13 +101,13 @@ importers:
 
   apps/browser-extension:
     dependencies:
-      '@ctxport/core-markdown':
+      '@grabber/core-markdown':
         specifier: workspace:*
         version: link:../../packages/core-markdown
-      '@ctxport/core-plugins':
+      '@grabber/core-plugins':
         specifier: workspace:*
         version: link:../../packages/core-plugins
-      '@ctxport/core-schema':
+      '@grabber/core-schema':
         specifier: workspace:*
         version: link:../../packages/core-schema
       clsx:
@@ -162,7 +162,7 @@ importers:
 
   apps/web:
     dependencies:
-      '@ctxport/shared-ui':
+      '@grabber/shared-ui':
         specifier: workspace:*
         version: link:../../packages/shared-ui
       clsx:
@@ -259,7 +259,7 @@ importers:
 
   packages/core-markdown:
     dependencies:
-      '@ctxport/core-schema':
+      '@grabber/core-schema':
         specifier: workspace:*
         version: link:../core-schema
       tokenx:
@@ -281,7 +281,7 @@ importers:
 
   packages/core-plugins:
     dependencies:
-      '@ctxport/core-schema':
+      '@grabber/core-schema':
         specifier: workspace:*
         version: link:../core-schema
       uuid:

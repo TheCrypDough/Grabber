@@ -2,8 +2,8 @@ import type {
   ContentBundle,
   ContentNode,
   Participant,
-} from "@ctxport/core-schema";
-import { createAppError } from "@ctxport/core-schema";
+} from "@grabber/core-schema";
+import { createAppError } from "@grabber/core-schema";
 import type { Plugin, PluginContext } from "../../types";
 import { generateId } from "../../utils";
 import {
@@ -157,7 +157,7 @@ async function fetchAndBuild(
       return await fetchAndBuildGraphQL(owner, repo, number, type, url);
     } catch (err) {
       console.warn(
-        "[ctxport/github] GraphQL failed, falling back to REST API:",
+        "[grabber/github] GraphQL failed, falling back to REST API:",
         err,
       );
     }

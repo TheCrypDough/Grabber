@@ -14,6 +14,7 @@ Options:
   --source <name>     Required source label (claude-code, codex-cli, opencode)
   --title <text>      Optional title/context label
   --context <text>    Optional filename context override
+  --print-path        Print saved file path only from ingest output
   --keep-log          Keep raw transcript log file (default behavior)
   --delete-log        Delete raw transcript after ingest
   -h, --help          Show help
@@ -27,6 +28,7 @@ USAGE
 source_name=""
 title_text=""
 context_override=""
+print_path_only=false
 delete_log=false
 
 while [ $# -gt 0 ]; do
@@ -42,6 +44,10 @@ while [ $# -gt 0 ]; do
     --context)
       context_override="${2:-}"
       shift 2
+      ;;
+    --print-path)
+      print_path_only=true
+      shift
       ;;
     --keep-log)
       delete_log=false
@@ -123,6 +129,9 @@ ingest_args=(
 )
 if [ -n "$context_override" ]; then
   ingest_args+=(--context "$context_override")
+fi
+if [ "$print_path_only" = true ]; then
+  ingest_args+=(--print-path)
 fi
 
 "$INGEST_SCRIPT" "${ingest_args[@]}"

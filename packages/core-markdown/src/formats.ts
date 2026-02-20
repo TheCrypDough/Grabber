@@ -1,4 +1,4 @@
-import type { ContentNode, Participant } from "@ctxport/core-schema";
+import type { ContentNode, Participant } from "@grabber/core-schema";
 
 export type BundleFormatType = "full" | "user-only" | "code-only" | "compact";
 

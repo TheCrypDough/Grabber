@@ -1,4 +1,4 @@
-import { registerBuiltinPlugins } from "@ctxport/core-plugins";
+import { registerBuiltinPlugins } from "@grabber/core-plugins";
 import {
   EXTENSION_RUNTIME_MESSAGE,
   isSupportedTabUrl,

@@ -1,6 +1,6 @@
-import { getAllPlugins } from "@ctxport/core-plugins";
+import { getAllPlugins } from "@grabber/core-plugins";
 
-export const CTXPORT_COMPONENT_NAME = "grabber-root";
+export const GRABBER_COMPONENT_NAME = "grabber-root";
 
 export const EXTENSION_RUNTIME_MESSAGE = {
   COPY_CURRENT: "grabber:copy-current",

@@ -1,5 +1,5 @@
 {
-  "name": "@ctxport/web",
+  "name": "@grabber/web",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -13,7 +13,7 @@
     "typecheck": "tsc -b --pretty false"
   },
   "dependencies": {
-    "@ctxport/shared-ui": "workspace:*",
+    "@grabber/shared-ui": "workspace:*",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "framer-motion": "^12.33.0",

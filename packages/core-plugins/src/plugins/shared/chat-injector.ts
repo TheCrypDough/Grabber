@@ -15,15 +15,15 @@ export interface ChatInjectorConfig {
   sidebarSelector: string;
 }
 
-const CTXPORT_ATTR = "data-ctxport-injected";
+const GRABBER_ATTR = "data-grabber-injected";
 const INJECTION_DELAY_MS = 2000;
 
 function markInjected(el: HTMLElement, type: string): void {
-  el.setAttribute(CTXPORT_ATTR, type);
+  el.setAttribute(GRABBER_ATTR, type);
 }
 
 function isInjected(el: HTMLElement, type: string): boolean {
-  return el.getAttribute(CTXPORT_ATTR) === type;
+  return el.getAttribute(GRABBER_ATTR) === type;
 }
 
 function createContainer(id: string): HTMLElement {
@@ -65,8 +65,8 @@ function debouncedObserverCallback(fn: () => void): () => void {
  * Handles copy button and list icons via MutationObserver.
  */
 export function createChatInjector(config: ChatInjectorConfig): PluginInjector {
-  const copyBtnClass = `ctxport-${config.platform}-copy-btn`;
-  const listIconClass = `ctxport-${config.platform}-list-icon`;
+  const copyBtnClass = `grabber-${config.platform}-copy-btn`;
+  const listIconClass = `grabber-${config.platform}-list-icon`;
 
   let observers: MutationObserver[] = [];
   let timers: ReturnType<typeof setTimeout>[] = [];
@@ -78,7 +78,7 @@ export function createChatInjector(config: ChatInjectorConfig): PluginInjector {
     for (const selector of config.copyButtonSelectors) {
       const target = document.querySelector<HTMLElement>(selector);
       if (target && !isInjected(target, "copy-btn")) {
-        const container = createContainer(`ctxport-copy-btn-${Date.now()}`);
+        const container = createContainer(`grabber-copy-btn-${Date.now()}`);
         container.className = copyBtnClass;
 
         switch (config.copyButtonPosition) {
@@ -119,7 +119,7 @@ export function createChatInjector(config: ChatInjectorConfig): PluginInjector {
       const id = match?.[1];
       if (!id) continue;
 
-      const container = createContainer(`ctxport-list-icon-${id}`);
+      const container = createContainer(`grabber-list-icon-${id}`);
       container.className = listIconClass;
       container.style.position = "absolute";
       container.style.right = "36px";

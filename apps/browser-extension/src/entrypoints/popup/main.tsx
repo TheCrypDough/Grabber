@@ -1,4 +1,4 @@
-import { registerBuiltinPlugins, findPlugin } from "@ctxport/core-plugins";
+import { registerBuiltinPlugins, findPlugin } from "@grabber/core-plugins";
 import { useState, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import {

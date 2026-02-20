@@ -1,4 +1,4 @@
-# Chrome Web Store Listing -- CtxPort MVP
+# Chrome Web Store Listing -- Grabber MVP
 
 > 版本：v1.0 | 日期：2026-02-07
 > 作者：Marketing Agent (Seth Godin)
@@ -10,15 +10,15 @@
 
 ### 扩展名称
 
-**CtxPort -- Copy AI Chats as Context Bundles**
+**Grabber -- Copy AI Chats as Context Bundles**
 
 - 字符数：45（Chrome Web Store name 上限 45 字符）
-- "CtxPort" 是品牌名，短、独特、可搜索
+- "Grabber" 是品牌名，短、独特、可搜索
 - 副标题用破折号补充功能描述，覆盖 "copy"、"AI"、"chat"、"context" 四个核心搜索关键词
 
 备选方案（如果审核对格式有限制）：
-- `CtxPort - AI Chat to Context Bundle` (37 chars)
-- `CtxPort: Copy AI Conversations` (32 chars)
+- `Grabber - AI Chat to Context Bundle` (37 chars)
+- `Grabber: Copy AI Conversations` (32 chars)
 
 ### 简短描述（Summary, 132 字符内）
 
@@ -46,16 +46,16 @@
 ## 2. 详细描述（Detailed Description）
 
 ```
-CtxPort copies your AI conversations from ChatGPT and Claude as clean, structured Markdown -- ready to paste into any other AI tool, editor, or note-taking app.
+Grabber copies your AI conversations from ChatGPT and Claude as clean, structured Markdown -- ready to paste into any other AI tool, editor, or note-taking app.
 
 STOP WASTING TIME REBUILDING CONTEXT
 
-Every time you switch between AI tools, you lose 15-30 minutes re-explaining your project, your preferences, your progress. CtxPort eliminates that friction with one click.
+Every time you switch between AI tools, you lose 15-30 minutes re-explaining your project, your preferences, your progress. Grabber eliminates that friction with one click.
 
 HOW IT WORKS
 
 1. Open any conversation on ChatGPT or Claude
-2. Click the CtxPort copy button (or press Cmd+Shift+C / Ctrl+Shift+C)
+2. Click the Grabber copy button (or press Cmd+Shift+C / Ctrl+Shift+C)
 3. Paste the structured Context Bundle anywhere -- Claude Code, Cursor, Notion, or any AI tool
 
 That's it. No accounts. No configuration. No uploads.
@@ -83,12 +83,12 @@ Keyboard Shortcuts
 
 PRIVACY & SECURITY -- OUR #1 PRINCIPLE
 
-After the 2025 browser extension data breaches that affected 900,000+ users, we built CtxPort with privacy as the foundation, not an afterthought:
+After the 2025 browser extension data breaches that affected 900,000+ users, we built Grabber with privacy as the foundation, not an afterthought:
 
-- ZERO external network requests: All HTML parsing and Markdown conversion happens 100% in your browser. CtxPort never contacts any external server.
+- ZERO external network requests: All HTML parsing and Markdown conversion happens 100% in your browser. Grabber never contacts any external server.
 - Minimal permissions: Only activeTab + storage. No tabs, history, cookies, or webRequest permissions.
 - Open source core: The conversation extraction and bundle generation logic is 100% open source (MIT License). Audit it yourself on GitHub.
-- Verify it yourself: Open DevTools > Network tab while using CtxPort. You will see zero outgoing requests.
+- Verify it yourself: Open DevTools > Network tab while using Grabber. You will see zero outgoing requests.
 
 WHAT IS A CONTEXT BUNDLE?
 
@@ -114,7 +114,7 @@ WHO IS THIS FOR?
 
 OPEN SOURCE
 
-CtxPort's core logic is MIT-licensed and available on GitHub. We believe trust is earned through transparency, not promises.
+Grabber's core logic is MIT-licensed and available on GitHub. We believe trust is earned through transparency, not promises.
 
 ---
 
@@ -145,12 +145,12 @@ Questions or feedback? File an issue on GitHub or reach out at [support email].
 Chrome Web Store 要求 1280x800 或 640x400 像素。
 
 **截图 1 -- Hero Shot**
-- 内容：ChatGPT 页面 + CtxPort 复制按钮 + 复制成功 toast 提示
+- 内容：ChatGPT 页面 + Grabber 复制按钮 + 复制成功 toast 提示
 - 文案叠加：`One Click. Clean Markdown. Zero Uploads.`
 - 目的：3 秒内让用户理解产品做什么
 
 **截图 2 -- Sidebar Copy**
-- 内容：ChatGPT 左侧会话列表，每条会话旁显示 CtxPort 复制图标
+- 内容：ChatGPT 左侧会话列表，每条会话旁显示 Grabber 复制图标
 - 文案叠加：`Copy Without Opening -- Save Clicks, Save Time`
 - 目的：展示独特的"不打开就能复制"功能（竞品没有的差异化功能）
 
@@ -165,19 +165,19 @@ Chrome Web Store 要求 1280x800 或 640x400 像素。
 - 目的：让用户看到输出质量
 
 **截图 5 -- Privacy**
-- 内容：Chrome DevTools Network 面板 + CtxPort 操作 = 零外部请求
+- 内容：Chrome DevTools Network 面板 + Grabber 操作 = 零外部请求
 - 文案叠加：`Your Data Never Leaves Your Browser. Verify It Yourself.`
 - 目的：用可视化证据建立信任，这是最强的安全叙事
 
 ### 3.3 Promotional Images
 
 **Small Promo Tile (440x280)**
-- 内容：CtxPort logo + 一句话 tagline
+- 内容：Grabber logo + 一句话 tagline
 - 文案：`Your AI Context, Portable.`
 - 背景：深蓝渐变，简洁
 
 **Marquee Promo (1400x560)**（如果获得 Featured 推荐时使用）
-- 内容：左侧 CtxPort logo + 中间流程图（ChatGPT -> CtxPort -> Claude）+ 右侧 Context Bundle 预览
+- 内容：左侧 Grabber logo + 中间流程图（ChatGPT -> Grabber -> Claude）+ 右侧 Context Bundle 预览
 - 文案：`Stop Re-explaining. Start Porting Context.`
 
 ---
@@ -207,7 +207,7 @@ Chrome Web Store 要求 1280x800 或 640x400 像素。
 **Tier 3 -- 长尾关键词、低竞争**
 | 关键词 | 搜索意图 | 覆盖位置 |
 |--------|---------|---------|
-| `copy chatgpt without opening` | 不打开就复制（CtxPort 独有） | 描述 |
+| `copy chatgpt without opening` | 不打开就复制（Grabber 独有） | 描述 |
 | `batch copy ai conversations` | 批量复制 | 描述 |
 | `ai chat local processing` | 本地处理 | 描述 |
 | `open source ai exporter` | 开源导出工具 | 描述 |
@@ -235,11 +235,11 @@ Chrome Web Store 要求 1280x800 或 640x400 像素。
 | Save My Chatbot | 多平台导出 | 功能分散，无聚焦 |
 | YourAIScroll | 多平台导出 | 新进入者，功能未验证 |
 
-### 5.2 CtxPort 差异化卖点（按说服力排序）
+### 5.2 Grabber 差异化卖点（按说服力排序）
 
 **1. Privacy-First Architecture（信任杀手锏）**
 - 竞品大多需要网络权限或上传数据（如 Notion sync）
-- CtxPort 零外部请求，可用 DevTools 验证
+- Grabber 零外部请求，可用 DevTools 验证
 - 在 2025 安全事件后，这是用户决策的第一过滤条件
 - **Listing 策略**：在简短描述和详细描述的前 3 段就强调隐私
 
@@ -250,12 +250,12 @@ Chrome Web Store 要求 1280x800 或 640x400 像素。
 
 **3. Batch Multi-Select（效率差异化）**
 - 竞品要么无批量，要么需逐个操作
-- CtxPort 勾选多条，一键合并为单一 Bundle
+- Grabber 勾选多条，一键合并为单一 Bundle
 - **Listing 策略**：截图 3 + 详细描述中的 "Batch Select & Copy" 段
 
 **4. Clipboard-First, Not File-First（工作流差异化）**
 - 竞品导出为文件（需要找文件、打开文件、复制内容）
-- CtxPort 直接到剪贴板，粘贴即用
+- Grabber 直接到剪贴板，粘贴即用
 - **Listing 策略**："HOW IT WORKS" 三步流程中体现
 
 **5. Open Source Core（信任 + 社区）**
@@ -317,7 +317,7 @@ Chrome Web Store 评分对搜索排名和用户信任至关重要。
 1. **名称中**：使用 "AI Chats" 而非 "ChatGPT & Claude"，避免商标争议
 2. **描述中**：可以提及支持的平台名称，但要明确这是第三方工具
 3. **截图中**：展示真实使用场景是合理的，但不要暗示官方关系
-4. 在详细描述的底部可以加入声明：`CtxPort is an independent project and is not affiliated with OpenAI or Anthropic.`
+4. 在详细描述的底部可以加入声明：`Grabber is an independent project and is not affiliated with OpenAI or Anthropic.`
 
 ---
 

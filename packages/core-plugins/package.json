@@ -1,5 +1,5 @@
 {
-  "name": "@ctxport/core-plugins",
+  "name": "@grabber/core-plugins",
   "version": "0.0.1",
   "private": true,
   "type": "module",
@@ -29,7 +29,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@ctxport/core-schema": "workspace:*",
+    "@grabber/core-schema": "workspace:*",
     "uuid": "^13.0.0"
   },
   "devDependencies": {

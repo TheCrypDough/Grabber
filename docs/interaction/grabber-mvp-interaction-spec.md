@@ -1,4 +1,4 @@
-# CtxPort MVP 交互设计规格文档
+# Grabber MVP 交互设计规格文档
 
 > 版本：v1.0 | 日期：2026-02-07
 > 方法论：Alan Cooper Goal-Directed Design
@@ -40,13 +40,13 @@ Alex 是一位 28-38 岁的全栈开发者，日均在 4-5 个 AI 工具间切�
 
 #### 2.1.1 按钮位置
 
-**ChatGPT**：在会话页面顶部标题栏右侧区域，紧邻原生的"分享"和"..."菜单按钮的左边，注入一个 CtxPort 复制按钮。
+**ChatGPT**：在会话页面顶部标题栏右侧区域，紧邻原生的"分享"和"..."菜单按钮的左边，注入一个 Grabber 复制按钮。
 
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  💬 讨论 REST API 认证方案          [📋] [↗️] [···]    │
 │                                      ↑                  │
-│                              CtxPort 复制按钮            │
+│                              Grabber 复制按钮            │
 └─────────────────────────────────────────────────────────┘
 ```
 
@@ -56,7 +56,7 @@ Alex 是一位 28-38 岁的全栈开发者，日均在 4-5 个 AI 工具间切�
 - 图标：使用剪贴板图标（clipboard icon），风格与平台原生图标保持一致（ChatGPT 使用 outlined style，Claude 使用其自身 icon style）
 - 尺寸：与相邻原生按钮保持相同尺寸（通常 32x32px 或 36x36px）
 - 颜色：继承平台的 icon 颜色变量（ChatGPT 的 `text-token-text-secondary`，Claude 的对应变量）
-- Tooltip：hover 时显示 "Copy as Context Bundle (CtxPort)"，延迟 300ms 显示
+- Tooltip：hover 时显示 "Copy as Context Bundle (Grabber)"，延迟 300ms 显示
 
 #### 2.1.2 交互步骤
 
@@ -93,7 +93,7 @@ Alex 是一位 28-38 岁的全栈开发者，日均在 4-5 个 AI 工具间切�
             ├── "仅复制代码块"
             ├── "复制精简版"
             └── ─────────────
-                "关于 CtxPort"
+                "关于 Grabber"
 ```
 
 #### 2.1.3 设计决策说明
@@ -218,7 +218,7 @@ Alex 是一位 28-38 岁的全栈开发者，日均在 4-5 个 AI 工具间切�
 
 **与原生菜单的共存**：
 - ChatGPT 和 Claude 的列表项 hover 时已有"..."（更多操作）按钮
-- CtxPort 的复制图标放置在"..."按钮的左边，两者并列
+- Grabber 的复制图标放置在"..."按钮的左边，两者并列
 - 点击区域不重叠，避免误操作
 
 ---
@@ -235,13 +235,13 @@ Alex 是一位 28-38 岁的全栈开发者，日均在 4-5 个 AI 工具间切�
 |------|------|------|
 | **快捷键** | `Cmd/Ctrl + Shift + E` | 开发者最快的方式。E = Export |
 | **长按图标** | 长按任意列表项的复制图标 500ms | 从单次复制自然过渡到批量模式 |
-| **扩展 Popup 按钮** | 点击 Chrome 工具栏 CtxPort 图标 → "批量选择模式" | 兜底入口，对键盘快捷键不敏感的用户 |
+| **扩展 Popup 按钮** | 点击 Chrome 工具栏 Grabber 图标 → "批量选择模式" | 兜底入口，对键盘快捷键不敏感的用户 |
 
 #### 2.3.2 多选模式下的列表状态
 
 ```
 ┌──────────────────────────────────┐
-│  CtxPort 批量选择模式              │  ← 顶部浮动条
+│  Grabber 批量选择模式              │  ← 顶部浮动条
 │  已选 3 个会话  [复制全部] [取消]  │
 ├──────────────────────────────────┤
 │  Today                           │
@@ -306,7 +306,7 @@ Alex 是一位 28-38 岁的全栈开发者，日均在 4-5 个 AI 工具间切�
     │   │
     │   │   合并格式示例：
     │   │   ─────────────────────────────
-    │   │   <!-- CtxPort Context Bundle (3 conversations) -->
+    │   │   <!-- Grabber Context Bundle (3 conversations) -->
     │   │   <!-- Generated: 2026-02-07T14:30:00Z -->
     │   │
     │   │   ---
@@ -390,7 +390,7 @@ Alex 是一位 28-38 岁的全栈开发者，日均在 4-5 个 AI 工具间切�
 │    仅代码块        Cmd+Alt+K │
 │    精简版          Cmd+Alt+M │
 │  ─────────────────────────── │
-│    关于 CtxPort              │
+│    关于 Grabber              │
 └─────────────────────────────┘
 ```
 
@@ -541,25 +541,25 @@ Alex 是一位 28-38 岁的全栈开发者，日均在 4-5 个 AI 工具间切�
 
 ### 3.3 CSS 变量适配策略
 
-CtxPort 注入的所有 UI 元素不使用硬编码颜色，而是继承平台的 CSS 变量：
+Grabber 注入的所有 UI 元素不使用硬编码颜色，而是继承平台的 CSS 变量：
 
 ```css
 /* 通用策略：优先使用平台变量，兜底使用自定义值 */
-.ctxport-btn {
-  color: var(--text-secondary, var(--ctxport-text-secondary, #666));
-  background: var(--surface-primary, var(--ctxport-surface, transparent));
+.grabber-btn {
+  color: var(--text-secondary, var(--grabber-text-secondary, #666));
+  background: var(--surface-primary, var(--grabber-surface, transparent));
 }
 
-.ctxport-btn:hover {
-  color: var(--text-primary, var(--ctxport-text-primary, #333));
+.grabber-btn:hover {
+  color: var(--text-primary, var(--grabber-text-primary, #333));
 }
 
-.ctxport-success {
-  color: var(--green-500, var(--ctxport-success, #22c55e));
+.grabber-success {
+  color: var(--green-500, var(--grabber-success, #22c55e));
 }
 
-.ctxport-warning {
-  color: var(--orange-500, var(--ctxport-warning, #f97316));
+.grabber-warning {
+  color: var(--orange-500, var(--grabber-warning, #f97316));
 }
 ```
 
@@ -697,9 +697,9 @@ CtxPort 注入的所有 UI 元素不使用硬编码颜色，而是继承平台�
 
 ### 5.2 冲突规避
 
-- 所有 CtxPort 快捷键使用 `Cmd/Ctrl + Shift` 前缀，与浏览器原生快捷键（`Cmd/Ctrl` 单独）和平台快捷键（通常无修饰键或仅 `Cmd/Ctrl`）隔离
-- `Cmd/Ctrl + Shift + C` 在 Chrome 中默认打开 DevTools Console——CtxPort 仅在 ChatGPT/Claude 域名下覆盖此快捷键。如果用户需要在这些页面打开 DevTools，可以通过 Chrome 菜单打开或使用 `F12`
-- 如果检测到快捷键冲突，CtxPort 会在首次安装时提示，并允许用户在扩展设置中自定义所有快捷键
+- 所有 Grabber 快捷键使用 `Cmd/Ctrl + Shift` 前缀，与浏览器原生快捷键（`Cmd/Ctrl` 单独）和平台快捷键（通常无修饰键或仅 `Cmd/Ctrl`）隔离
+- `Cmd/Ctrl + Shift + C` 在 Chrome 中默认打开 DevTools Console——Grabber 仅在 ChatGPT/Claude 域名下覆盖此快捷键。如果用户需要在这些页面打开 DevTools，可以通过 Chrome 菜单打开或使用 `F12`
+- 如果检测到快捷键冲突，Grabber 会在首次安装时提示，并允许用户在扩展设置中自定义所有快捷键
 - 可在 Chrome 的 `chrome://extensions/shortcuts` 中配置扩展快捷键
 
 ### 5.3 快捷键可发现性
@@ -756,17 +756,17 @@ CtxPort 注入的所有 UI 元素不使用硬编码颜色，而是继承平台�
 
 **规避**：
 - 首次安装后打开 ChatGPT/Claude 时，复制按钮有一次性的微动画（轻微脉冲 3 次），吸引注意力
-- 首次点击复制后，toast 中显示"CtxPort 已就绪"的一次性欢迎消息
+- 首次点击复制后，toast 中显示"Grabber 已就绪"的一次性欢迎消息
 - 不使用全屏 onboarding、不使用遮罩层引导——开发者讨厌这些
 
 ### 7.2 陷阱：复制按钮与原生按钮混淆
 
-**问题**：用户可能把 CtxPort 的复制按钮误认为是平台原生功能。
+**问题**：用户可能把 Grabber 的复制按钮误认为是平台原生功能。
 
 **规避**：
-- Tooltip 明确标注"(CtxPort)"后缀
+- Tooltip 明确标注"(Grabber)"后缀
 - 复制按钮使用与原生按钮略有区分但风格一致的图标（例如剪贴板图标上带一个微小的外部导出箭头）
-- 成功 toast 中显示"CtxPort"品牌名（轻量级品牌曝光）
+- 成功 toast 中显示"Grabber"品牌名（轻量级品牌曝光）
 
 ### 7.3 陷阱：长会话的复制时间超过 3 秒
 
@@ -820,9 +820,9 @@ CtxPort 注入的所有 UI 元素不使用硬编码颜色，而是继承平台�
 **问题**：用户可能同时安装了 Echoes、ChatClip 等类似扩展，DOM 注入可能冲突。
 
 **规避**：
-- CtxPort 的所有注入元素使用带命名空间的 class（`ctxport-*`）和 id（`ctxport-*`）
-- 注入前检查目标位置是否已有 CtxPort 元素（幂等性）
-- 使用 Shadow DOM 隔离 CtxPort 的样式，避免被其他扩展或平台的 CSS 影响
+- Grabber 的所有注入元素使用带命名空间的 class（`grabber-*`）和 id（`grabber-*`）
+- 注入前检查目标位置是否已有 Grabber 元素（幂等性）
+- 使用 Shadow DOM 隔离 Grabber 的样式，避免被其他扩展或平台的 CSS 影响
 - 不修改或删除原生 DOM 元素，只在旁边注入新元素
 
 ---
@@ -831,14 +831,14 @@ CtxPort 注入的所有 UI 元素不使用硬编码颜色，而是继承平台�
 
 ### 8.1 键盘可达性
 
-- 所有 CtxPort 注入的按钮和 checkbox 都可通过 Tab 键聚焦
+- 所有 Grabber 注入的按钮和 checkbox 都可通过 Tab 键聚焦
 - 聚焦时显示明确的 focus ring（使用平台的 focus 样式）
 - Enter/Space 触发按钮点击
 - 多选模式下的列表项可通过方向键导航
 
 ### 8.2 屏幕阅读器
 
-- 复制按钮的 `aria-label`："Copy conversation as Context Bundle with CtxPort"
+- 复制按钮的 `aria-label`："Copy conversation as Context Bundle with Grabber"
 - 状态变化时使用 `aria-live="polite"` 通知："Copied 24 messages to clipboard"
 - 多选模式的 checkbox 使用正确的 `role="checkbox"` 和 `aria-checked`
 

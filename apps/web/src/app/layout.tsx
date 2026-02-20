@@ -1,4 +1,4 @@
-import { defaultLocale } from "@ctxport/shared-ui/i18n/core";
+import { defaultLocale } from "@grabber/shared-ui/i18n/core";
 import type { Metadata } from "next";
 import { Head } from "nextra/components";
 import "../styles/globals.css";
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     },
   },
   keywords: [
-    "CtxPort",
+    "Grabber",
     "AI conversation copy",
     "context bundle",
     "ChatGPT copy",

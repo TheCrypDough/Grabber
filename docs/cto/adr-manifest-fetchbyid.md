@@ -181,8 +181,8 @@ export function getListItemConfigs(): Array<{
 
 ```typescript
 // BEFORE — 平台耦合
-import { fetchConversationWithTokenRetry } from '@ctxport/core-adapters/adapters/chatgpt/...'
-import { fetchClaudeConversation, extractClaudeOrgId } from '@ctxport/core-adapters/adapters/claude/...'
+import { fetchConversationWithTokenRetry } from '@grabber/core-adapters/adapters/chatgpt/...'
+import { fetchClaudeConversation, extractClaudeOrgId } from '@grabber/core-adapters/adapters/claude/...'
 
 if (provider === 'chatgpt') {
   const data = await fetchConversationWithTokenRetry(convId);
@@ -194,8 +194,8 @@ if (provider === 'chatgpt') {
 }
 
 // AFTER — 平台无关
-import { findAdapterByHostUrl } from '@ctxport/core-adapters/manifest'
-import type { ManifestAdapter } from '@ctxport/core-adapters/manifest'
+import { findAdapterByHostUrl } from '@grabber/core-adapters/manifest'
+import type { ManifestAdapter } from '@grabber/core-adapters/manifest'
 
 const adapter = findAdapterByHostUrl(window.location.href)!;
 const conversation = await adapter.fetchById(conversationId);

@@ -2,7 +2,7 @@
 
 > 调研时间：2026-02-07
 > 调研角色：产品设计（Don Norman 设计哲学视角）
-> 产品代号：CtxPort — AI 时代的剪贴板
+> 产品代号：Grabber — AI 时代的剪贴板
 
 ---
 
@@ -101,7 +101,7 @@ Vibecoding 社区（近 10 万成员）展现了一种独特的行为模式：
 
 **第四层：上下文 = 认知模型**
 - 最深层的理解，上下文是 AI 对用户意图、风格、目标的综合理解
-- 这类用户极少，但他们是最有可能成为 CtxPort 的核心用户
+- 这类用户极少，但他们是最有可能成为 Grabber 的核心用户
 - 存在的需求：可迁移、可编辑、可组合的上下文档案
 
 ### 3.2 心智模型错配（Mental Model Mismatch）
@@ -322,7 +322,7 @@ GDPR、HIPAA、EU AI Act 在 2025 年加速了对 AI 数据管理的监管：
 
 ### 洞察 1：上下文迁移是一个**被忽视的基础设施问题**
 
-每个 AI 平台都在比拼模型能力、context window 大小、工具集成，但**没有人在认真解决上下文的可移植性**。这类似于早期互联网缺乏 HTTP 标准、早期移动端缺乏剪贴板功能的阶段。CtxPort 定位为"AI 时代的剪贴板"精准命中了这个基础设施空白。
+每个 AI 平台都在比拼模型能力、context window 大小、工具集成，但**没有人在认真解决上下文的可移植性**。这类似于早期互联网缺乏 HTTP 标准、早期移动端缺乏剪贴板功能的阶段。Grabber 定位为"AI 时代的剪贴板"精准命中了这个基础设施空白。
 
 ### 洞察 2：信任是第一关
 
@@ -330,7 +330,7 @@ GDPR、HIPAA、EU AI Act 在 2025 年加速了对 AI 数据管理的监管：
 
 ### 洞察 3：痛点有明确的"用户类型梯度"
 
-| 用户类型 | 核心痛点 | CtxPort 价值 |
+| 用户类型 | 核心痛点 | Grabber 价值 |
 |----------|----------|-------------|
 | **Vibecoder（非技术用户）** | "AI 又忘了"，不知道怎么处理 | 一键复制、零配置、所见即所得 |
 | **AI 重度用户（多平台）** | 每天 5+ 次工具切换，每次浪费 15-30 分钟 | 跨平台上下文剪贴板，秒级迁移 |
@@ -344,7 +344,7 @@ GDPR、HIPAA、EU AI Act 在 2025 年加速了对 AI 数据管理的监管：
 - **AI Context Flow**：只覆盖 Web 平台，不覆盖 CLI 工具
 - **ChatGPT 原生导出**：全量、异步、格式不友好
 
-**没有任何一个工具同时解决：Web AI 会话复制 + 代码仓库打包 + CLI 工具互通 + 本地脱敏 + 统一格式**。这就是 CtxPort 的机会。
+**没有任何一个工具同时解决：Web AI 会话复制 + 代码仓库打包 + CLI 工具互通 + 本地脱敏 + 统一格式**。这就是 Grabber 的机会。
 
 ### 洞察 5：**左侧列表一键复制**是一个被忽视的 UX 创新
 
@@ -354,7 +354,7 @@ GDPR、HIPAA、EU AI Act 在 2025 年加速了对 AI 数据管理的监管：
 
 ### 洞察 6：Context Bundle 需要成为"可理解的、可编辑的"格式
 
-Context Bundling 的概念已经在 Medium 上被讨论（"Context as Code"），但现有实现过于技术化（JSON 格式）。CtxPort 的 Context Bundle 格式应该：
+Context Bundling 的概念已经在 Medium 上被讨论（"Context as Code"），但现有实现过于技术化（JSON 格式）。Grabber 的 Context Bundle 格式应该：
 
 - 人类可读（Markdown 优先，辅以结构化元数据）
 - 机器可解析（嵌入 token count、来源标记、时间戳）
@@ -387,4 +387,4 @@ Context Bundling 的概念已经在 Medium 上被讨论（"Context as Code"）�
 
 > "Good design is actually a lot harder to notice than poor design, in part because good designs fit our needs so well that the design is invisible." — Don Norman
 >
-> CtxPort 的终极目标是让上下文迁移变得**不可见**——用户甚至不需要思考"我需要迁移上下文"，它就已经在那里了。
+> Grabber 的终极目标是让上下文迁移变得**不可见**——用户甚至不需要思考"我需要迁移上下文"，它就已经在那里了。

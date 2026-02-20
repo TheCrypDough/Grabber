@@ -11,8 +11,11 @@ INGEST_SCRIPT="$REPO_DIR/scripts/grabber-ingest.sh"
 FIND_SCRIPT="$REPO_DIR/scripts/grabber-find.sh"
 CONTEXT_SCRIPT="$REPO_DIR/scripts/grabber-context.sh"
 CAPTURE_SCRIPT="$REPO_DIR/scripts/grabber-capture.sh"
+HANDOFF_SCRIPT="$REPO_DIR/scripts/grabber-handoff.sh"
+SOURCES_SCRIPT="$REPO_DIR/scripts/grabber-sources.sh"
 SELF_TEST_SCRIPT="$REPO_DIR/scripts/grabber-self-test.sh"
 VALIDATE_SCRIPT="$REPO_DIR/scripts/grabber-validate.sh"
+DOCTOR_SCRIPT="$REPO_DIR/scripts/grabber-doctor.sh"
 
 usage() {
   cat <<'USAGE'
@@ -30,9 +33,12 @@ Commands:
   find       Search archived conversation files
   summary    Generate a structured summary file from one conversation
   code       Extract code blocks from one conversation
+  handoff    Build a single handoff package for agents
+  sources    List canonical source labels (table/json)
   capture    Run a CLI tool, capture transcript, and auto-ingest
   self-test  Run local Grabber smoke test
   validate   Run logged validation pipeline (writes reports/)
+  doctor     Diagnose failures and optionally auto-fix lint issues
   help       Show this help
 USAGE
 }
@@ -88,6 +94,12 @@ case "$cmd" in
   code)
     exec "$CONTEXT_SCRIPT" code "${@:2}"
     ;;
+  handoff)
+    exec "$HANDOFF_SCRIPT" "${@:2}"
+    ;;
+  sources)
+    exec "$SOURCES_SCRIPT" "${@:2}"
+    ;;
   capture)
     exec "$CAPTURE_SCRIPT" "${@:2}"
     ;;
@@ -96,6 +108,9 @@ case "$cmd" in
     ;;
   validate)
     exec "$VALIDATE_SCRIPT" "${@:2}"
+    ;;
+  doctor)
+    exec "$DOCTOR_SCRIPT" "${@:2}"
     ;;
   help|-h|--help)
     usage

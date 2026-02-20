@@ -73,7 +73,6 @@ Output frontmatter example:
 ```yaml
 ---
 grabber: v2
-ctxport: v2
 source: chatgpt
 url: https://chatgpt.com/c/abc123
 title: "Lambda agent routing strategy"
@@ -162,27 +161,29 @@ Primary commands:
 - `grabber clean`
 - `grabber self-test`
 - `grabber validate --full`
+- `grabber doctor --full --auto-fix`
+- `grabber sources`
 - `grabber help`
 
 Archive/automation commands:
 
 - `grabber save`
 - `grabber save "context override"`
+- `grabber save --print-path`
 - `grabber autosave start`
 - `grabber autosave stop`
 - `grabber autosave status`
 - `grabber autosave restart`
 - `grabber ingest --source claude-code --title "auth fix" --input ./session.md`
+- `grabber ingest --source codex-cli --title "session" --input ./session.md --print-path`
 - `grabber find --source gemini --latest 10`
+- `grabber sources --ids`
+- `grabber sources --json`
 - `grabber summary --file ~/convos/<file>.md`
 - `grabber code --file ~/convos/<file>.md`
+- `grabber handoff --file ~/convos/<file>.md`
 - `grabber capture --source claude-code --title "hotfix run" -- claude`
-
-Compatibility aliases are still available:
-
-- `ctxport`
-- `ctxport-save`
-- `ctxport-autosave`
+- `grabber capture --source opencode --title "smoke" --print-path -- opencode`
 
 ## Archive Naming
 
@@ -274,6 +275,8 @@ Find old conversations quickly:
 grabber find --source claude-code --latest 5
 grabber find --contains "oauth refresh token" --date 2026-02-19
 grabber find --source claude-code --include-derived --latest 20
+grabber find --source claude-code --latest 5 --json
+grabber sources --ids
 ```
 
 Generate reusable artifacts:
@@ -281,6 +284,7 @@ Generate reusable artifacts:
 ```bash
 grabber summary --file ~/convos/20260219-132000_claude-code@unknown_lambda-deploy-issue.md
 grabber code --file ~/convos/20260219-132000_claude-code@unknown_lambda-deploy-issue.md
+grabber handoff --file ~/convos/20260219-132000_claude-code@unknown_lambda-deploy-issue.md
 ```
 
 Agent automation pattern:
@@ -288,7 +292,7 @@ Agent automation pattern:
 1. Agent exports/captures transcript text.
 2. Agent runs `grabber ingest ...`.
 3. Agent uses `grabber find ...` for retrieval.
-4. Agent creates handoff with `grabber summary` or `grabber code`.
+4. Agent creates handoff with `grabber handoff`.
 
 ## Security & Privacy
 
@@ -332,7 +336,7 @@ pnpm install
 Build extension only:
 
 ```bash
-pnpm build:ext
+pnpm build:extension
 ```
 
 Typecheck:
@@ -359,12 +363,12 @@ pnpm test
 - For deterministic archives, use `grabber save` in ingestion pipelines.
 - For unattended local capture workflows, run `grabber autosave start`.
 - For auditable health checks and logs, run `grabber validate --full` and inspect `reports/latest`.
+- For guided troubleshooting, run `grabber doctor --full --auto-fix`.
 
-## Rebrand Compatibility Notes
+## Branding Notes
 
-- Internal workspace package scope names still use `@ctxport/*` during transition.
+- Internal workspace package scope names are fully rebranded to `@grabber/*`.
 - User-facing commands are Grabber-first (`grabber ...`).
-- Legacy alias commands (`ctxport*`) remain intentionally for compatibility.
 
 ## Roadmap Direction
 

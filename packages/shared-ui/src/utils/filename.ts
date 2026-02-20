@@ -15,15 +15,15 @@ export interface ExportFilenameOptions {
  * Generate a filename for exported images
  *
  * @example
- * generateExportFilename() // "ctxport-2024-01-31-143022.png"
- * generateExportFilename({ pageNumber: 1, totalPages: 3 }) // "ctxport-2024-01-31-143022-001.png"
+ * generateExportFilename() // "grabber-2024-01-31-143022.png"
+ * generateExportFilename({ pageNumber: 1, totalPages: 3 }) // "grabber-2024-01-31-143022-001.png"
  * generateExportFilename({ prefix: "chatgpt" }) // "chatgpt-2024-01-31-143022.png"
  */
 export function generateExportFilename(
   options: ExportFilenameOptions = {},
 ): string {
   const {
-    prefix = "ctxport",
+    prefix = "grabber",
     pageNumber,
     totalPages,
     extension = "png",
@@ -45,7 +45,7 @@ export function generateExportFilename(
 /**
  * Generate a filename for ZIP archive
  */
-export function generateZipFilename(prefix = "ctxport"): string {
+export function generateZipFilename(prefix = "grabber"): string {
   return generateExportFilename({ prefix, extension: "zip" });
 }
 

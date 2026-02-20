@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const BASE_URL = "https://ctxport.xiaominglab.com";
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://github.com/TheCrypDough/Grabber";
 const locales = ["en", "zh"] as const;
 
 const docPages = [

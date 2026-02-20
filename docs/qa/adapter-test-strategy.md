@@ -679,7 +679,7 @@ function checkSelectors(manifest: AdapterManifest) {
 // 如果 messagesPath 解析到的不是数组，log warning
 if (!Array.isArray(rawMessageList)) {
   console.warn(
-    `[CtxPort] ${this.name}: messagesPath "${parsing.content.messagesPath}" ` +
+    `[Grabber] ${this.name}: messagesPath "${parsing.content.messagesPath}" ` +
     `resolved to ${typeof rawMessageList}, expected array. ` +
     `API response structure may have changed.`
   );

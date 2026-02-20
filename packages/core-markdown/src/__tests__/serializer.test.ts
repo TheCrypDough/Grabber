@@ -1,4 +1,4 @@
-import type { ContentBundle } from "@ctxport/core-schema";
+import type { ContentBundle } from "@grabber/core-schema";
 import { describe, it, expect } from "vitest";
 import { serializeConversation, serializeBundle } from "../serializer";
 
@@ -42,7 +42,7 @@ describe("serializeConversation", () => {
     const result = serializeConversation(bundle);
 
     expect(result.markdown).toContain("---");
-    expect(result.markdown).toContain("ctxport: v2");
+    expect(result.markdown).toContain("grabber: v2");
     expect(result.markdown).toContain("source: chatgpt");
     expect(result.markdown).toContain("title: Test Conversation");
     expect(result.markdown).toContain("## User");
@@ -55,7 +55,7 @@ describe("serializeConversation", () => {
     const bundle = makeBundle();
     const result = serializeConversation(bundle, { includeFrontmatter: false });
 
-    expect(result.markdown).not.toContain("---\nctxport");
+    expect(result.markdown).not.toContain("---\ngrabber");
     expect(result.markdown).toContain("## User");
   });
 
@@ -131,7 +131,7 @@ describe("serializeConversation", () => {
     });
     const result = serializeConversation(bundle);
 
-    expect(result.markdown).toContain("ctxport: v2");
+    expect(result.markdown).toContain("grabber: v2");
     expect(result.markdown).toContain("source: chatgpt");
     expect(result.markdown).not.toContain("url:");
   });

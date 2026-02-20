@@ -1,4 +1,4 @@
-# CtxPort MVP Quality Report
+# Grabber MVP Quality Report
 
 > QA Agent: James Bach | Date: 2026-02-07
 > Method: Code Review + Build Verification + Test Coverage Analysis + Exploratory Heuristics (SFDPOT)
@@ -83,7 +83,7 @@ None.
 
 **m-002: `history.pushState`/`replaceState` monkey-patching not fully restored on cleanup**
 - **File**: `apps/browser-extension/src/entrypoints/content.tsx:65-74`
-- **Problem**: The cleanup correctly restores `pushState` and `replaceState`, but if another extension has also monkey-patched these methods before CtxPort, restoration will break the chain. This is an inherent limitation of monkey-patching.
+- **Problem**: The cleanup correctly restores `pushState` and `replaceState`, but if another extension has also monkey-patched these methods before Grabber, restoration will break the chain. This is an inherent limitation of monkey-patching.
 - **Impact**: Low risk in practice - unlikely to conflict with ChatGPT/Claude's own SPA routing.
 
 **m-003: Context menu positioned at click coordinates without viewport boundary check**
@@ -194,7 +194,7 @@ At no point does data leave the browser. No external fetch calls, no analytics, 
 | ADR-003: DOM injection via native API, floating UI via React Shadow DOM | COMPLIANT |
 | ADR-004: No background tab fallback for list copy | COMPLIANT |
 | ADR-005: Clipboard 3-tier fallback | PARTIAL (2 of 3 tiers implemented; textarea prompt missing) |
-| ADR-006: @ctxport/ namespace | COMPLIANT |
+| ADR-006: @grabber/ namespace | COMPLIANT |
 | ADR-BUNDLE-001: YAML frontmatter | COMPLIANT |
 | ADR-BUNDLE-002: ## User / ## Assistant role markers | COMPLIANT |
 | ADR-BUNDLE-003: ~4 chars/token estimation | COMPLIANT |
@@ -214,7 +214,7 @@ At no point does data leave the browser. No external fetch calls, no analytics, 
 2. **Security posture is excellent**: Zero external network permissions, minimal manifest permissions, no data exfiltration vectors.
 3. **TypeScript usage is solid**: All packages pass strict type checking. Zod schemas provide runtime validation at package boundaries.
 4. **Build toolchain is production-ready**: Turborepo caching, proper dependency ordering (core-schema -> core-adapters + core-markdown -> extension).
-5. **DOM injection pattern is well-designed**: MutationObserver-based with idempotency guards (`data-ctxport-injected`), proper cleanup on unmount.
+5. **DOM injection pattern is well-designed**: MutationObserver-based with idempotency guards (`data-grabber-injected`), proper cleanup on unmount.
 
 ### Risks for Production
 

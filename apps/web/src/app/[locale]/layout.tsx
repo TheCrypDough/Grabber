@@ -1,4 +1,4 @@
-import { locales } from "@ctxport/shared-ui/i18n/core";
+import { locales } from "@grabber/shared-ui/i18n/core";
 import type { ReactNode } from "react";
 
 export async function generateStaticParams() {

@@ -76,7 +76,6 @@ REPORT_FILE="$TMP_ROOT/self-test-report.md"
 mkdir -p "$ARCHIVE_DIR" "$STATE_HOME" "$FIXTURE_DIR"
 
 export GRABBER_ARCHIVE_DIR="$ARCHIVE_DIR"
-export CTXPORT_ARCHIVE_DIR="$ARCHIVE_DIR"
 export XDG_STATE_HOME="$STATE_HOME"
 
 run() {
@@ -106,6 +105,9 @@ run grabber ingest --help >/dev/null
 run grabber capture --help >/dev/null
 run grabber summary --help >/dev/null
 run grabber code --help >/dev/null
+run grabber handoff --help >/dev/null
+run grabber sources >/dev/null
+run grabber sources --json >/dev/null
 
 cat > "$FIXTURE_DIR/cli-session.md" <<'EOF'
 ## User
@@ -133,35 +135,36 @@ if [ -z "$CLAUDE_FILE" ] || [ ! -f "$CLAUDE_FILE" ]; then
   echo "Failed to locate claude-code bundle." >&2
   exit 1
 fi
+run grabber find --source claude-code --latest 1 --json >/dev/null
+
+INGEST_PRINT_PATH="$(cat "$FIXTURE_DIR/ide-session.txt" | grabber ingest --stdin --source codex-cli --title "selftest print path ingest" --print-path)"
+assert_file "$INGEST_PRINT_PATH"
+SAVE_PRINT_PATH="$(cat "$CLAUDE_FILE" | grabber save --from-stdin --print-path "selftest save print path")"
+assert_file "$SAVE_PRINT_PATH"
 
 run grabber summary --file "$CLAUDE_FILE"
 run grabber code --file "$CLAUDE_FILE"
+run grabber handoff --file "$CLAUDE_FILE" >/dev/null
 
 assert_file "${CLAUDE_FILE%.md}.summary.md"
 assert_file "${CLAUDE_FILE%.md}.code.md"
+assert_file "${CLAUDE_FILE%.md}.handoff.md"
 
 run grabber autosave start
 run grabber autosave status >/dev/null
 run grabber autosave stop
 
 if [ "$PROFILE" = "full" ]; then
-  SOURCES=(
-    chatgpt claude gemini deepseek grok github
-    aistudio perplexity kimi genspark poe mistral-chat copilot qwen
-    meta-ai pi-ai you-chat duck-ai groq-chat character-ai huggingchat
-    notebooklm openrouter-chat phind blackbox codex-cloud local-agent-chat
-    claude-code codex-cli opencode cursor antigravity vscode-chat
-    agent-zero openclaw
-  )
-
+  mapfile -t SOURCES < <(grabber sources --ids)
   for source in "${SOURCES[@]}"; do
+    [ -n "$source" ] || continue
     run grabber ingest --source "$source" --title "selftest $source" --input "$FIXTURE_DIR/ide-session.txt"
     run grabber find --source "$source" --latest 1 --paths >/dev/null
   done
 fi
 
 if [ "$RUN_PLUGIN_TESTS" = true ]; then
-  run bash -lc "cd '$REPO_DIR' && pnpm --filter @ctxport/core-plugins test"
+  run bash -lc "cd '$REPO_DIR' && pnpm test:core-plugins"
 fi
 
 if [ "$WITH_EXTENSION_BUILD" = true ]; then
@@ -183,19 +186,20 @@ fi
   echo
   echo "## Pass Criteria"
   echo
-  echo "1. Commands available: \`grabber help/find/ingest/capture/summary/code\`"
+  echo "1. Commands available: \`grabber help/find/ingest/capture/summary/code/handoff\`"
   echo "2. Ingest works from file and stdin"
-  echo "3. Capture creates a saved bundle"
-  echo "4. Summary and code artifacts are generated"
-  echo "5. Autosave start/status/stop works"
+  echo "3. --print-path mode returns valid file paths for ingest/save"
+  echo "4. Capture creates a saved bundle"
+  echo "5. Summary, code, and handoff artifacts are generated"
+  echo "6. Autosave start/status/stop works"
   if [ "$PROFILE" = "full" ]; then
-    echo "6. Additional source matrix ingests and is retrievable via \`grabber find\`"
+    echo "7. Additional source matrix ingests and is retrievable via \`grabber find\`"
   fi
   if [ "$RUN_PLUGIN_TESTS" = true ]; then
-    echo "7. Core plugin URL matching tests pass"
+    echo "8. Core plugin URL matching tests pass"
   fi
   if [ "$WITH_EXTENSION_BUILD" = true ]; then
-    echo "8. Extension build output contains \`manifest.json\`"
+    echo "9. Extension build output contains \`manifest.json\`"
   fi
   echo
   echo "## Archive Files"

@@ -1,16 +1,18 @@
+const DEFAULT_SITE_URL = "https://github.com/TheCrypDough/Grabber";
+
 // ---------- Basic Site Config ----------
 export const siteConfig = {
-  name: "ctxport",
+  name: "Grabber",
   description:
-    "AI Context Bundle for seamless context migration between AI tools.",
-  url: "https://ctxport.xiaominglab.com",
+    "End copy paste time waste for AI conversations across web, CLI, IDE, and agent workflows.",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? DEFAULT_SITE_URL,
   locale: "en_US",
 };
 
 // ---------- GitHub Config ----------
 export const githubConfig = {
-  username: "nicepkg",
-  repo: "ctxport",
+  username: "TheCrypDough",
+  repo: "Grabber",
   get url() {
     return `https://github.com/${this.username}/${this.repo}`;
   },
@@ -24,9 +26,9 @@ export const githubConfig = {
 
 // ---------- Author Config ----------
 export const authorConfig = {
-  name: "Jinming Yang",
-  website: "https://github.com/2214962083",
-  email: "2214962083@qq.com",
+  name: "TheCrypDough",
+  website: githubConfig.url,
+  email: "",
   github: `https://github.com/${githubConfig.username}`,
 };
 
@@ -39,16 +41,16 @@ export const socialLinksConfig = {
   },
   bilibili: {
     label: "Bilibili",
-    href: "https://space.bilibili.com/83540912",
+    href: "",
   },
   douyin: {
     label: "Douyin",
-    href: "https://www.douyin.com/user/79841360454",
-    handle: "葬爱非主流小明",
+    href: "",
+    handle: "",
   },
   twitter: {
     label: "X (Twitter)",
-    href: "https://x.com/jinmingyang666",
+    href: "",
   },
 };
 
@@ -56,11 +58,7 @@ export const socialLinksConfig = {
 export const footerConfig = {
   links: [
     {
-      label: "Jinming Yang",
-      href: authorConfig.website,
-    },
-    {
-      label: githubConfig.username,
+      label: "GitHub",
       href: authorConfig.github,
     },
     {

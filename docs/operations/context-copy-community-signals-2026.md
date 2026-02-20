@@ -1,8 +1,8 @@
-# CtxPort 社区信号调研报告 (2026-02)
+# Grabber 社区信号调研报告 (2026-02)
 
 > 调研时间：2026-02-07
 > 调研范围：Reddit、Hacker News、Twitter/X、GitHub、OpenAI Community、Chrome Web Store、行业文章
-> 目标：发现 copy context 场景下未满足的需求，为 CtxPort 产品方向提供运营依据
+> 目标：发现 copy context 场景下未满足的需求，为 Grabber 产品方向提供运营依据
 
 ---
 
@@ -37,7 +37,7 @@ Chroma Research 2025 年的研究证实：随着输入 context 长度增加，LL
   - [Context Rot: How Increasing Input Tokens Impacts LLM Performance](https://research.trychroma.com/context-rot)
   - [Context Rot: Why AI Gets Worse the Longer You Chat](https://www.producttalk.org/context-rot/)
 
-**CtxPort 机会**：提供"上下文精华提取"功能——不是复制整段对话，而是智能提取决策、结论、关键代码片段，形成干净的 Context Bundle。
+**Grabber 机会**：提供"上下文精华提取"功能——不是复制整段对话，而是智能提取决策、结论、关键代码片段，形成干净的 Context Bundle。
 
 ### 1.3 导出工具频繁失效
 
@@ -52,7 +52,7 @@ Chroma Research 2025 年的研究证实：随着输入 context 长度增加，LL
 
 ### 1.4 安全信任危机——Chrome 扩展偷数据
 
-**痛点等级：高（对 CtxPort 是机会）**
+**痛点等级：高（对 Grabber 是机会）**
 
 2025 年底爆出多起恶意 Chrome 扩展窃取 AI 对话的事件：
 
@@ -62,7 +62,7 @@ Chroma Research 2025 年的研究证实：随着输入 context 长度增加，LL
   - [Chrome Extensions Steal ChatGPT and DeepSeek Conversations](https://www.ox.security/blog/malicious-chrome-extensions-steal-chatgpt-deepseek-conversations/)
   - [8 Million Users' AI Conversations Sold for Profit](https://www.koi.ai/blog/urban-vpn-browser-extension-ai-conversations-data-collection)
 
-**CtxPort 机会**：隐私和安全可以成为核心差异化卖点。开源代码、数据不离开本地、零网络请求——这在当前信任危机下极有价值。
+**Grabber 机会**：隐私和安全可以成为核心差异化卖点。开源代码、数据不离开本地、零网络请求——这在当前信任危机下极有价值。
 
 ---
 
@@ -104,7 +104,7 @@ Chroma Research 2025 年的研究证实：随着输入 context 长度增加，LL
 - Andrej Karpathy 2025 年 6 月正式推动 "context engineering" 取代 "prompt engineering"："context engineering is the delicate art and science of filling the context window with just the right information for the next step"
 - Shopify CEO Tobi Lutke 等科技领袖也公开倡导这一概念
 - MIT Technology Review 将 2025 年定义为"从 vibe coding 到 context engineering"的转折年
-- **含义**：管理和构建上下文本身成为一种专业技能，CtxPort 的定位完全契合这个趋势
+- **含义**：管理和构建上下文本身成为一种专业技能，Grabber 的定位完全契合这个趋势
   - [Karpathy on Context Engineering](https://x.com/karpathy/status/1937902205765607626)
   - [MIT Technology Review: From vibe coding to context engineering](https://www.technologyreview.com/2025/11/05/1127477/from-vibe-coding-to-context-engineering-2025-in-software-development/)
 
@@ -113,7 +113,7 @@ Chroma Research 2025 年的研究证实：随着输入 context 长度增加，LL
 - MCP 从 2024 年 11 月 Anthropic 内部实验发展为行业标准，SDK 月下载量达 9,700 万
 - OpenAI、Google、Microsoft 均已采纳；2025 年 12 月移交 Linux Foundation 治理
 - MCP Registry 已有近 2,000 个 Server 条目，增长率 407%
-- **含义**：MCP 标准化了 AI 工具与外部数据源的连接方式，CtxPort 可以考虑提供 MCP Server，让 AI 工具直接"拉取" Context Bundle
+- **含义**：MCP 标准化了 AI 工具与外部数据源的连接方式，Grabber 可以考虑提供 MCP Server，让 AI 工具直接"拉取" Context Bundle
   - [A Year of MCP: From Internal Experiment to Industry Standard](https://www.pento.ai/blog/a-year-of-mcp-2025-review)
 
 ### 3.3 Vibecoding 群体崛起
@@ -142,7 +142,7 @@ Chroma Research 2025 年的研究证实：随着输入 context 长度增加，LL
 
 ### 4.1 已验证的高痛点场景
 
-| 场景 | 痛苦程度 | 现有解决方案 | CtxPort 机会 |
+| 场景 | 痛苦程度 | 现有解决方案 | Grabber 机会 |
 |------|----------|-------------|-------------|
 | 从 ChatGPT 复制对话到 Claude 继续 | 极高 | 手动复制粘贴，Context Pack | 一键复制为结构化 Markdown |
 | 长对话 context rot 后"带精华开新聊" | 高 | 手动选择性复制 | 智能摘要/精华提取 |
@@ -173,11 +173,11 @@ Chroma Research 2025 年的研究证实：随着输入 context 长度增加，LL
 
 ---
 
-## 五、对 CtxPort 产品方向的运营建议
+## 五、对 Grabber 产品方向的运营建议
 
 ### 5.1 当前阶段判断：Pre-PMF
 
-CtxPort 尚未发布，处于最早期的 pre-PMF 阶段。此阶段最重要的不是"增长"，而是**找到 10 个会反复使用产品的核心用户**。
+Grabber 尚未发布，处于最早期的 pre-PMF 阶段。此阶段最重要的不是"增长"，而是**找到 10 个会反复使用产品的核心用户**。
 
 ### 5.2 最重要的 3 件运营动作
 
@@ -187,7 +187,7 @@ CtxPort 尚未发布，处于最早期的 pre-PMF 阶段。此阶段最重要的
 - Reddit r/ClaudeAI、r/ChatGPT、r/artificial——搜索"export"、"copy conversation"、"context"相关讨论，回复那些在抱怨的人
 - GitHub Issues——pionxzh/chatgpt-exporter 的 issue 区，anthropics/claude-code#18823 等
 - Twitter/X——搜索 "ChatGPT to Claude" OR "copy AI conversation" OR "context engineering"
-- HN——在 context engineering 相关讨论中分享 CtxPort
+- HN——在 context engineering 相关讨论中分享 Grabber
 
 **怎么找：**
 - 不是发广告，而是先回答他们的问题，然后自然提到"我也遇到这个问题，所以做了一个工具"
@@ -196,16 +196,16 @@ CtxPort 尚未发布，处于最早期的 pre-PMF 阶段。此阶段最重要的
 
 #### 动作 2：打造"隐私安全"差异化定位
 
-2025 年底的 Chrome 扩展窃取 AI 对话丑闻创造了一个窗口期。CtxPort 应该：
+2025 年底的 Chrome 扩展窃取 AI 对话丑闻创造了一个窗口期。Grabber 应该：
 - 在产品页面和所有推广中强调：**开源、数据不离开本地、零网络请求**
 - 考虑发布安全审计报告或邀请社区 review 代码
-- 在 Reddit 的安全讨论帖子中植入 CtxPort 作为"安全替代方案"
+- 在 Reddit 的安全讨论帖子中植入 Grabber 作为"安全替代方案"
 
 #### 动作 3：从最痛的场景切入——"ChatGPT ↔ Claude 上下文搬家"
 
 不要试图覆盖所有场景，先做好一个：
 - 场景：用户在 ChatGPT 中和 AI 讨论了一个问题，想把关键上下文带到 Claude 继续
-- 一键操作：点击 CtxPort 按钮 → 对话自动转为结构化 Markdown → 复制到剪贴板 → 粘贴到 Claude
+- 一键操作：点击 Grabber 按钮 → 对话自动转为结构化 Markdown → 复制到剪贴板 → 粘贴到 Claude
 - 验证指标：用户是否在第二天再次使用？
 
 ### 5.3 运营陷阱警告
@@ -213,7 +213,7 @@ CtxPort 尚未发布，处于最早期的 pre-PMF 阶段。此阶段最重要的
 1. **不要过早追求多平台覆盖**：先把 ChatGPT + Claude 做到极致，再扩展到 DeepSeek/Gemini/Grok
 2. **不要被 MCP 概念带偏**：MCP 是好趋势，但当前阶段用户需要的是"简单的复制粘贴"，不是"协议层集成"
 3. **不要追求下载量**：Chrome Web Store 的虚荣指标（安装量）毫无意义，关注"日活跃使用次数"
-4. **不要做"AI 对话管理器"**：Notion、Obsidian 已经在做知识管理，CtxPort 的价值是"流动"不是"存储"
+4. **不要做"AI 对话管理器"**：Notion、Obsidian 已经在做知识管理，Grabber 的价值是"流动"不是"存储"
 
 ### 5.4 可衡量的周目标
 
@@ -235,7 +235,7 @@ CtxPort 尚未发布，处于最早期的 pre-PMF 阶段。此阶段最重要的
 
 ## 六、关键信号总结
 
-> **一句话洞察**：用户不缺 AI 工具，缺的是在 AI 工具之间"搬运上下文"的简单方法。CtxPort 的机会在于成为 AI 时代的"Universal Clipboard"。
+> **一句话洞察**：用户不缺 AI 工具，缺的是在 AI 工具之间"搬运上下文"的简单方法。Grabber 的机会在于成为 AI 时代的"Universal Clipboard"。
 
 **最强社区信号：**
 1. OpenAI 社区多个导出/导入 feature request 长期未解决
@@ -246,4 +246,4 @@ CtxPort 尚未发布，处于最早期的 pre-PMF 阶段。此阶段最重要的
 
 ---
 
-*本报告基于 2026 年 2 月的公开社区讨论和行业报告，用于 CtxPort 产品运营决策参考。*
+*本报告基于 2026 年 2 月的公开社区讨论和行业报告，用于 Grabber 产品运营决策参考。*

@@ -1,4 +1,4 @@
-import type { ContentBundle } from "@ctxport/core-schema";
+import type { ContentBundle } from "@grabber/core-schema";
 
 /** Plugin runtime context */
 export interface PluginContext {

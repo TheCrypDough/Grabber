@@ -11,13 +11,13 @@ import {
   type NavItem,
   I18nProvider,
   useI18n,
-} from "@ctxport/shared-ui";
+} from "@grabber/shared-ui";
 import {
   getLocaleFromPath,
   normalizeLocale,
   stripLocaleFromPath,
   type Locale,
-} from "@ctxport/shared-ui/i18n/core";
+} from "@grabber/shared-ui/i18n/core";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useMemo } from "react";
 import { ThemeProvider } from "~/components/theme-provider";

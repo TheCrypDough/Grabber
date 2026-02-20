@@ -210,7 +210,7 @@ function escapeHtml(str: string): string {
 
 /**
  * Remove Shiki pre background styles so code block background is controlled
- * by ctxport theme tokens consistently in preview/export.
+ * by grabber theme tokens consistently in preview/export.
  */
 function sanitizeShikiHtml(html: string): string {
   return html.replace(

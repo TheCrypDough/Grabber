@@ -25,8 +25,8 @@ concurrency:
 
 env:
   # Project Configuration - Update these values for your project
-  PROJECT_NAME: 'ctxport'
-  SITE_DOMAIN: 'ctxport.xiaominglab.com'
+  PROJECT_NAME: 'grabber'
+  SITE_DOMAIN: 'grabber.thecrypdough.com'
   WEBSITE_DIR: 'apps/web'
   TURBO_TELEMETRY_DISABLED: 1
   TURBO_CACHE_DIR: .turbo
@@ -53,7 +53,7 @@ jobs:
             ${{ runner.os }}-turbo-
 
       - name: Build website with Turbo
-        run: pnpm turbo run build:cf --filter=@ctxport/web
+        run: pnpm turbo run build:cf --filter=@grabber/web
         env:
           NEXT_PUBLIC_SITE_URL: https://${{ env.SITE_DOMAIN }}
           NEXT_PUBLIC_GIT_SHA: ${{ github.sha }}

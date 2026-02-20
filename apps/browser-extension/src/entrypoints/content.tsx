@@ -3,11 +3,11 @@ import "./styles/globals.css";
 import {
   EXTENSION_HOST_PERMISSIONS,
   registerBuiltinPlugins,
-} from "@ctxport/core-plugins";
+} from "@grabber/core-plugins";
 import { createRoot } from "react-dom/client";
 import App from "~/components/app";
 import {
-  CTXPORT_COMPONENT_NAME,
+  GRABBER_COMPONENT_NAME,
   EXTENSION_RUNTIME_MESSAGE,
   EXTENSION_WINDOW_EVENT,
   type ExtensionRuntimeMessageType,
@@ -22,7 +22,7 @@ export default defineContentScript({
     registerBuiltinPlugins();
 
     const ui = await createShadowRootUi(ctx, {
-      name: CTXPORT_COMPONENT_NAME,
+      name: GRABBER_COMPONENT_NAME,
       position: "overlay",
       anchor: "body",
       append: "first",

@@ -35,7 +35,7 @@ const zh: LocaleMessages = {
     "一键复制 AI 对话为结构化 Markdown。支持 ChatGPT、Claude、Gemini、DeepSeek、Grok 和 GitHub。",
 
   // 横幅
-  "web.banner.text": "CtxPort 现已开源！",
+  "web.banner.text": "Grabber 现已开源！",
   "web.banner.linkText": "去 GitHub 给个 Star",
 
   // 文档
@@ -63,8 +63,8 @@ const zh: LocaleMessages = {
 
   // ─── 首页：对比 ───
   "web.home.compare.title": "使用前后对比",
-  "web.home.compare.without": "没有 CtxPort",
-  "web.home.compare.with": "有了 CtxPort",
+  "web.home.compare.without": "没有 Grabber",
+  "web.home.compare.with": "有了 Grabber",
   "web.home.compare.copy.without": "HTML 残留、格式丢失",
   "web.home.compare.copy.with": "一键复制，干净的 Markdown",
   "web.home.compare.migrate.without": "切换 AI 工具要重新输入，上下文全丢",
@@ -144,7 +144,7 @@ const zh: LocaleMessages = {
 
   // ─── 首页：安装指南 ───
   "web.home.install.title": "2 分钟上手",
-  "web.home.install.step1": "去 GitHub Releases 下载 ctxport-chrome-mv3.zip",
+  "web.home.install.step1": "去 GitHub Releases 下载 grabber-chrome-mv3.zip",
   "web.home.install.step2": "解压下载的文件",
   "web.home.install.step3": "打开 Chrome，访问 chrome://extensions",
   "web.home.install.step4": "开启右上角的「开发者模式」",

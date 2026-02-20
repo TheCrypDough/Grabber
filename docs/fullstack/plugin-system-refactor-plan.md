@@ -32,7 +32,7 @@ CTO 说"core-adapters 改名为 core-plugins"。改名意味着：
 - 改所有 import 路径
 - 改 tsconfig references
 
-**太多无谓的改动**。实际上：直接在 `packages/core-adapters` 上改就行了。把里面的代码全换掉，package name 暂时不改（反正是 private 包，没发布）。import 路径 `@ctxport/core-adapters` 全局不用动。等以后真有必要再改名。
+**太多无谓的改动**。实际上：直接在 `packages/core-adapters` 上改就行了。把里面的代码全换掉，package name 暂时不改（反正是 private 包，没发布）。import 路径 `@grabber/core-adapters` 全局不用动。等以后真有必要再改名。
 
 **DHH 原则**：改名是最便宜的重构，但现在没有任何价值。不做。
 
@@ -97,7 +97,7 @@ CTO 方案 theme 用 `fg` 和 `secondaryFg`，现有代码用 `primaryForeground
 
 CTO 方案方向正确，代码示例实用。需要做以下调整：
 
-1. **不改包名**——保持 `@ctxport/core-adapters`，内部代码全换
+1. **不改包名**——保持 `@grabber/core-adapters`，内部代码全换
 2. **injector config 在 core 包，injector 实现在 extension**——和现在一样
 3. **ContentBundle 用纯 interface**——不做 Zod schema
 4. **ChatGPT api-client.ts + manifest.ts 合并为 plugin.ts**——一个文件搞定
@@ -157,7 +157,7 @@ CTO 方案方向正确，代码示例实用。需要做以下调整：
 | `core-markdown/src/serializer.ts` | 重写：serializeConversation -> serializeContentBundle |
 | `core-markdown/src/formats.ts` | 修改：filterMessages 接受 ContentNode[] 而非 Message[] |
 | `core-markdown/src/index.ts` | 更新 exports |
-| `browser-extension/wxt.config.ts` | import 路径从 `@ctxport/core-adapters` 改新 API |
+| `browser-extension/wxt.config.ts` | import 路径从 `@grabber/core-adapters` 改新 API |
 | `browser-extension/src/entrypoints/content.tsx` | registerBuiltinAdapters -> registerBuiltinPlugins |
 | `browser-extension/src/components/app.tsx` | detectManifest -> findPlugin，ManifestInjector -> PluginInjector |
 | `browser-extension/src/hooks/use-copy-conversation.ts` | parseWithAdapters -> plugin.extract() |
@@ -260,7 +260,7 @@ export {
 **新增文件** `packages/core-adapters/src/types.ts`：
 
 ```typescript
-import type { ContentBundle } from "@ctxport/core-schema";
+import type { ContentBundle } from "@grabber/core-schema";
 
 /** Plugin 接收的运行时上下文 */
 export interface PluginContext {
@@ -646,7 +646,7 @@ packages/core-schema/src/
 
 - `serializeConversation()` 改名为 `serializeContentBundle()`
 - 接受 `ContentBundle` 而非 `Conversation`
-- frontmatter 的 `ctxport: "v1"` 改为 `ctxport: "v2"`
+- frontmatter 的 `grabber: "v1"` 改为 `grabber: "v2"`
 - frontmatter 的 `source` 从 `provider` 改为 `platform`
 - frontmatter 的 `messages` 改为 `nodes`
 - 新增 `tags` 字段
@@ -684,15 +684,15 @@ export { estimateTokens, formatTokenCount } from "./token-estimator";
 #### Step 6.1：wxt.config.ts
 
 ```typescript
-import { EXTENSION_HOST_PERMISSIONS } from "@ctxport/core-adapters";
+import { EXTENSION_HOST_PERMISSIONS } from "@grabber/core-adapters";
 // 不变，因为 EXTENSION_HOST_PERMISSIONS 导出名一样
 ```
 
 #### Step 6.2：content.tsx
 
 ```diff
-- import { EXTENSION_CONTENT_MATCHES, registerBuiltinAdapters } from "@ctxport/core-adapters";
-+ import { EXTENSION_HOST_PERMISSIONS, registerBuiltinPlugins } from "@ctxport/core-adapters";
+- import { EXTENSION_CONTENT_MATCHES, registerBuiltinAdapters } from "@grabber/core-adapters";
++ import { EXTENSION_HOST_PERMISSIONS, registerBuiltinPlugins } from "@grabber/core-adapters";
 
   export default defineContentScript({
 -   matches: EXTENSION_CONTENT_MATCHES,
@@ -708,9 +708,9 @@ import { EXTENSION_HOST_PERMISSIONS } from "@ctxport/core-adapters";
 ```diff
 - import { ManifestInjector } from "~/injectors/manifest-injector";
 - import type { PlatformInjector } from "~/injectors/base-injector";
-- import { getRegisteredManifests, type ManifestEntry } from "@ctxport/core-adapters/manifest";
+- import { getRegisteredManifests, type ManifestEntry } from "@grabber/core-adapters/manifest";
 + import { PluginInjector } from "~/injectors/plugin-injector";
-+ import { findPlugin, type Plugin } from "@ctxport/core-adapters";
++ import { findPlugin, type Plugin } from "@grabber/core-adapters";
 
 - function detectManifest(url: string): ManifestEntry | undefined { ... }
 - function isConversationPage(url: string): boolean { ... }
@@ -731,10 +731,10 @@ import { EXTENSION_HOST_PERMISSIONS } from "@ctxport/core-adapters";
 #### Step 6.4：use-copy-conversation.ts
 
 ```diff
-- import { parseWithAdapters, registerBuiltinAdapters } from "@ctxport/core-adapters";
-- import { serializeConversation, type BundleFormatType } from "@ctxport/core-markdown";
-+ import { findPlugin } from "@ctxport/core-adapters";
-+ import { serializeContentBundle, type BundleFormatType } from "@ctxport/core-markdown";
+- import { parseWithAdapters, registerBuiltinAdapters } from "@grabber/core-adapters";
+- import { serializeConversation, type BundleFormatType } from "@grabber/core-markdown";
++ import { findPlugin } from "@grabber/core-adapters";
++ import { serializeContentBundle, type BundleFormatType } from "@grabber/core-markdown";
 
 - const parseResult = await parseWithAdapters({ type: "ext", document, url: window.location.href });
 - const serialized = serializeConversation(parseResult.conversation, { format });
@@ -747,10 +747,10 @@ import { EXTENSION_HOST_PERMISSIONS } from "@ctxport/core-adapters";
 #### Step 6.5：list-copy-icon.tsx
 
 ```diff
-- import { findAdapterByHostUrl } from "@ctxport/core-adapters/manifest";
-- import { serializeConversation } from "@ctxport/core-markdown";
-+ import { findPlugin } from "@ctxport/core-adapters";
-+ import { serializeContentBundle } from "@ctxport/core-markdown";
+- import { findAdapterByHostUrl } from "@grabber/core-adapters/manifest";
+- import { serializeConversation } from "@grabber/core-markdown";
++ import { findPlugin } from "@grabber/core-adapters";
++ import { serializeContentBundle } from "@grabber/core-markdown";
 
 - const adapter = findAdapterByHostUrl(window.location.href);
 - if (!adapter) throw new Error("No adapter found");
@@ -765,12 +765,12 @@ import { EXTENSION_HOST_PERMISSIONS } from "@ctxport/core-adapters";
 #### Step 6.6：use-batch-mode.ts
 
 ```diff
-- import { findAdapterByHostUrl } from "@ctxport/core-adapters/manifest";
-- import { serializeBundle } from "@ctxport/core-markdown";
-- import type { Conversation } from "@ctxport/core-schema";
-+ import { findPlugin } from "@ctxport/core-adapters";
-+ import { serializeContentBundles } from "@ctxport/core-markdown";
-+ import type { ContentBundle } from "@ctxport/core-schema";
+- import { findAdapterByHostUrl } from "@grabber/core-adapters/manifest";
+- import { serializeBundle } from "@grabber/core-markdown";
+- import type { Conversation } from "@grabber/core-schema";
++ import { findPlugin } from "@grabber/core-adapters";
++ import { serializeContentBundles } from "@grabber/core-markdown";
++ import type { ContentBundle } from "@grabber/core-schema";
 
 - const adapter = findAdapterByHostUrl(window.location.href);
 - const conversations: Conversation[] = [];
@@ -790,17 +790,17 @@ import { EXTENSION_HOST_PERMISSIONS } from "@ctxport/core-adapters";
 文件改名。内部改动很小：
 
 ```diff
-- import type { AdapterManifest } from "@ctxport/core-adapters/manifest";
-+ import type { Plugin } from "@ctxport/core-adapters";
+- import type { AdapterManifest } from "@grabber/core-adapters/manifest";
++ import type { Plugin } from "@grabber/core-adapters";
 
 - export class ManifestInjector implements PlatformInjector {
 + export class PluginInjector implements PlatformInjector {
 -   constructor(private readonly manifest: AdapterManifest) {
 -     this.platform = manifest.provider;
--     this.copyBtnClass = `ctxport-${manifest.provider}-copy-btn`;
+-     this.copyBtnClass = `grabber-${manifest.provider}-copy-btn`;
 +   constructor(private readonly plugin: Plugin) {
 +     this.platform = plugin.id;
-+     this.copyBtnClass = `ctxport-${plugin.id}-copy-btn`;
++     this.copyBtnClass = `grabber-${plugin.id}-copy-btn`;
 
 -   const { selectors, position } = this.manifest.injection.copyButton;
 +   const injection = this.plugin.injection;
@@ -908,7 +908,7 @@ apps/browser-extension/src/
 
 4. **序列化器 filterMessages() 参数变化** — 从 `Message[]` 变为 `ContentNode[]`。字段映射：`msg.role` -> `participantMap.get(node.participantId)?.role`，`msg.contentMarkdown` -> `node.content`。需要仔细对齐。风险：中。
 
-5. **Extension import 路径** — 所有 `@ctxport/core-adapters/manifest` 子路径导入要改为 `@ctxport/core-adapters`。全局搜索替换。风险：低。
+5. **Extension import 路径** — 所有 `@grabber/core-adapters/manifest` 子路径导入要改为 `@grabber/core-adapters`。全局搜索替换。风险：低。
 
 ### 4.2 测试策略
 

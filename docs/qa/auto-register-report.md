@@ -18,7 +18,7 @@ One benign comment in `index.ts:23` mentions "extension-sites.ts" for historical
 
 ## 4. Extension Consumer Verification -- PASS
 
-Three consumer files correctly import from `@ctxport/core-adapters`:
+Three consumer files correctly import from `@grabber/core-adapters`:
 - `content.tsx`: `EXTENSION_CONTENT_MATCHES`, `registerBuiltinAdapters`
 - `extension-runtime.ts`: `EXTENSION_HOST_PATTERNS`
 - `use-copy-conversation.ts`: `parseWithAdapters`, `registerBuiltinAdapters`

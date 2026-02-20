@@ -1,5 +1,5 @@
-import type { ContentBundle } from "@ctxport/core-schema";
-import { createAppError } from "@ctxport/core-schema";
+import type { ContentBundle } from "@grabber/core-schema";
+import { createAppError } from "@grabber/core-schema";
 import type {
   InjectorCallbacks,
   Plugin,
@@ -17,11 +17,11 @@ const HOST_PATTERN = /^https:\/\/grok\.com\//i;
 const CONVERSATION_PATTERN = /^https?:\/\/grok\.com\/c\/([a-zA-Z0-9-]+)/;
 const API_BASE = "https://grok.com/rest/app-chat/conversations";
 
-const CTXPORT_ATTR = "data-ctxport-injected";
+const GRABBER_ATTR = "data-grabber-injected";
 const INJECTION_DELAY_MS = 2000;
-const COPY_BTN_CLASS = "ctxport-grok-copy-btn";
-const LIST_ICON_CLASS = "ctxport-grok-list-icon";
-const FLOATING_BTN_ID = "ctxport-grok-floating-copy";
+const COPY_BTN_CLASS = "grabber-grok-copy-btn";
+const LIST_ICON_CLASS = "grabber-grok-list-icon";
+const FLOATING_BTN_ID = "grabber-grok-floating-copy";
 
 export const grokPlugin: Plugin = {
   id: "grok",
@@ -100,7 +100,7 @@ function createGrokInjector(): PluginInjector {
     const links =
       document.querySelectorAll<HTMLAnchorElement>('a[href*="/c/"]');
     for (const link of links) {
-      if (link.getAttribute(CTXPORT_ATTR) === "list-icon") continue;
+      if (link.getAttribute(GRABBER_ATTR) === "list-icon") continue;
 
       const href = link.getAttribute("href");
       if (!href) continue;
@@ -109,7 +109,7 @@ function createGrokInjector(): PluginInjector {
       if (!id) continue;
 
       const container = document.createElement("div");
-      container.id = `ctxport-list-icon-${id}`;
+      container.id = `grabber-list-icon-${id}`;
       container.className = LIST_ICON_CLASS;
       container.style.cssText = [
         "display: inline-flex",
@@ -147,7 +147,7 @@ function createGrokInjector(): PluginInjector {
         });
       }
 
-      link.setAttribute(CTXPORT_ATTR, "list-icon");
+      link.setAttribute(GRABBER_ATTR, "list-icon");
       callbacks.renderListIcon(container, id);
     }
   }

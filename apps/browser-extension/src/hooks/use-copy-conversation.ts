@@ -1,8 +1,8 @@
 import {
   serializeConversation,
   type BundleFormatType,
-} from "@ctxport/core-markdown";
-import { findPlugin } from "@ctxport/core-plugins";
+} from "@grabber/core-markdown";
+import { findPlugin } from "@grabber/core-plugins";
 import { useState, useCallback } from "react";
 import { saveMarkdown, writeToClipboard } from "~/lib/utils";
 

@@ -1,4 +1,4 @@
-import type { BundleFormatType } from "@ctxport/core-markdown";
+import type { BundleFormatType } from "@grabber/core-markdown";
 import { useState, useEffect, useRef } from "react";
 
 interface ContextMenuProps {

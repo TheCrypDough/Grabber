@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-SAVE_SCRIPT="${GRABBER_SAVE_SCRIPT:-${CTXPORT_SAVE_SCRIPT:-$HOME/Github Repositories/Grabber/scripts/grabber-save.sh}}"
-POLL_SECONDS="${GRABBER_AUTOSAVE_POLL_SECONDS:-${CTXPORT_AUTOSAVE_POLL_SECONDS:-2}}"
+SAVE_SCRIPT="${GRABBER_SAVE_SCRIPT:-$HOME/Github Repositories/Grabber/scripts/grabber-save.sh}"
+POLL_SECONDS="${GRABBER_AUTOSAVE_POLL_SECONDS:-2}"
 STATE_ROOT="${XDG_STATE_HOME:-$HOME/.local/state}"
 STATE_DIR="$STATE_ROOT/grabber"
 PID_FILE="$STATE_DIR/autosave.pid"
@@ -87,7 +87,7 @@ hash_text() {
 
 is_grabber_content() {
   local text="$1"
-  printf "%s\n" "$text" | head -n 40 | grep -Eq '^(ctxport|grabber):[[:space:]]*v2$'
+  printf "%s\n" "$text" | head -n 40 | grep -Eq '^grabber:[[:space:]]*v2$'
 }
 
 save_if_grabber() {
@@ -195,7 +195,7 @@ case "$command" in
       exit 1
     fi
     if ! save_if_grabber "$content"; then
-      echo "Clipboard does not look like Grabber content (grabber/ctxport: v2 not found)"
+      echo "Clipboard does not look like Grabber content (grabber: v2 not found)"
       exit 1
     fi
     ;;

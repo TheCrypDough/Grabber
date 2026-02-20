@@ -14,7 +14,7 @@
 | 测试验证 | PASS | core-markdown 19/19, 其余 passWithNoTests |
 | 旧代码清理 | PASS (有残留，非阻塞) | 源码无残留 import; 配置文件和文档有残留引用 |
 | 新代码完整性 | PASS | Plugin 接口、Registry、ChatGPT/Claude 核心逻辑完整 |
-| Extension 集成 | PASS | 所有文件已迁移至 `@ctxport/core-plugins` API |
+| Extension 集成 | PASS | 所有文件已迁移至 `@grabber/core-plugins` API |
 
 **最终判定: PASS -- 可以合并**
 
@@ -28,10 +28,10 @@ pnpm build → turbo run build → 4 packages, 4 successful
 
 | 包 | 结果 | 产物 |
 |----|------|------|
-| @ctxport/core-schema | PASS | ESM + DTS |
-| @ctxport/core-plugins | PASS | 24 个 entry points, ESM + DTS |
-| @ctxport/core-markdown | PASS | ESM + DTS |
-| @ctxport/extension | PASS | chrome-mv3, 626.81 KB total |
+| @grabber/core-schema | PASS | ESM + DTS |
+| @grabber/core-plugins | PASS | 24 个 entry points, ESM + DTS |
+| @grabber/core-markdown | PASS | ESM + DTS |
+| @grabber/extension | PASS | chrome-mv3, 626.81 KB total |
 
 **注意**: core-plugins 构建产出 4 个 "Generated an empty chunk: types" 警告。这是因为 `types.ts` 文件只导出 TypeScript 类型（编译后为空），属于正常行为，不影响功能。
 
@@ -66,7 +66,7 @@ ls packages/core-adapters/ → No such file or directory
 
 ### 3.2 源码中的 `core-adapters` import
 
-在所有 `.ts/.tsx` 源码文件中搜索 `from '@ctxport/core-adapters` 或 `from "@ctxport/core-adapters`：
+在所有 `.ts/.tsx` 源码文件中搜索 `from '@grabber/core-adapters` 或 `from "@grabber/core-adapters`：
 
 ```
 结果: 0 matches
@@ -191,7 +191,7 @@ packages/core-plugins/src/
 - 配置化注入：copyButtonSelectors, listItemLinkSelector, listItemIdPattern, mainContentSelector, sidebarSelector
 - MutationObserver 监听 DOM 变化自动注入
 - debounced observer callback 防止过频触发
-- `data-ctxport-injected` 属性防重复注入
+- `data-grabber-injected` 属性防重复注入
 - cleanup() 方法完整清理 observer、timer、DOM 元素
 
 ---
@@ -202,16 +202,16 @@ packages/core-plugins/src/
 
 | Extension 文件 | import 来源 | 使用的 API | 状态 |
 |----------------|-------------|------------|------|
-| `wxt.config.ts` | `@ctxport/core-plugins` | `EXTENSION_HOST_PERMISSIONS` | OK |
-| `content.tsx` | `@ctxport/core-plugins` | `EXTENSION_HOST_PERMISSIONS`, `registerBuiltinPlugins` | OK |
-| `extension-runtime.ts` | `@ctxport/core-plugins` | `getAllPlugins` | OK |
-| `app.tsx` | `@ctxport/core-plugins` | `findPlugin`, `type Plugin` | OK |
-| `use-copy-conversation.ts` | `@ctxport/core-plugins` | `findPlugin` | OK |
-| `list-copy-icon.tsx` | `@ctxport/core-plugins` | `findPlugin` | OK |
-| `use-batch-mode.ts` | `@ctxport/core-plugins` | `findPlugin` | OK |
+| `wxt.config.ts` | `@grabber/core-plugins` | `EXTENSION_HOST_PERMISSIONS` | OK |
+| `content.tsx` | `@grabber/core-plugins` | `EXTENSION_HOST_PERMISSIONS`, `registerBuiltinPlugins` | OK |
+| `extension-runtime.ts` | `@grabber/core-plugins` | `getAllPlugins` | OK |
+| `app.tsx` | `@grabber/core-plugins` | `findPlugin`, `type Plugin` | OK |
+| `use-copy-conversation.ts` | `@grabber/core-plugins` | `findPlugin` | OK |
+| `list-copy-icon.tsx` | `@grabber/core-plugins` | `findPlugin` | OK |
+| `use-batch-mode.ts` | `@grabber/core-plugins` | `findPlugin` | OK |
 | `background.ts` | (间接) via `extension-runtime.ts` | `isSupportedTabUrl` | OK |
 
-所有 extension 文件均已从 `@ctxport/core-adapters` 迁移到 `@ctxport/core-plugins`。无残留旧 import。
+所有 extension 文件均已从 `@grabber/core-adapters` 迁移到 `@grabber/core-plugins`。无残留旧 import。
 
 ### 5.2 host_permissions 验证
 

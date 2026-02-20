@@ -1,4 +1,4 @@
-# CtxPort 冷启动与早期用户获取计划
+# Grabber 冷启动与早期用户获取计划
 
 > 版本：v1.0 | 日期：2026-02-07
 > 作者：Operations Agent (Paul Graham 思维模型)
@@ -65,7 +65,7 @@
 2. **第一篇内容**
    - 写一篇技术文章："为什么你不应该信任 AI Chat 导出扩展"
    - 不推销产品。只讲 2025 年 12 月安全事件的技术分析，解释为什么"零上传"架构才是正确的
-   - 文末自然提到 CtxPort 作为一个实践这种理念的项目
+   - 文末自然提到 Grabber 作为一个实践这种理念的项目
    - 发到 Dev.to 或个人博客，在 Hacker News 提交
 
 3. **OpenAI / Anthropic 开发者社区**
@@ -124,7 +124,7 @@
 
 HN 用户和 PH 用户不同：
 - HN 关注技术、安全、隐私
-- 标题要朴实无华："Show HN: CtxPort — Copy AI conversations as structured Markdown (zero upload, open source)"
+- 标题要朴实无华："Show HN: Grabber — Copy AI conversations as structured Markdown (zero upload, open source)"
 - 准备好回答技术细节：DOM 解析策略、Manifest V3 限制、Adapter 架构
 - **核心卖点是开源 + 零上传，不是功能多。** HN 用户对花哨功能免疫，对安全和简洁很敏感
 
@@ -133,23 +133,23 @@ HN 用户和 PH 用户不同：
 不需要投入大量精力，但要把基础做好：
 - Chrome Web Store listing 优化关键词：`AI chat export`, `ChatGPT copy conversation`, `Claude export markdown`, `context bundle`, `AI context`
 - GitHub README 写清楚，包含关键词
-- 确保 `ctxport.com`（或对应域名）有一个简单的 landing page
+- 确保 `grabber.com`（或对应域名）有一个简单的 landing page
 
 ### 1.3 第 61-90 天：从 1000 到 3000（验证 PMF）
 
 **目标：3000+ installs, 1000+ WAU, 40%+ 7-day retention**
 
-到这一步，你要回答的终极问题是：**如果明天 CtxPort 消失了，用户会不会很失望？**
+到这一步，你要回答的终极问题是：**如果明天 Grabber 消失了，用户会不会很失望？**
 
-Sean Ellis 测试：向活跃用户发一份问卷，问"如果你不能再使用 CtxPort，你会有多失望？"如果 > 40% 回答"非常失望"，你有 PMF。
+Sean Ellis 测试：向活跃用户发一份问卷，问"如果你不能再使用 Grabber，你会有多失望？"如果 > 40% 回答"非常失望"，你有 PMF。
 
 #### 增长引擎切换
 
 从手动获客逐步切换到渠道增长：
 
 1. **口碑引擎**
-   - 在复制成功的 toast 提示中加一行："Love CtxPort? Share it with your team"
-   - 生成的 Markdown Bundle 底部加一行不显眼的注释：`<!-- Exported with CtxPort — https://ctxport.com -->`（用户粘贴给同事时自然传播）
+   - 在复制成功的 toast 提示中加一行："Love Grabber? Share it with your team"
+   - 生成的 Markdown Bundle 底部加一行不显眼的注释：`<!-- Exported with Grabber — https://grabber.com -->`（用户粘贴给同事时自然传播）
    - 鼓励用户在 Chrome Web Store 写评价
 
 2. **内容引擎**
@@ -162,7 +162,7 @@ Sean Ellis 测试：向活跃用户发一份问卷，问"如果你不能再使�
 
 3. **社区合作**
    - 与 Repomix、Cursor 社区建立关系（不是竞争，是互补）
-   - "Repomix 帮你打包代码给 AI，CtxPort 帮你打包对话给 AI"
+   - "Repomix 帮你打包代码给 AI，Grabber 帮你打包对话给 AI"
    - 探索集成机会
 
 #### 关键决策点
@@ -221,7 +221,7 @@ Sean Ellis 测试：向活跃用户发一份问卷，问"如果你不能再使�
 - 不要 gaming 投票（HN 的反作弊很严格）
 
 **预计发帖 2-3 次：**
-1. Show HN: CtxPort 发布（第 50-55 天）
+1. Show HN: Grabber 发布（第 50-55 天）
 2. 技术文章：浏览器扩展安全审计（第 70-80 天）
 3. 如果有重大更新或里程碑，再发一次
 
@@ -234,7 +234,7 @@ Sean Ellis 测试：向活跃用户发一份问卷，问"如果你不能再使�
 | 类型 | 频率 | 示例 |
 |------|------|------|
 | 开发进展 | 每周 1-2 条 | "本周新增 Claude 批量复制，前 50 个用户中 35% 使用了这个功能" |
-| 用户故事 | 每周 1 条 | "昨天一个用户告诉我，CtxPort 每天帮他省 20 分钟" |
+| 用户故事 | 每周 1 条 | "昨天一个用户告诉我，Grabber 每天帮他省 20 分钟" |
 | 行业观察 | 每周 1 条 | 回复 context engineering 相关讨论，分享自己的见解 |
 | 真实数据 | 每两周 1 条 | "Week 4: 87 installs, 32 WAU, 7-day retention 38%" |
 
@@ -293,10 +293,10 @@ Sean Ellis 测试：向活跃用户发一份问卷，问"如果你不能再使�
 
 #### 使用习惯层
 
-让 CtxPort 融入用户的日常工作流：
+让 Grabber 融入用户的日常工作流：
 
 1. **左侧列表复制按钮是关键**
-   - 它让 CtxPort 在用户每次打开 ChatGPT/Claude 时都可见
+   - 它让 Grabber 在用户每次打开 ChatGPT/Claude 时都可见
    - 不需要用户"想起来要用"——它就在那里
    - 数据验证：如果列表复制占比 > 30%，说明用户已形成习惯
 
@@ -310,9 +310,9 @@ Sean Ellis 测试：向活跃用户发一份问卷，问"如果你不能再使�
 
 #### 回到产品的理由
 
-1. **每次平台切换就需要 CtxPort**
+1. **每次平台切换就需要 Grabber**
    - 产品的天然使用频率取决于用户的工具切换频率
-   - 目标用户每天切换 2+ 次 = 每天使用 CtxPort 2+ 次
+   - 目标用户每天切换 2+ 次 = 每天使用 Grabber 2+ 次
    - 如果用户每周使用 5+ 次，留存自然就高
 
 2. **Version Update 通知**
@@ -347,7 +347,7 @@ Sean Ellis 测试：向活跃用户发一份问卷，问"如果你不能再使�
 3. **NPS 调查**
    - 第 14 天向用户展示一次 NPS 问卷
    - 只问两个问题：
-     - "0-10 你有多大可能推荐 CtxPort？"
+     - "0-10 你有多大可能推荐 Grabber？"
      - "为什么？"（开放文本）
    - **绝对不要频繁弹窗。** 一个用户只弹一次
 
@@ -358,7 +358,7 @@ Sean Ellis 测试：向活跃用户发一份问卷，问"如果你不能再使�
 | GitHub Issues | Bug 报告和功能请求 | 每天检查，24 小时内回复 |
 | GitHub Discussions | 开放讨论和建议 | 每天检查 |
 | Chrome Web Store Reviews | 公开评价和评分 | 每条评价都回复 |
-| 邮件 (support@ctxport.com) | 私密反馈 | 24 小时内回复 |
+| 邮件 (support@grabber.com) | 私密反馈 | 24 小时内回复 |
 
 #### 反馈处理流程
 
@@ -405,7 +405,7 @@ Sean Ellis 测试：向活跃用户发一份问卷，问"如果你不能再使�
 #### 付费转化触发点
 
 1. **使用量驱动**
-   - 当用户累计复制 > 20 次时，在 toast 中温和提示："已成为 CtxPort 高频用户！Pro 版批量复制可以让你更高效"
+   - 当用户累计复制 > 20 次时，在 toast 中温和提示："已成为 Grabber 高频用户！Pro 版批量复制可以让你更高效"
    - 不阻断操作，不强制弹窗
 
 2. **功能驱动**

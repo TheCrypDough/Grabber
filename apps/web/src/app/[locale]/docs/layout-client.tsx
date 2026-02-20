@@ -5,9 +5,9 @@ import {
   BilibiliIcon,
   DouyinIcon,
   XIcon,
-} from "@ctxport/shared-ui/components/common";
-import { SiteFooter } from "@ctxport/shared-ui/components/layout";
-import { createTranslator, localeOptions } from "@ctxport/shared-ui/i18n/core";
+} from "@grabber/shared-ui/components/common";
+import { SiteFooter } from "@grabber/shared-ui/components/layout";
+import { createTranslator, localeOptions } from "@grabber/shared-ui/i18n/core";
 import Link from "next/link";
 import type { PageMapItem } from "nextra";
 import { Banner } from "nextra/components";

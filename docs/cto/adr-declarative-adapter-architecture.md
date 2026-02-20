@@ -2,7 +2,7 @@
 
 > 版本：v1.0 | 日期：2026-02-07
 > 方法论：Werner Vogels — Everything Fails, API First, Boring Technology
-> 前置文档：ADR MVP 架构 (docs/cto/adr-ctxport-mvp-architecture.md)
+> 前置文档：ADR MVP 架构 (docs/cto/adr-grabber-mvp-architecture.md)
 
 ---
 
@@ -10,7 +10,7 @@
 
 ### 现状
 
-CtxPort MVP 已完成验收，支持 ChatGPT 和 Claude 两个平台。但当前的 adapter 和 injector 实现存在严重的代码耦合问题：
+Grabber MVP 已完成验收，支持 ChatGPT 和 Claude 两个平台。但当前的 adapter 和 injector 实现存在严重的代码耦合问题：
 
 1. **ChatGPTExtAdapter 和 ClaudeExtAdapter** 硬编码了 API 端点、URL 模式、认证逻辑、会话 ID 提取规则
 2. **ChatGPTInjector 和 ClaudeInjector** 硬编码了 CSS 选择器、DOM 结构假设、hover 行为
@@ -285,7 +285,7 @@ export type AdapterManifest = z.infer<typeof AdapterManifestSchema>;
   - 可以直接使用 `RegExp` 字面量，不需要从字符串反序列化正则
   - 钩子函数可以在同一文件中 co-locate，不需要额外的关联机制
   - 构建时 tree-shaking 可以排除未使用的平台
-- **取舍**：非开发者无法直接编辑 JSON 配置文件来添加新平台，但 CtxPort 的目标贡献者是开发者，这不是问题
+- **取舍**：非开发者无法直接编辑 JSON 配置文件来添加新平台，但 Grabber 的目标贡献者是开发者，这不是问题
 
 **ADR-MANIFEST-002：URL 模板使用简单字符串替换而非模板引擎**
 
@@ -454,8 +454,8 @@ import type {
   Conversation,
   ExtInput,
   Provider,
-} from "@ctxport/core-schema";
-import { createAppError } from "@ctxport/core-schema";
+} from "@grabber/core-schema";
+import { createAppError } from "@grabber/core-schema";
 import { buildConversation, type RawMessage } from "../base";
 import type { AdapterManifest } from "./schema";
 import type { AdapterHooks, HookContext } from "./hooks";
@@ -816,7 +816,7 @@ export class ManifestAdapter implements Adapter {
 ```typescript
 // apps/browser-extension/src/injectors/manifest-injector.ts
 
-import type { AdapterManifest } from "@ctxport/core-adapters/manifest/schema";
+import type { AdapterManifest } from "@grabber/core-adapters/manifest/schema";
 import {
   type PlatformInjector,
   markInjected,
@@ -849,9 +849,9 @@ export class ManifestInjector implements PlatformInjector {
 
   constructor(private readonly manifest: AdapterManifest) {
     this.platform = manifest.provider;
-    this.copyBtnClass = `ctxport-${manifest.provider}-copy-btn`;
-    this.listIconClass = `ctxport-${manifest.provider}-list-icon`;
-    this.batchCbClass = `ctxport-${manifest.provider}-batch-cb`;
+    this.copyBtnClass = `grabber-${manifest.provider}-copy-btn`;
+    this.listIconClass = `grabber-${manifest.provider}-list-icon`;
+    this.batchCbClass = `grabber-${manifest.provider}-batch-cb`;
   }
 
   injectCopyButton(renderButton: (container: HTMLElement) => void): void {
@@ -883,7 +883,7 @@ export class ManifestInjector implements PlatformInjector {
     for (const selector of selectors) {
       const target = document.querySelector<HTMLElement>(selector);
       if (target && !isInjected(target, "copy-btn")) {
-        const container = createContainer(`ctxport-copy-btn-${Date.now()}`);
+        const container = createContainer(`grabber-copy-btn-${Date.now()}`);
         container.className = this.copyBtnClass;
 
         switch (position) {
@@ -949,7 +949,7 @@ export class ManifestInjector implements PlatformInjector {
       const id = match?.[1];
       if (!id) continue;
 
-      const container = createContainer(`ctxport-list-icon-${id}`);
+      const container = createContainer(`grabber-list-icon-${id}`);
       container.className = this.listIconClass;
       container.style.position = "absolute";
       container.style.right = "36px";
@@ -1017,7 +1017,7 @@ export class ManifestInjector implements PlatformInjector {
       const id = match?.[1];
       if (!id) continue;
 
-      const container = createContainer(`ctxport-batch-cb-${id}`);
+      const container = createContainer(`grabber-batch-cb-${id}`);
       container.className = this.batchCbClass;
       container.style.marginRight = "4px";
       container.style.flexShrink = "0";
@@ -1035,8 +1035,8 @@ export class ManifestInjector implements PlatformInjector {
       listItem.linkSelector,
     );
     for (const link of links) {
-      if (link.getAttribute("data-ctxport-injected") === "batch-cb") {
-        link.removeAttribute("data-ctxport-injected");
+      if (link.getAttribute("data-grabber-injected") === "batch-cb") {
+        link.removeAttribute("data-grabber-injected");
       }
     }
   }
@@ -1564,7 +1564,7 @@ export const perplexityManifest = {
 ```typescript
 // apps/browser-extension/src/components/app.tsx（迁移后）
 
-import { getRegisteredManifests } from "@ctxport/core-adapters/manifest/registry";
+import { getRegisteredManifests } from "@grabber/core-adapters/manifest/registry";
 import { ManifestInjector } from "~/injectors/manifest-injector";
 
 function detectManifest(url: string) {

@@ -1,4 +1,4 @@
-import type { ContentNode, Participant } from "@ctxport/core-schema";
+import type { ContentNode, Participant } from "@grabber/core-schema";
 import { describe, it, expect } from "vitest";
 import { filterNodes } from "../formats";
 

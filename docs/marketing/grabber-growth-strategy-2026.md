@@ -1,4 +1,4 @@
-# CtxPort Growth Strategy 2026 — From 0 to 1000 Stars
+# Grabber Growth Strategy 2026 — From 0 to 1000 Stars
 
 > Version: v1.0 | Date: 2026-02-07
 > Author: Marketing Agent (Seth Godin)
@@ -8,19 +8,19 @@
 
 ## 0. Strategic Context
 
-CtxPort is at Day 0. Zero stars, zero users. The good news: every great product started here.
+Grabber is at Day 0. Zero stars, zero users. The good news: every great product started here.
 
 The bad news: there are hundreds of "AI chat exporter" extensions. Most of them are invisible because they're unremarkable. They copy the conversation, export it as a file, and call it a day.
 
-**CtxPort's job is not to be "another AI exporter." It's to be the one people can't stop talking about.**
+**Grabber's job is not to be "another AI exporter." It's to be the one people can't stop talking about.**
 
 The strategy below is built on one principle: **earn attention, don't buy it.** Every action is designed to create organic word-of-mouth. There is zero paid advertising in this plan.
 
 ---
 
-## 1. The Purple Cow: What Makes CtxPort Worth Talking About
+## 1. The Purple Cow: What Makes Grabber Worth Talking About
 
-Before any growth tactic, we need clarity on why anyone would tell a friend about CtxPort. Three reasons:
+Before any growth tactic, we need clarity on why anyone would tell a friend about Grabber. Three reasons:
 
 1. **"You don't even have to open the conversation."** — Sidebar copy is the feature no competitor has. It's the "wait, what?" moment that drives word-of-mouth.
 2. **"Zero network requests. I checked."** — In a post-breach world, verifiable privacy is a story people share.
@@ -44,13 +44,13 @@ Reddit is the #1 channel for developer tool cold start. But Reddit hates self-pr
 | r/ClaudeAI | 500K+ | "Switching context between Claude and ChatGPT? I built a clipboard tool for that" | Discussion + tool mention |
 | r/artificial | 1M+ | "The hidden cost of AI tool switching: context loss. Here's my solution" | Thought piece + soft CTA |
 | r/webdev | 2M+ | "Browser extension dev learnings: building a Manifest V3 extension with zero network requests" | Technical writeup |
-| r/SideProject | 300K+ | "Show my side project: CtxPort — copy AI conversations as Markdown with one click" | Standard side project showcase |
+| r/SideProject | 300K+ | "Show my side project: Grabber — copy AI conversations as Markdown with one click" | Standard side project showcase |
 
 #### Target Subreddits (Tier 2 — Comment and engage)
 
 | Subreddit | Strategy |
 |-----------|----------|
-| r/ChatGPTPro | Answer questions about exporting/saving conversations, mention CtxPort when relevant |
+| r/ChatGPTPro | Answer questions about exporting/saving conversations, mention Grabber when relevant |
 | r/LocalLLaMA | Engage in privacy discussions, mention zero-upload architecture |
 | r/ProductivityApps | Respond to "best Chrome extensions" threads |
 | r/coding | Comment on AI-assisted development threads |
@@ -78,16 +78,16 @@ Hacker News is high-risk, high-reward. A front-page Show HN can generate 200+ st
 
 #### Post Title Options (pick one)
 
-- `Show HN: CtxPort – Copy AI conversations as Markdown, even from the sidebar without opening them`
+- `Show HN: Grabber – Copy AI conversations as Markdown, even from the sidebar without opening them`
 - `Show HN: I built a browser extension to move context between AI tools (zero uploads, open source)`
-- `Show HN: CtxPort – One-click AI conversation to Markdown. Works on ChatGPT, Claude, Gemini, DeepSeek, Grok`
+- `Show HN: Grabber – One-click AI conversation to Markdown. Works on ChatGPT, Claude, Gemini, DeepSeek, Grok`
 
 **Recommended**: Option 2 — it leads with the problem (moving context), mentions the trust factors (zero uploads, open source), and doesn't sound like a product listing.
 
 #### Post Body Structure
 
 ```
-CtxPort is a browser extension that copies AI conversations as structured Markdown "Context Bundles."
+Grabber is a browser extension that copies AI conversations as structured Markdown "Context Bundles."
 
 The core insight: AI conversations are the new unit of knowledge work, but there's no clipboard for them. You can't easily move a ChatGPT conversation to Claude, or save it in a format that another AI can understand.
 
@@ -139,7 +139,7 @@ Use the founder's personal account, not a brand account. People follow people, n
 
 | Day | Content Type | Example |
 |-----|-------------|---------|
-| Mon | Build in Public update | "This week I'm working on Gemini support for CtxPort. The DOM structure is... interesting." |
+| Mon | Build in Public update | "This week I'm working on Gemini support for Grabber. The DOM structure is... interesting." |
 | Wed | Context Engineering insight | "Context Rot: why pasting raw text into a new AI chat loses 40% of the useful information. Thread." |
 | Fri | Product demo / GIF | 3-second GIF showing sidebar copy, with a one-line caption |
 
@@ -168,7 +168,7 @@ Product Hunt is a one-shot event. Time it carefully.
 #### Prerequisites (do NOT launch until these are met)
 
 1. Chrome Web Store listing is polished (5 screenshots, all copy finalized)
-2. Website (ctxport.xiaominglab.com) is live and looks professional
+2. Website (grabber.thecrypdough.com) is live and looks professional
 3. GitHub README has a compelling GIF demo
 4. At least 20 Chrome Web Store reviews (minimum 4.5 stars)
 5. At least 50 GitHub stars (social proof)
@@ -179,7 +179,7 @@ Product Hunt is a one-shot event. Time it carefully.
 2. **Launch Day**: Tuesday or Wednesday, midnight PT (Product Hunt resets daily at midnight PT)
 3. **Tagline**: "Copy AI conversations as portable Markdown — without even opening them" (80 chars)
 4. **First Comment**: Founder posts a genuine story: why you built it, what problem it solves for you personally
-5. **Rally Support**: Notify everyone who already uses CtxPort via email/Discord. Ask them to visit (not to upvote — just visit and comment if they genuinely like it)
+5. **Rally Support**: Notify everyone who already uses Grabber via email/Discord. Ask them to visit (not to upvote — just visit and comment if they genuinely like it)
 
 #### Estimated Timeline
 
@@ -190,18 +190,18 @@ Product Hunt is a one-shot event. Time it carefully.
 
 ### 2.5 Chinese Community Strategy
 
-CtxPort's founder is based in China. The Chinese developer community is a natural early adopter base.
+Grabber's founder is based in China. The Chinese developer community is a natural early adopter base.
 
 #### V2EX
 
 - Post in the "分享创造" (Share & Create) section
-- Title: "CtxPort: 一键复制 AI 对话为结构化 Markdown，支持 ChatGPT/Claude/Gemini/DeepSeek/Grok"
+- Title: "Grabber: 一键复制 AI 对话为结构化 Markdown，支持 ChatGPT/Claude/Gemini/DeepSeek/Grok"
 - V2EX developers are privacy-conscious and appreciate open source — lean into these angles
 - Timing: Weekday mornings (China time)
 
 #### Juejin (掘金)
 
-- Write a technical article: "如何构建一个零网络请求的浏览器扩展：CtxPort 的安全架构"
+- Write a technical article: "如何构建一个零网络请求的浏览器扩展：Grabber 的安全架构"
 - Tag: Chrome Extension, AI, Open Source, Privacy
 - Juejin audience loves technical deep-dives — don't just announce, educate
 
@@ -266,7 +266,7 @@ Identify open source projects with overlapping audiences and look for collaborat
 
 | Project Type | Collaboration Angle |
 |-------------|-------------------|
-| AI CLI tools (aider, Claude Code, Cursor) | "CtxPort exports context that feeds into these tools" — mention in discussions |
+| AI CLI tools (aider, Claude Code, Cursor) | "Grabber exports context that feeds into these tools" — mention in discussions |
 | Markdown editors (Obsidian, Logseq) | "Context Bundles are standard Markdown — import into your PKM" |
 | Privacy-focused extensions | Cross-list in each other's READMEs |
 | Open source AI tools | Engage in their communities, build relationships |
@@ -284,7 +284,7 @@ Write and publish on Dev.to, personal blog, or Medium (cross-post to all three).
 | # | Title | Target Audience | SEO Keywords | Publish To |
 |---|-------|----------------|-------------|-----------|
 | 1 | "Context Engineering: Why Copy-Paste Doesn't Work for AI Conversations" | AI power users | context engineering, AI workflow, prompt engineering | Dev.to, HN |
-| 2 | "Building a Zero-Upload Browser Extension: CtxPort's Security Architecture" | Developers, security-conscious users | browser extension security, manifest v3, privacy | Dev.to, HN |
+| 2 | "Building a Zero-Upload Browser Extension: Grabber's Security Architecture" | Developers, security-conscious users | browser extension security, manifest v3, privacy | Dev.to, HN |
 | 3 | "I Built a Product with an AI Agent Team — Here's What Happened" | Indie hackers, AI enthusiasts | AI agents, solo founder, build in public | Dev.to, Twitter thread, HN |
 
 #### Ongoing Articles (Monthly)
@@ -322,9 +322,9 @@ Write and publish on Dev.to, personal blog, or Medium (cross-post to all three).
 
 ### 4.3 SEO for the Landing Page
 
-The website (ctxport.xiaominglab.com) should target:
+The website (grabber.thecrypdough.com) should target:
 
-1. **Title tag**: "CtxPort — Copy AI Conversations as Structured Markdown | ChatGPT, Claude, Gemini"
+1. **Title tag**: "Grabber — Copy AI Conversations as Structured Markdown | ChatGPT, Claude, Gemini"
 2. **Meta description**: "One-click copy from ChatGPT, Claude, Gemini, DeepSeek, Grok & GitHub. Structured Markdown Context Bundles. Zero upload, 100% local processing. Open source."
 3. **H1**: "Copy AI Conversations as Portable Context Bundles"
 4. **Content**: Include a FAQ section targeting long-tail queries ("How do I export a ChatGPT conversation?", "How to copy Claude conversation to Markdown?")
@@ -367,7 +367,7 @@ GitHub Issues is your community platform for the first 6 months:
 
 #### For Non-Code Contributors
 
-1. **Translation**: CtxPort supports i18n — invite community translations
+1. **Translation**: Grabber supports i18n — invite community translations
 2. **Documentation**: Reward improvements to docs with shoutouts
 3. **Bug reports**: Thank detailed bug reporters publicly
 4. **Feature ideas**: Implement community-voted features and credit the requester
@@ -378,7 +378,7 @@ GitHub Issues is your community platform for the first 6 months:
 
 ### 6.1 North Star Metric
 
-**Weekly Active Users (WAU)** — not stars, not downloads. WAU measures whether people are actually using CtxPort as part of their workflow.
+**Weekly Active Users (WAU)** — not stars, not downloads. WAU measures whether people are actually using Grabber as part of their workflow.
 
 Stars are social proof. Downloads are vanity. Usage is truth.
 
@@ -502,7 +502,7 @@ If you remember nothing else from this document, remember this:
 
 No Reddit post, no HN submission, no Twitter thread will save a product that doesn't make users say "you should try this."
 
-If CtxPort's sidebar copy makes someone's jaw drop for half a second — if the clean Markdown output makes someone feel "this tool gets me" — if the zero-upload architecture makes a security-conscious developer trust it instantly — then every channel in this document will work.
+If Grabber's sidebar copy makes someone's jaw drop for half a second — if the clean Markdown output makes someone feel "this tool gets me" — if the zero-upload architecture makes a security-conscious developer trust it instantly — then every channel in this document will work.
 
 If it doesn't, none of them will.
 

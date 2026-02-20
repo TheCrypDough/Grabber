@@ -412,7 +412,7 @@ function registerBuiltinPlugins(): void {
 // packages/core-plugins/src/plugins/chatgpt/plugin.ts
 
 import type { Plugin, PluginContext } from "../../types";
-import type { ContentBundle } from "@ctxport/core-schema";
+import type { ContentBundle } from "@grabber/core-schema";
 import { buildLinearConversation } from "./tree-linearizer";
 import { flattenMessageContent } from "./content-flattener";
 import { stripCitationTokens } from "./text-processor";
@@ -642,7 +642,7 @@ function createChatInjector(config: ChatInjectorConfig): PluginInjector {
 // packages/core-plugins/src/plugins/stackoverflow/plugin.ts
 
 import type { Plugin, PluginContext } from "../../types";
-import type { ContentBundle, ContentNode, Participant } from "@ctxport/core-schema";
+import type { ContentBundle, ContentNode, Participant } from "@grabber/core-schema";
 import { generateId } from "../../utils";
 
 const SO_PATTERN = /^https:\/\/(stackoverflow\.com|[^.]+\.stackexchange\.com)\/questions\/(\d+)/;
@@ -791,7 +791,7 @@ function serializeContentBundle(
   const sections: string[] = [];
 
   if (includeFrontmatter) {
-    const meta: Record<string, string | number> = { ctxport: "v2" };
+    const meta: Record<string, string | number> = { grabber: "v2" };
     meta.source = bundle.source.platform;
     if (bundle.source.url) meta.url = bundle.source.url;
     if (bundle.title) meta.title = bundle.title;
@@ -877,7 +877,7 @@ function serializeAsThread(bundle: ContentBundle): string {
 
 ```markdown
 ---
-ctxport: v2
+grabber: v2
 source: chatgpt
 url: https://chatgpt.com/c/xxx
 title: Help me with React hooks
@@ -899,7 +899,7 @@ useEffect is a React Hook that...
 
 ```markdown
 ---
-ctxport: v2
+grabber: v2
 source: stackoverflow
 url: https://stackoverflow.com/questions/12345678
 title: How to properly use useEffect cleanup function?
@@ -999,7 +999,7 @@ An alternative approach using useRef...
 ```typescript
 // apps/browser-extension/src/entrypoints/content.tsx（修改后）
 
-import { registerBuiltinPlugins, getAllHostPermissions } from "@ctxport/core-plugins";
+import { registerBuiltinPlugins, getAllHostPermissions } from "@grabber/core-plugins";
 
 export default defineContentScript({
   matches: getAllHostPermissions(),  // 从 Plugin registry 动态生成
@@ -1026,7 +1026,7 @@ export default defineContentScript({
 ```typescript
 // apps/browser-extension/src/components/app.tsx（修改后）
 
-import { findPlugin } from "@ctxport/core-plugins";
+import { findPlugin } from "@grabber/core-plugins";
 
 export default function App() {
   const url = useExtensionUrl();
@@ -1069,8 +1069,8 @@ export default function App() {
 ```typescript
 // apps/browser-extension/src/hooks/use-copy.ts（替代 use-copy-conversation.ts）
 
-import { findPlugin } from "@ctxport/core-plugins";
-import { serializeContentBundle } from "@ctxport/core-markdown";
+import { findPlugin } from "@grabber/core-plugins";
+import { serializeContentBundle } from "@grabber/core-markdown";
 
 export function useCopy() {
   const copy = useCallback(async (format = "full") => {

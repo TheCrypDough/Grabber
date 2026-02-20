@@ -1,8 +1,8 @@
-# CtxPort 传播策略与紫牛因子分析
+# Grabber 传播策略与紫牛因子分析
 
 > 版本：v1.0 | 日期：2026-02-07
 > 作者：Marketing Agent (Seth Godin 营销哲学)
-> 核心命题：如何让 CtxPort 成为用户忍不住推荐给别人的产品？
+> 核心命题：如何让 Grabber 成为用户忍不住推荐给别人的产品？
 
 ---
 
@@ -12,11 +12,11 @@
 
 一个好的传播策略不是在产品做完之后"想办法让人分享"。它是在产品的每一个交互节点里，都埋入让用户想说"你试过这个吗？"的触发因子。
 
-Seth Godin 的紫牛理论说：在一群普通的牛中，只有紫色的牛才会被注意到。问题不是"如何推广 CtxPort"，而是 **"CtxPort 的哪个特质让人无法不谈论它？"**
+Seth Godin 的紫牛理论说：在一群普通的牛中，只有紫色的牛才会被注意到。问题不是"如何推广 Grabber"，而是 **"Grabber 的哪个特质让人无法不谈论它？"**
 
 ---
 
-## 1. CtxPort 的紫牛因子
+## 1. Grabber 的紫牛因子
 
 ### 1.1 紫牛因子分析框架
 
@@ -26,13 +26,13 @@ Seth Godin 的紫牛理论说：在一群普通的牛中，只有紫色的牛才
 2. **可见性**（Visibility）：用户使用时别人能看到
 3. **情感价值**（Emotional Value）：使用时产生的感受值得分享
 
-### 1.2 CtxPort 的三个紫牛因子
+### 1.2 Grabber 的三个紫牛因子
 
 #### 紫牛因子 #1：不打开就能复制（Surprise）
 
-这是 CtxPort 最强的紫牛因子。
+这是 Grabber 最强的紫牛因子。
 
-**为什么它是紫牛：** 全世界所有的 AI 对话导出工具都要求你先打开会话，再导出。CtxPort 在左侧列表直接加了复制按钮——你甚至不用打开会话，hover 上去，点一下，完了。
+**为什么它是紫牛：** 全世界所有的 AI 对话导出工具都要求你先打开会话，再导出。Grabber 在左侧列表直接加了复制按钮——你甚至不用打开会话，hover 上去，点一下，完了。
 
 **传播心理学：** 用户第一次发现这个按钮时的反应是"等等，我不用打开就能复制？"——这个"意外感"正是口碑传播的点火装置。用户不会去跟朋友说"我用了一个导出工具"，但他们会说"你知道吗？这个扩展竟然不用打开会话就能复制。"
 
@@ -42,22 +42,22 @@ Seth Godin 的紫牛理论说：在一群普通的牛中，只有紫色的牛才
 
 在 2025 年 12 月 90 万用户数据泄露之后，**信任本身就是紫牛。**
 
-**为什么它是紫牛：** 绝大多数浏览器扩展的安全承诺是"我们保证不上传你的数据"。CtxPort 的承诺是"打开 DevTools Network 面板，你自己看——零外部请求。不信？代码开源，你来审。"
+**为什么它是紫牛：** 绝大多数浏览器扩展的安全承诺是"我们保证不上传你的数据"。Grabber 的承诺是"打开 DevTools Network 面板，你自己看——零外部请求。不信？代码开源，你来审。"
 
 **传播心理学：** 安全不性感，但**可验证的安全**很性感。开发者会截图 DevTools 的空白 Network 面板发推特——"这扩展真的零请求，我验了。" 这种"用户自己成为见证者"的叙事，比任何安全徽章都有说服力。
 
-**设计建议：** 在 Chrome Web Store listing 的第五张截图，直接放 DevTools Network 面板 + CtxPort 操作 = 零请求。让安全变成一个可传播的视觉故事。
+**设计建议：** 在 Chrome Web Store listing 的第五张截图，直接放 DevTools Network 面板 + Grabber 操作 = 零请求。让安全变成一个可传播的视觉故事。
 
 #### 紫牛因子 #3：Context Bundle 格式的"对话打包感"（Emotional Value）
 
-**为什么它是紫牛：** 用户手动 copy-paste 时，粘贴出来的是一坨没有结构的文本。CtxPort 复制出来的是一个带元数据注释、清晰角色分段、代码块完整保留的 Markdown 文档。
+**为什么它是紫牛：** 用户手动 copy-paste 时，粘贴出来的是一坨没有结构的文本。Grabber 复制出来的是一个带元数据注释、清晰角色分段、代码块完整保留的 Markdown 文档。
 
 **传播心理学：** 当用户第一次把 Context Bundle 粘贴到另一个 AI 工具，看到对方 AI 立刻理解了完整上下文时——那个"它居然全懂了"的瞬间，就是情感价值。这不只是效率提升，这是一种**被照顾到了的感觉**。
 
 **设计建议：** 在 Bundle 的头部元数据注释里，加入一个微妙的品牌标记：
 
 ```markdown
-<!-- CtxPort Context Bundle -->
+<!-- Grabber Context Bundle -->
 <!-- Source: ChatGPT | Date: 2026-02-07 | Messages: 24 -->
 ```
 
@@ -71,7 +71,7 @@ Seth Godin 的紫牛理论说：在一群普通的牛中，只有紫色的牛才
 
 ### 2.1 三种社交货币
 
-| 社交货币类型 | 用户心理 | CtxPort 如何提供 |
+| 社交货币类型 | 用户心理 | Grabber 如何提供 |
 |-------------|---------|-----------------|
 | **知识优势** | "我知道你不知道的好东西" | "不打开就能复制"的发现感 |
 | **效率优势** | "我比你更聪明地工作" | "我 2 秒搞定的事，你要 15 分钟" |
@@ -81,14 +81,14 @@ Seth Godin 的紫牛理论说：在一群普通的牛中，只有紫色的牛才
 
 #### 方案 A：Context Bundle 的品牌水印（被动传播）
 
-当用户复制的 Bundle 被粘贴到团队文档、Slack、GitHub Issue 时，头部的 `<!-- CtxPort Context Bundle -->` 注释自然被看到。
+当用户复制的 Bundle 被粘贴到团队文档、Slack、GitHub Issue 时，头部的 `<!-- Grabber Context Bundle -->` 注释自然被看到。
 
 **关键：这个水印必须是有用的元数据，不是广告。** 它标明了来源平台、时间、消息数量——收到的人觉得"这格式挺专业"，而不是"又是一个广告"。
 
 **实现细节：**
-- 免费版：Bundle 头部包含 `<!-- CtxPort Context Bundle -->` 注释
+- 免费版：Bundle 头部包含 `<!-- Grabber Context Bundle -->` 注释
 - 注释放在 Markdown 注释语法中，渲染时不显示，但查看源码时可见
-- 不要在正文中加"Exported with CtxPort"这种显眼广告——这会让用户觉得被利用
+- 不要在正文中加"Exported with Grabber"这种显眼广告——这会让用户觉得被利用
 
 #### 方案 B：复制统计卡片（主动传播）
 
@@ -100,7 +100,7 @@ Seth Godin 的紫牛理论说：在一群普通的牛中，只有紫色的牛才
 
 #### 方案 C：开发者身份标签
 
-**"People like us do things like this."** CtxPort 的目标用户——多工具开发者、vibecoder——需要一个身份标签。
+**"People like us do things like this."** Grabber 的目标用户——多工具开发者、vibecoder——需要一个身份标签。
 
 **策略：** 通过内容营销和社区参与，建立"Context Engineer"这个身份概念。
 
@@ -119,7 +119,7 @@ Seth Godin 的紫牛理论说：在一群普通的牛中，只有紫色的牛才
 
 Confetti 效果创始人提到了。直接说我的看法：**不推荐 confetti。** 理由：
 
-1. **频率问题**：CtxPort 的目标使用频率是每天 5+ 次。Confetti 在第 1 次很惊喜，第 3 次就烦了，第 10 次用户想卸载了
+1. **频率问题**：Grabber 的目标使用频率是每天 5+ 次。Confetti 在第 1 次很惊喜，第 3 次就烦了，第 10 次用户想卸载了
 2. **用户类型问题**：主要用户是开发者。开发者对花哨动效的容忍度极低——他们要的是"确认完成"，不是"庆祝完成"
 3. **竞品对标**：想想 Arc 浏览器、Raycast、Linear 这些开发者喜爱的工具——它们的反馈都是精致但克制的。没有 confetti，有的是让你感到"这个工具懂我"的精确反馈
 
@@ -153,7 +153,7 @@ Toast 滑入，显示：
 
 ```
 [checkmark icon] Copied 24 messages -- ~8.5K tokens
-100th copy with CtxPort!
+100th copy with Grabber!
 ```
 
 不是弹窗庆祝，不是 confetti，就是一行安静的数字。让用户自己感受到"原来我已经用了这么多次"。**数字本身就是社交货币。**
@@ -163,12 +163,12 @@ Toast 滑入，显示：
 用户把 Context Bundle 粘贴到另一个工具时，Bundle 头部的结构化元数据是最后一层品牌触达。
 
 ```markdown
-<!-- CtxPort Context Bundle -->
+<!-- Grabber Context Bundle -->
 <!-- Source: ChatGPT | Date: 2026-02-07 | Messages: 24 | ~8.5K tokens -->
 <!-- URL: https://chat.openai.com/c/abc123 -->
 ```
 
-**这是唯一一个同时服务于"功能"和"传播"的设计点。** 元数据让收到 Bundle 的 AI 更好地理解上下文（功能），同时让看到源码的人知道 CtxPort 的存在（传播）。
+**这是唯一一个同时服务于"功能"和"传播"的设计点。** 元数据让收到 Bundle 的 AI 更好地理解上下文（功能），同时让看到源码的人知道 Grabber 的存在（传播）。
 
 ### 3.3 关于 Confetti 的替代方案（如果创始人坚持要庆祝感）
 
@@ -196,8 +196,8 @@ Toast 滑入，显示：
 | 方面 | 分析 |
 |------|------|
 | **开发成本** | 需要持久化存储（chrome.storage）、数据聚合逻辑、UI 展示页面——至少 2-3 天工作量 |
-| **对核心体验的影响** | 零影响。用户不会因为看到统计数据而更频繁地使用 CtxPort |
-| **传播价值** | 在用户量 < 1000 时，统计数据没有传播价值。"我用 CtxPort 复制了 50 次"不是一个值得发推的故事 |
+| **对核心体验的影响** | 零影响。用户不会因为看到统计数据而更频繁地使用 Grabber |
+| **传播价值** | 在用户量 < 1000 时，统计数据没有传播价值。"我用 Grabber 复制了 50 次"不是一个值得发推的故事 |
 | **虚荣指标风险** | "节省了 X 分钟"无法准确计算。"节省了 X tokens"可以计算但用户不理解含义。"复制了 X 条对话"是真实但无聊的 |
 
 ### 4.2 如果做，怎么做才不是虚荣指标
@@ -228,7 +228,7 @@ Since install: 127 copies | 3,840 messages | ~1.2M tokens
 **传播设计：** 如果用户想分享，在 popup 中加一个"Copy stats"按钮，生成一段分享文本：
 
 ```
-I've used CtxPort to copy 127 AI conversations (~1.2M tokens) across ChatGPT and Claude.
+I've used Grabber to copy 127 AI conversations (~1.2M tokens) across ChatGPT and Claude.
 Zero uploads. Zero data shared. All local.
 ```
 
@@ -246,7 +246,7 @@ Zero uploads. Zero data shared. All local.
 |------|---------|---------|---------|
 | 第 1 次成功复制 | 惊喜 + 好奇 | 引导发现 | Welcome toast（见第 3.3 节） |
 | 第 10 次复制 | 习惯形成 | 无触发 | 不打扰。习惯形成期任何打扰都是减分 |
-| 第 20 次复制 | 依赖建立 | Chrome Web Store 评价引导 | Toast 底部一次性出现："Love CtxPort? A review helps us grow." |
+| 第 20 次复制 | 依赖建立 | Chrome Web Store 评价引导 | Toast 底部一次性出现："Love Grabber? A review helps us grow." |
 | 复制超长会话（50+ 消息） | 成就感 | Token 计数强调 | Toast 显示更详细的信息：`Copied 67 messages -- ~22K tokens (that's a lot of context!)` |
 | 批量复制 5+ 条 | 高效感 | 无触发 | 这本身就是 Pro 功能的展示，不需要额外触发 |
 
@@ -256,11 +256,11 @@ Zero uploads. Zero data shared. All local.
 
 #### A. Context Bundle 品牌标记（已在第 2.2 节详述）
 
-Bundle 头部的 `<!-- CtxPort Context Bundle -->` 注释随着内容传播。
+Bundle 头部的 `<!-- Grabber Context Bundle -->` 注释随着内容传播。
 
 #### B. 开源项目的 README 传播
 
-GitHub 开源仓库的 README 是一个被低估的传播渠道。当 CtxPort 在 GitHub 上积累 Stars 时，README 本身成为传播素材。
+GitHub 开源仓库的 README 是一个被低估的传播渠道。当 Grabber 在 GitHub 上积累 Stars 时，README 本身成为传播素材。
 
 **建议 README 结构：**
 
@@ -273,7 +273,7 @@ GitHub 开源仓库的 README 是一个被低估的传播渠道。当 CtxPort �
 
 #### C. Markdown 格式的"品质感"传播
 
-当用户把 CtxPort 的 Bundle 粘贴到 Notion、GitHub、Slack 时，干净的 Markdown 格式本身就是品质信号。对比手动 copy-paste 的混乱文本，CtxPort 输出的结构化 Bundle 是一个可见的"我用了更好的工具"的证明。
+当用户把 Grabber 的 Bundle 粘贴到 Notion、GitHub、Slack 时，干净的 Markdown 格式本身就是品质信号。对比手动 copy-paste 的混乱文本，Grabber 输出的结构化 Bundle 是一个可见的"我用了更好的工具"的证明。
 
 ### 5.3 主动传播设计（需用户操作）
 
@@ -283,7 +283,7 @@ GitHub 开源仓库的 README 是一个被低估的传播渠道。当 CtxPort �
 
 - **时机：** 第 20 次成功复制后
 - **形式：** Toast 底部的一行文字（不是弹窗）
-- **内容：** "Love CtxPort? A review helps us reach more developers."
+- **内容：** "Love Grabber? A review helps us reach more developers."
 - **行为：** 点击打开 Chrome Web Store 评价页面；出现一次后永不再显示
 - **用户选择：** 可以忽略，它会在 2 秒后随 Toast 一起消失
 
@@ -305,11 +305,11 @@ Referral 系统在 pre-PMF 阶段是过度工程。原因：
 
 ## 6. Build in Public 策略
 
-### 6.1 为什么 Build in Public 是 CtxPort 的最强传播武器
+### 6.1 为什么 Build in Public 是 Grabber 的最强传播武器
 
 三个原因：
 
-1. **叙事独特性**：一个人 + AI Agent 团队构建产品——这个叙事本身就是紫牛。2026 年 AI 领域最热门的话题之一就是"AI 能不能替代团队"。CtxPort 的构建过程就是这个问题的实践案例
+1. **叙事独特性**：一个人 + AI Agent 团队构建产品——这个叙事本身就是紫牛。2026 年 AI 领域最热门的话题之一就是"AI 能不能替代团队"。Grabber 的构建过程就是这个问题的实践案例
 2. **零成本**：不需要广告预算，只需要真实和持续
 3. **Trust by Transparency**：当你公开产品的所有数据——安装数、留存率、失败和成功——用户对你的信任远超那些只展示好消息的竞品
 
@@ -323,19 +323,19 @@ Referral 系统在 pre-PMF 阶段是过度工程。原因：
 - 什么有效、什么失败
 - 真实的 Agent 输出样本（如本文档本身就可以节选分享）
 
-**传播逻辑：** 开发者和创业者圈子对"AI 如何改变工作方式"有极强的好奇心。CtxPort 的构建过程就是最好的内容素材。
+**传播逻辑：** 开发者和创业者圈子对"AI 如何改变工作方式"有极强的好奇心。Grabber 的构建过程就是最好的内容素材。
 
 **频率：** 每周 1 篇（Twitter thread 或短博文）
 
 #### 支柱 B：Context Engineering 见解
 
-以 CtxPort 创始人的身份参与 "context engineering" 相关讨论。
+以 Grabber 创始人的身份参与 "context engineering" 相关讨论。
 
 - "Context Rot 是怎么发生的，以及为什么大 context window 不是解药"
-- "从 prompt engineering 到 context engineering：我从构建 CtxPort 中学到了什么"
+- "从 prompt engineering 到 context engineering：我从构建 Grabber 中学到了什么"
 - "浏览器扩展安全审计入门：如何检查一个扩展是否在偷你的数据"
 
-**传播逻辑：** 教育而不是推销。当你成为 context engineering 话题的权威声音时，CtxPort 的品牌自然与这个概念关联。
+**传播逻辑：** 教育而不是推销。当你成为 context engineering 话题的权威声音时，Grabber 的品牌自然与这个概念关联。
 
 **频率：** 每两周 1 篇长文（Dev.to / 个人博客 / Medium）
 
@@ -443,6 +443,6 @@ Referral 系统在 pre-PMF 阶段是过度工程。原因：
 
 > "Don't find customers for your products. Find products for your customers."
 >
-> CtxPort 不需要"被推广"。它需要被做到让用过的人忍不住说："你也试试这个。"
+> Grabber 不需要"被推广"。它需要被做到让用过的人忍不住说："你也试试这个。"
 >
 > -- Seth Godin 精神

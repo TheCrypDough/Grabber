@@ -39,7 +39,7 @@ Result: **0 matches**. browser-extension/src 中已无任何 chatgpt/claude 硬�
 **修复建议:** 在 `content.tsx` 或 `app.tsx` 顶层（组件挂载前）调用 `registerBuiltinAdapters()`。例如在 `app.tsx` 的 module scope 加一行：
 
 ```ts
-import { registerBuiltinAdapters } from "@ctxport/core-adapters";
+import { registerBuiltinAdapters } from "@grabber/core-adapters";
 registerBuiltinAdapters();
 ```
 
