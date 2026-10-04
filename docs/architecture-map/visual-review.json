@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "reviewer": "image-capable Codex",
+  "repository": {
+    "url": "https://github.com/TheCrypDough/Grabber",
+    "revision": "178135d0d89eaab4b3b711e309a8e0d29fbf05a0"
+  },
+  "artifact": {
+    "path": "map.html",
+    "sha256": "ca3703089292cf8482cfdd5ab644373b9ed5821726778aabf2d850d05286e48f",
+    "bytes": 712207
+  },
+  "specification": {
+    "path": "architecture.json",
+    "sha256": "9a8ee6bf433f3e6ec4ddd7938533a85fc6a7cde8ad90ba4d89b19dc603cdbdb6",
+    "bytes": 5206
+  },
+  "delivery_receipt": {
+    "path": "delivery.json",
+    "sha256": "38fb729b595361d7e06943ef2107feadf883ddb36b57311f8d846d0c2ed49e4f",
+    "bytes": 758
+  },
+  "browser_evidence": {
+    "path": "map.visual-check.json",
+    "sha256": "409d4d00a6c24f1a2753d51a50980d7a2fcbaf63a75fa693e401be643245a60b",
+    "bytes": 17054
+  },
+  "source_review": {
+    "path": "SOURCE_REVIEW.md",
+    "sha256": "a81ec494dbc429539626a516b3eda1d8aa51e775152da671b07d67cc06438511",
+    "bytes": 1607
+  },
+  "review": {
+    "path": "REVIEW.md",
+    "sha256": "fd0fc4bf255d8b5730bcd5bb75e52a3733c6d509fed2e0d4f54423ab76058c45",
+    "bytes": 1010
+  },
+  "screenshots": [
+    {
+      "path": "map.visual-check.1440x900.light.png",
+      "sha256": "778cd83780f9a574965d270e5d67cb8a80dafe439815f037efd063a81ad19558",
+      "bytes": 87769
+    },
+    {
+      "path": "map.visual-check.1440x900.dark.png",
+      "sha256": "54116082dbb8c2d052b7f7ab89f3ccc6b2fc68a7e44ccf5257b8d02374d52a4d",
+      "bytes": 88703
+    },
+    {
+      "path": "map.visual-check.2048x1320.light.png",
+      "sha256": "a5c2072e53b64c06601614e6bfabd29d731439a956626ec1425304cae8f34bb5",
+      "bytes": 122509
+    },
+    {
+      "path": "map.visual-check.2048x1320.dark.png",
+      "sha256": "0e44c503f858277491f8006d946b2cdcefa647baa384b2b2f1954f13f118b0c9",
+      "bytes": 124143
+    }
+  ],
+  "inspected_screenshot_count": 4,
+  "scope": "Actual original screenshots inspected; deployed app behavior unverified.",
+  "published_receipt_normalization": "Local machine paths replaced with relative/runtime placeholders; source specification, HTML and original PNG bytes unchanged. Receipt hashes rebound after original-evidence verification."
+}

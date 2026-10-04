@@ -1,0 +1,10 @@
+{
+  "repository": "https://github.com/TheCrypDough/Grabber",
+  "revision": "178135d0d89eaab4b3b711e309a8e0d29fbf05a0",
+  "branch": "main",
+  "mapped_at": "2026-10-03",
+  "tracked_file_count": 333,
+  "scope": "Principal source architecture with complete tracked file inventory; runtime unverified",
+  "target": "docs/architecture-map",
+  "renderer_revision": "ed7f4d4b48d4424d36edfed8043de3de8dea6b45"
+}
