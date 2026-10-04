@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "deliver",
+  "type": "architecture",
+  "input": ".\\architecture.json",
+  "output": ".\\map.html",
+  "specification": {
+    "sha256": "9a8ee6bf433f3e6ec4ddd7938533a85fc6a7cde8ad90ba4d89b19dc603cdbdb6",
+    "bytes": 5206
+  },
+  "artifact": {
+    "sha256": "ca3703089292cf8482cfdd5ab644373b9ed5821726778aabf2d850d05286e48f",
+    "bytes": 712207
+  },
+  "validation": {
+    "checksPassed": 9,
+    "checkCount": 9,
+    "compositionProfile": "showcase",
+    "compositionStatus": "pass",
+    "errors": 0,
+    "warnings": 0
+  },
+  "evidence": {
+    "verified": true,
+    "repository": "https://github.com/TheCrypDough/Grabber",
+    "revision": "178135d0d89eaab4b3b711e309a8e0d29fbf05a0",
+    "references": 11
+  }
+}

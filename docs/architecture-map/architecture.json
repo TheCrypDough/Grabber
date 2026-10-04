@@ -1,0 +1,259 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Grabber \u00b7 repository architecture",
+    "quality_profile": "showcase",
+    "locale": "en",
+    "repository": {
+      "url": "https://github.com/TheCrypDough/Grabber",
+      "revision": "178135d0d89eaab4b3b711e309a8e0d29fbf05a0"
+    },
+    "viewBox": [
+      1240,
+      650
+    ]
+  },
+  "components": [
+    {
+      "id": "page",
+      "type": "external",
+      "label": "Conversation page",
+      "sublabel": "Supported browser surfaces",
+      "pos": [
+        50,
+        65
+      ],
+      "size": [
+        210,
+        84
+      ],
+      "sources": [
+        {
+          "path": "packages/core-plugins/src/index.ts"
+        }
+      ]
+    },
+    {
+      "id": "content",
+      "type": "frontend",
+      "label": "Extension overlay",
+      "sublabel": "Content UI and plugin registry",
+      "pos": [
+        515,
+        65
+      ],
+      "size": [
+        210,
+        84
+      ],
+      "sources": [
+        {
+          "path": "apps/browser-extension/src/entrypoints/content.tsx"
+        }
+      ]
+    },
+    {
+      "id": "bundle",
+      "type": "backend",
+      "label": "Content bundle",
+      "sublabel": "Shared typed capture schema",
+      "pos": [
+        980,
+        65
+      ],
+      "size": [
+        210,
+        84
+      ],
+      "sources": [
+        {
+          "path": "packages/core-schema/src/index.ts"
+        }
+      ]
+    },
+    {
+      "id": "markdown",
+      "type": "backend",
+      "label": "Markdown serializer",
+      "sublabel": "Filtered blocks and frontmatter",
+      "pos": [
+        980,
+        290
+      ],
+      "size": [
+        210,
+        84
+      ],
+      "sources": [
+        {
+          "path": "packages/core-markdown/src/serializer.ts"
+        }
+      ]
+    },
+    {
+      "id": "background",
+      "type": "backend",
+      "label": "Extension background",
+      "sublabel": "Save requests and download API",
+      "pos": [
+        515,
+        290
+      ],
+      "size": [
+        210,
+        84
+      ],
+      "sources": [
+        {
+          "path": "apps/browser-extension/src/entrypoints/background.ts"
+        }
+      ]
+    },
+    {
+      "id": "download",
+      "type": "database",
+      "label": "Local Markdown file",
+      "sublabel": "Browser-managed download",
+      "pos": [
+        50,
+        290
+      ],
+      "size": [
+        210,
+        84
+      ],
+      "sources": [
+        {
+          "path": "apps/browser-extension/src/entrypoints/background.ts"
+        }
+      ]
+    },
+    {
+      "id": "cli",
+      "type": "frontend",
+      "label": "Grabber CLI",
+      "sublabel": "Capture and ingest scripts",
+      "pos": [
+        50,
+        515
+      ],
+      "size": [
+        210,
+        84
+      ],
+      "sources": [
+        {
+          "path": "scripts/grabber-capture.sh"
+        },
+        {
+          "path": "scripts/grabber-ingest.sh"
+        }
+      ]
+    },
+    {
+      "id": "archive",
+      "type": "database",
+      "label": "Local archives",
+      "sublabel": "Searchable saved bundles",
+      "pos": [
+        515,
+        515
+      ],
+      "size": [
+        210,
+        84
+      ],
+      "sources": [
+        {
+          "path": "scripts/grabber-find.sh"
+        }
+      ]
+    },
+    {
+      "id": "handoff",
+      "type": "backend",
+      "label": "Context and handoff",
+      "sublabel": "Derived conversation artifacts",
+      "pos": [
+        980,
+        515
+      ],
+      "size": [
+        210,
+        84
+      ],
+      "sources": [
+        {
+          "path": "scripts/grabber-context.sh"
+        },
+        {
+          "path": "scripts/grabber-handoff.sh"
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "page-content",
+      "from": "page",
+      "to": "content",
+      "label": "capture"
+    },
+    {
+      "id": "content-bundle",
+      "from": "content",
+      "to": "bundle",
+      "label": "normalize"
+    },
+    {
+      "id": "markdown-background",
+      "from": "markdown",
+      "to": "background",
+      "label": "save"
+    },
+    {
+      "id": "background-download",
+      "from": "background",
+      "to": "download",
+      "label": "download"
+    },
+    {
+      "id": "bundle-markdown",
+      "from": "bundle",
+      "to": "markdown",
+      "label": "serialize",
+      "labelDy": 24
+    },
+    {
+      "id": "cli-archive",
+      "from": "cli",
+      "to": "archive",
+      "label": "archive"
+    },
+    {
+      "id": "archive-handoff",
+      "from": "archive",
+      "to": "handoff",
+      "label": "derive"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Source snapshot",
+      "items": [
+        "Committed source and caller review",
+        "Pinned Git revision; implementation evidence"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Evidence boundary",
+      "items": [
+        "Runtime and provider health unverified",
+        "Human review and merge remain required"
+      ]
+    }
+  ]
+}
